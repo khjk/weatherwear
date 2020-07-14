@@ -3,6 +3,7 @@ package com.kitri.weatherwear.user;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -33,6 +34,30 @@ public class UserDaoService {
     public User findOne(String id) {
         for (User user : users) {
             if (id.equals(user.getId())) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public User deleteById(String id) {
+        Iterator<User> iterator = users.iterator();
+        while (iterator.hasNext()) {
+            User user = iterator.next();
+
+            if (id.equals(user.getId())) {
+                iterator.remove();
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public User changeLocationById(String id, String newLatitude, String newLongitude) {
+        for (User user : users) {
+            if (id.equals(user.getId())) {
+                user.setLoc_latitude(newLatitude);
+                user.setLoc_longitude(newLongitude);
                 return user;
             }
         }
