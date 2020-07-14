@@ -53,11 +53,11 @@ public class UserDaoService {
         return null;
     }
 
-    public User changeLocationById(String id, String newLatitude, String newLongitude) {
+    public User changeLocationById(String id, UserUpdateRequestDto requestDto) {
         for (User user : users) {
             if (id.equals(user.getId())) {
-                user.setLoc_latitude(newLatitude);
-                user.setLoc_longitude(newLongitude);
+                user.setLoc_latitude(requestDto.getLoc_latitude());
+                user.setLoc_longitude(requestDto.getLoc_longitude());
                 return user;
             }
         }
