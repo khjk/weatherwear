@@ -23,8 +23,9 @@ public class UserDaoService {
         return user;
     }
 
-    public User findOne(String id) {
-        return userMapper.findOne(id);
+    public UserResponseDto findOne(String id) {
+        User entity = userMapper.findOne(id);
+        return new UserResponseDto(entity);
     }
 
     public User deleteById(String id) {

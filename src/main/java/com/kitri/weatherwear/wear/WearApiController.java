@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 public class WearApiController {
-    private WearDaoService service;
+    private final WearDaoService service;
 
     public WearApiController(WearDaoService service) {
         this.service = service;
@@ -32,11 +32,11 @@ public class WearApiController {
 
     @PostMapping("api/v1/wears")
     public ResponseEntity<Wear> saveWear(@RequestBody Wear wear) {
-        Wear savedWear = service.save(wear);
+        int saveResult = service.save(wear);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{wear_id}")
-                .buildAndExpand(savedWear.getWear_no())
+                .buildAndExpand(wear.getWear_no())
                 .toUri();
 
         return ResponseEntity.created(location).build();
@@ -44,14 +44,14 @@ public class WearApiController {
 
     @PutMapping("api/v1/wears/{wear_no}")
     public ResponseEntity<Wear> evaluateWear(@PathVariable int wear_no, @RequestBody WearUpdateRequestDto requestDto) {
-        Wear updatedWear = service.updateEvaluationById(wear_no, requestDto);
+        int updateResult = service.updateEvaluationById(wear_no, requestDto);
 
-        if(updatedWear == null) {
+        if(updateResult == 0) {
             throw new WearNotFoundException(String.format("Wear[%s] cannot update now", wear_no));
         }
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .buildAndExpand(updatedWear.getWear_no())
+                .buildAndExpand(wear_no)
                 .toUri();
 
         return ResponseEntity.created(location).build();
@@ -59,9 +59,9 @@ public class WearApiController {
 
     @DeleteMapping("api/v1/wears/{wear_no}")
     public void deleteWear(@PathVariable int wear_no) {
-        Wear deletedWear = service.deleteById(wear_no);
+        int deleteResult = service.deleteById(wear_no);
 
-        if(deletedWear == null) {
+        if(deleteResult == 0) {
             throw new WearNotFoundException(String.format("Wear_no[%s] cannot be deleted", wear_no));
         }
     }

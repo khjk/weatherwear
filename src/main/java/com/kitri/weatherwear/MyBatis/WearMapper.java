@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 public interface WearMapper {
     List<Wear> findAll();
-    Wear save(Wear wear);
+    int save(Wear wear);
     Wear findOne(int wear_no);
-    Wear updateEvaluationById(int wear_no, WearUpdateRequestDto requestDto);
-    Wear deleteById(int wear_no);
+    int updateEvaluationById(int wear_no, WearUpdateRequestDto requestDto);
+    int deleteById(int wear_no);
 }

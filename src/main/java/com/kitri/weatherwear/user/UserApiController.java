@@ -22,13 +22,13 @@ public class UserApiController {
     }
 
     @GetMapping("api/v1/users/{id}")
-    public User retrieveUser(@PathVariable String id) {
-        User user = service.findOne(id);
+    public UserResponseDto retrieveUser(@PathVariable String id) {
+        UserResponseDto userResponseDto = service.findOne(id);
 
-        if (user == null) {
+        if (userResponseDto == null) {
             throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
-        return user;
+        return userResponseDto;
     }
 
     @PostMapping("api/v1/users")
