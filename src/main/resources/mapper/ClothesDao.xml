@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kitri.weatherwear.dao.ClothesDao">
+
+	<!-- clothes_sort 테이블 전체 호출 -->
+    <select id="selectClothes" resultType="com.kitri.weatherwear.dto.Clothes">
+		SELECT *
+		FROM clothes_sorts
+	</select>
+
+	<!-- outer중 select 이름, 이미지 -->
+	<select id="selectOuter" resultType="map" >
+		SELECT c_name, c_img
+		FROM clothes_sorts
+		WHERE c_sort='outer'
+	</select>
+</mapper>
