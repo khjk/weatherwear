@@ -16,12 +16,12 @@ public class UserApiController {
         this.service = service;
     }
 
-    @GetMapping("api/users")
+    @GetMapping("api/v1/users")
     public List<User> retrieveAllUsers() {
         return service.findAll();
     }
 
-    @GetMapping("api/users/{id}")
+    @GetMapping("api/v1/users/{id}")
     public User retrieveUser(@PathVariable String id) {
         User user = service.findOne(id);
 
@@ -31,7 +31,7 @@ public class UserApiController {
         return user;
     }
 
-    @PostMapping("api/users")
+    @PostMapping("api/v1/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = service.save(user);
 
@@ -43,7 +43,7 @@ public class UserApiController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("api/users/{id}")
+    @DeleteMapping("api/v1/users/{id}")
     public void deleteUser(@PathVariable String id) {
         User deletedUser = service.deleteById(id);
 
@@ -52,7 +52,7 @@ public class UserApiController {
         }
     }
 
-    @PutMapping("api/users/{id}")
+    @PutMapping("api/v1/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody UserUpdateRequestDto requestDto) {
         User updatedUser = service.changeLocationById(id, requestDto);
 

@@ -15,12 +15,12 @@ public class WearApiController {
         this.service = service;
     }
 
-    @GetMapping("api/wears")
+    @GetMapping("api/v1/wears/list")
     public List<Wear> retrieveAllWears() {
         return service.findAll();
     }
 
-    @GetMapping("api/wears/{wear_no}")
+    @GetMapping("api/v1/wears/{wear_no}")
     public Wear retrieveWear(@PathVariable int wear_no) {
         Wear wear = service.findOne(wear_no);
 
@@ -30,7 +30,7 @@ public class WearApiController {
         return wear;
     }
 
-    @PostMapping("api/wears")
+    @PostMapping("api/v1/wears")
     public ResponseEntity<Wear> saveWear(@RequestBody Wear wear) {
         Wear savedWear = service.save(wear);
 
@@ -42,7 +42,7 @@ public class WearApiController {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("api/wears/{wear_no}")
+    @PutMapping("api/v1/wears/{wear_no}")
     public ResponseEntity<Wear> evaluateWear(@PathVariable int wear_no, @RequestBody WearUpdateRequestDto requestDto) {
         Wear updatedWear = service.updateEvaluationById(wear_no, requestDto);
 
@@ -57,7 +57,7 @@ public class WearApiController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("api/wears/{wear_no}")
+    @DeleteMapping("api/v1/wears/{wear_no}")
     public void deleteWear(@PathVariable int wear_no) {
         Wear deletedWear = service.deleteById(wear_no);
 
