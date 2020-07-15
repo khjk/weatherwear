@@ -32,7 +32,11 @@ public class WearApiController {
 
     @PostMapping("api/v1/wears")
     public ResponseEntity<Wear> saveWear(@RequestBody Wear wear) {
-        int saveResult = service.save(wear);
+        Integer saveResult = service.save(wear);
+
+        if (saveResult == 0) {
+            throw new WearNotFoundException(String.format("Wear[%s] cannot be saved..",wear.getWear_code()));
+        }
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{wear_id}")
@@ -44,9 +48,9 @@ public class WearApiController {
 
     @PutMapping("api/v1/wears/{wear_no}")
     public ResponseEntity<Wear> evaluateWear(@PathVariable int wear_no, @RequestBody WearUpdateRequestDto requestDto) {
-        int updateResult = service.updateEvaluationById(wear_no, requestDto);
+        Integer updateResult = service.updateEvaluationById(wear_no, requestDto);
 
-        if(updateResult == 0) {
+        if (updateResult == 0) {
             throw new WearNotFoundException(String.format("Wear[%s] cannot update now", wear_no));
         }
 
@@ -59,9 +63,9 @@ public class WearApiController {
 
     @DeleteMapping("api/v1/wears/{wear_no}")
     public void deleteWear(@PathVariable int wear_no) {
-        int deleteResult = service.deleteById(wear_no);
+        Integer deleteResult = service.deleteById(wear_no);
 
-        if(deleteResult == 0) {
+        if (deleteResult == 0) {
             throw new WearNotFoundException(String.format("Wear_no[%s] cannot be deleted", wear_no));
         }
     }

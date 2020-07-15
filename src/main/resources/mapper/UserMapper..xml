@@ -18,7 +18,7 @@
         DELETE FROM USERDATA WHERE user_id = #{id}
     </delete>
 
-    <update id="changeLocationById" parameterType="User">
-        UPDATE USERDATA SET USER_LOC_LATITUDE = #{loc_latitude}, USER_LOC_LONGITUDE = #{loc_longitude} where USER_ID = #{id}
+    <update id="changeLocationById" parameterType="map">
+        UPDATE USERDATA SET USER_LOC_LATITUDE = #{requestDto.loc_latitude}, USER_LOC_LONGITUDE = #{requestDto.loc_longitude} where USER_ID = #{id}
     </update>
 </mapper>

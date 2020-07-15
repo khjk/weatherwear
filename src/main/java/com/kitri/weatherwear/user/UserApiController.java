@@ -22,22 +22,26 @@ public class UserApiController {
     }
 
     @GetMapping("api/v1/users/{id}")
-    public UserResponseDto retrieveUser(@PathVariable String id) {
-        UserResponseDto userResponseDto = service.findOne(id);
+    public User retrieveUser(@PathVariable String id) {
+        User user = service.findOne(id);
 
-        if (userResponseDto == null) {
-            throw new UserNotFoundException(String.format("ID[%s] not found", id));
+        if (user == null) {
+            throw new UserNotFoundException(String.format("ID[%s]가 존재하지 않습니다.", id));
         }
-        return userResponseDto;
+        return user;
     }
 
     @PostMapping("api/v1/users")
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = service.save(user);
+        Integer savedResult = service.save(user);
+
+        if(savedResult == 0) {
+            throw new UserNotFoundException(String.format("ID[%s]를 생성할 수 없습니다.",user.getId()));
+        }
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(savedUser.getId())
+                .buildAndExpand(user.getId())
                 .toUri();
 
         return ResponseEntity.created(location).build();
@@ -45,23 +49,23 @@ public class UserApiController {
 
     @DeleteMapping("api/v1/users/{id}")
     public void deleteUser(@PathVariable String id) {
-        User deletedUser = service.deleteById(id);
+        Integer deletedResult = service.deleteById(id);
 
-        if(deletedUser == null) {
-            throw new UserNotFoundException(String.format("ID[%s] cannot delete", id));
+        if(deletedResult == 0) {
+            throw new UserNotFoundException(String.format("ID[%s]를 삭제할 수 없습니다.", id));
         }
     }
 
     @PutMapping("api/v1/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody UserUpdateRequestDto requestDto) {
-        User updatedUser = service.changeLocationById(id, requestDto);
+        Integer updatedResult = service.changeLocationById(id, requestDto);
 
-        if(updatedUser == null) {
-            throw new UserNotFoundException(String.format("ID[%s] cannot update location", id));
+        if(updatedResult == 0) {
+            throw new UserNotFoundException(String.format("ID[%s]의 위치를 업데이트 할 수 없습니다.", id));
         }
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .buildAndExpand(updatedUser.getId())
+                .buildAndExpand(id)
                 .toUri();
 
         return ResponseEntity.created(location).build();

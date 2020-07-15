@@ -11,4 +11,5 @@ public class User {
     private String name;
     private String loc_latitude;
     private String loc_longitude;
+    private String user_role; //GUEST, USER
 }

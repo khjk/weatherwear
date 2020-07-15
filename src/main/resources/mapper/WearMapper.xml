@@ -15,8 +15,8 @@
         VALUES (#{wear_no},#{user_id},#{wear_date},#{wear_code},#{temp_code},#{like_no},#{eval})
     </insert>
 
-    <update id="updateEvaluationById" parameterType="Wear">
-        UPDATE WEAR SET LIKE_NO = #{like_no}, EVAL = #{eval} where WEAR_NO = #{wear_no}
+    <update id="updateEvaluationById" parameterType="map">
+        UPDATE WEAR SET LIKE_NO = #{like_no}, EVAL = #{requestDto.eval} where WEAR_NO = #{requestDto.wear_no}
     </update>
 
     <delete id="deleteById" parameterType="Wear">

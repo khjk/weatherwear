@@ -18,21 +18,19 @@ public class UserDaoService {
         return userMapper.findAll();
     }
 
-    public User save(User user) {
-        userMapper.save(user);
-        return user;
+    public int save(User user) {
+        return userMapper.save(user);
     }
 
-    public UserResponseDto findOne(String id) {
-        User entity = userMapper.findOne(id);
-        return new UserResponseDto(entity);
+    public User findOne(String id) {
+        return userMapper.findOne(id);
     }
 
-    public User deleteById(String id) {
+    public int deleteById(String id) {
         return userMapper.deleteById(id);
     }
 
-    public User changeLocationById(String id, UserUpdateRequestDto requestDto) {
+    public int changeLocationById(String id, UserUpdateRequestDto requestDto) {
         return userMapper.changeLocationById(id, requestDto);
     }
 }

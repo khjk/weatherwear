@@ -23,21 +23,20 @@ public class WearDaoService {
         return wearMapper.findAll();
     }
 
-    public int save(Wear wear) {
+    public Integer save(Wear wear) {
         return wearMapper.save(wear);
     }
 
     public Wear findOne(int wear_no) {
-        wearMapper.findOne(wear_no);
-        return null;
+        return wearMapper.findOne(wear_no);
     }
 
-    public int updateEvaluationById(int wear_no, WearUpdateRequestDto requestDto) { //꼭 WearUpdateRequestDto로 해야될지 생각해보기... 필요없을지도.. 걍 스트링넘겨주면되는데... 나중에 확장생각해서
+    public Integer updateEvaluationById(int wear_no, WearUpdateRequestDto requestDto) {
         log.info("Service RequestDTO>>>>"+ wear_no + "like_no: " + requestDto.getLike_no() + "eval:" + requestDto.getEval()+"'");
         return wearMapper.updateEvaluationById(wear_no, requestDto);
     }
 
-    public int deleteById(int wear_no) {
+    public Integer deleteById(int wear_no) {
         return wearMapper.deleteById(wear_no);
     }
 
