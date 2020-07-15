@@ -19,6 +19,13 @@ body {
   background: #eee;
   background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
 }
+#marker {
+  font-size: 36px;
+}
+.js-location{
+  font-size: 36px;
+  margin-left: 12px;
+}
 .background {
   background: #eee;
   background: linear-gradient(120deg, rgba(50, 150, 100, 0.2), rgba(0, 0, 100, 0));
@@ -94,7 +101,7 @@ nav li a.active {
   font-size: 22px;
 }
 #card .details .temp {
-  font-size: 60px;
+  font-size: 40px;
   line-height: 60px;
 }
 #card .details .temp span {
