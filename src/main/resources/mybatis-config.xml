@@ -9,5 +9,6 @@
     </settings>
     <typeAliases>
         <typeAlias type="com.kitri.weatherwear.user.User" alias="User" />
+        <typeAlias type="com.kitri.weatherwear.wear.Wear" alias="Wear" />
     </typeAliases>
 </configuration>
