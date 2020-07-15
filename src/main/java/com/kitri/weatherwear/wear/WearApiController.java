@@ -1,9 +1,5 @@
 package com.kitri.weatherwear.wear;
 
-import com.kitri.weatherwear.user.User;
-import com.kitri.weatherwear.user.UserNotFoundException;
-import com.kitri.weatherwear.user.UserUpdateRequestDto;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

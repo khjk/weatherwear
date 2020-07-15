@@ -1,6 +1,6 @@
 package com.kitri.weatherwear.wear;
 
-import com.kitri.weatherwear.user.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+@Slf4j
 @Service
 public class WearDaoService {
     private static List<Wear> wears = new ArrayList<>();
@@ -22,7 +23,7 @@ public class WearDaoService {
 
     public List<Wear> findAll() {
         for (Wear wear : wears) { //testCode
-            System.out.println( "Service FindALL>>>>>>>>" + wear.getWear_no() + wear.getEval());
+            log.info("Service FindALL>>>>>>>>" + wear.getWear_no() + wear.getEval());
         }
         return wears;
     }
@@ -46,13 +47,12 @@ public class WearDaoService {
     }
 
     public Wear updateEvaluationById(int wear_no, WearUpdateRequestDto requestDto) { //꼭 WearUpdateRequestDto로 해야될지 생각해보기... 필요없을지도.. 걍 스트링넘겨주면되는데... 나중에 확장생각해서
-        System.out.println("Service RequestDTO>>>>"+ wear_no + "like_no: " + requestDto.getLike_no() + "eval:" + requestDto.getEval()+"'");
+        log.info("Service RequestDTO>>>>"+ wear_no + "like_no: " + requestDto.getLike_no() + "eval:" + requestDto.getEval()+"'");
         for (Wear wear : wears) {
             if (wear.getWear_no() == wear_no) {
                 wear.setLike_no(requestDto.getLike_no());
                 wear.setEval(requestDto.getEval());
-
-                System.out.println("Service Evaluation>>>>>" + wear.getWear_no() + "like_no :" + wear.getLike_no() + "eval:" + wear.getEval()+"'");
+                log.info("Service Evaluation>>>>>" + wear.getWear_no() + "like_no :" + wear.getLike_no() + "eval:" + wear.getEval()+"'");
                 return wear;
             }
         }
