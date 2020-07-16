@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class ClothesServiceImpl implements ClothesService{
@@ -15,13 +14,28 @@ public class ClothesServiceImpl implements ClothesService{
     ClothesDao cDao;
 
     @Override
-    public List<Clothes> selectClothes() {
-        return cDao.selectClothes();
+    public List<Clothes> selectAllClothes() {
+        return cDao.selectAllClothes();
     }
 
     @Override
-    public Map<String, String> selectOuter() {
-        return cDao.selectOuter();
+    public List<Clothes> selectCsort(String sort) {
+        return cDao.selectCsort(sort);
+    }
+
+    @Override
+    public int getWcode(int outer, int top, int bottom) {
+        return cDao.getWcode(outer, top, bottom);
+    }
+
+    @Override
+    public List<Clothes> selectGetWcode(int wearCode) {
+        return cDao.selectGetWcode(wearCode);
+    }
+
+    @Override
+    public String selectRainImg() {
+        return cDao.selectRainImg();
     }
 
 
