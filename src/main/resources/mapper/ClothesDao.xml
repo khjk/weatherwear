@@ -62,10 +62,10 @@
 
 
 	<!-- 비 올때 우산 이미지 링크 불러오기 -->
-	<select id="selectRainImg" resultType="String" >
-		SELECT c_img
+	<select id="selectRain" resultType="com.kitri.weatherwear.dto.Clothes" >
+		SELECT *
 		FROM clothes_sorts
-		WHERE c_sort= "우산"
+		WHERE c_name= "우산"
 	</select>
 
 

@@ -56,11 +56,11 @@ public class ClothesController {
     }
 
     /*
-    비 올때 우산 이미지 링크 불러오기
+    비 올때 우산 clothes 객체 불러오기
      */
     @GetMapping("api/v1/clothes/rain")
-    public String getRainImg(){
-        return cService.selectRainImg();
+    public Clothes getRain(){
+        return cService.selectRain();
     }
 
 

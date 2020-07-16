@@ -13,5 +13,5 @@ public interface ClothesDao {
     public List<Clothes> selectCsort(String sort);
     public int getWcode(int outer, int top, int bottom);
     public List<Clothes> selectGetWcode(int wearCode);
-    public String selectRainImg();
+    public Clothes selectRain();
 }

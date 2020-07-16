@@ -34,8 +34,8 @@ public class ClothesServiceImpl implements ClothesService{
     }
 
     @Override
-    public String selectRainImg() {
-        return cDao.selectRainImg();
+    public Clothes selectRain() {
+        return cDao.selectRain();
     }
 
 
