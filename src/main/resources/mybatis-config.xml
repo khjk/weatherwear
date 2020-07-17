@@ -10,5 +10,6 @@
     <typeAliases>
         <typeAlias type="com.kitri.weatherwear.user.User" alias="User" />
         <typeAlias type="com.kitri.weatherwear.wear.Wear" alias="Wear" />
+        <typeAlias type="com.kitri.weatherwear.user.UserLoginRequestDto" alias="userLoginRequestDto" />
     </typeAliases>
 </configuration>

@@ -20,7 +20,8 @@ public class ViewController {
 
     //메인 페이지
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, HttpSession session) {
+        System.out.println(">>>>>>>>세션 아이디 : " + session.getAttribute("id"));
         return "index";
     }
 
@@ -29,17 +30,6 @@ public class ViewController {
     public String login(Model model) {
         return "login";
     }
-
-    @PostMapping("/login")
-    public String loginOk(Model model) {
-        return "redirect:/{id}";
-    }
-
-    //회원가입페이지
-   @GetMapping("/signup")
-    public String signUp(Model model) {
-        return "signup";
-   }
 
    //마이페이지
    @GetMapping("/users/{id}")

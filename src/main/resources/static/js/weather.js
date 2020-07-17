@@ -1,6 +1,10 @@
 const weather_text = document.querySelector(".js-weather");
 const location_text = document.querySelector(".js-location");
 const date_text = document.getElementById("date");
+const summary_text = document.getElementById("summary");
+const cloudy_text = document.getElementById("clouds");
+const humidity_text = document.getElementById("humidity");
+const wind_text = document.getElementById("wind");
 
 const API_KEY = "f6c6e99c31msh914f92a9d0106afp15872ejsna05a25c5d6d0";
 const COORDS = 'coords';
@@ -11,18 +15,42 @@ function getWeather(lat, lng){
 		"method": "GET",
 		"headers": {
 			"x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-			"x-rapidapi-key": "f6c6e99c31msh914f92a9d0106afp15872ejsna05a25c5d6d0"
+			"x-rapidapi-key": "bb23f20fbcmsh154b420950a6951p119310jsn6d089e641477"
 		}
 	})
 	.then(function(response){
 		return response.json();
 	}).then(function(json){
-		console.log(json);
-		const temperature = json.main.temp;
-		const place = json.name;
-		console.log(temperature, place);
+		console.log(">>>>>weather.js json값" + JSON.stringify(json));
+		const temperature = json.main.temp; //28
+		const place = json.name; //Seoul
+		const cloudy = json.clouds.all;
+		const humidity = json.main.humidity;
+		const wind = json.wind.speed;
+		var summary = '';
+		if(cloudy > 80) {
+		    summary = 'wind';
+		}else if(wind > 5) {
+            summary = 'wind';
+		}else if(humidity>40 && temperature < 2) {
+	        summary = 'snow';
+	    }else if(humidity>80 && wind > 10) {
+	        summary = 'thunder';
+	    }else if(humidity > 80) {
+            summary = 'rain';
+        }else{
+   		    summary = 'sun';
+   		}
+		//localstorage
+		localStorage.setItem('temperature', json.main.temp); //나중에지우기
+		localStorage.setItem('place',json.name); //나중에 지우기
+		//view제어
 		weather_text.innerText = `${temperature}°C`;
 		location_text.innerText = `${place}`;
+		summary_text.innerHTML = `${summary}`;
+		cloudy_text.innerText = `${cloudy}%`;
+		humidity_text.innerText = `${humidity}%`;
+		wind_text.innerText = `${wind} m/s`;
 	})
 	.catch(err => {
 		console.log(err);
@@ -56,10 +84,10 @@ function loadCoords(){
     const loadedCoords = localStorage.getItem(COORDS);
     getYoilDateMonth();
 	if(loadedCoords === null){
-	//	askForCoords(); //좌표요청
+		askForCoords(); //좌표요청
 	}else{
-	//	const parsedCoords = JSON.parse(loadedCoords);
-	//	getWeather(parsedCoords.latitude, parsedCoords.longitude);
+		const parsedCoords = JSON.parse(loadedCoords); //Javscript 객체로
+		getWeather(parsedCoords.latitude, parsedCoords.longitude);
 	}
 }
 
@@ -147,3 +175,4 @@ function init(){
 }
 
 init();
+

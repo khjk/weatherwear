@@ -1,9 +1,9 @@
 // 📝 Fetch all DOM nodes in jQuery and Snap SVG
 var container = $('.container');
 var card = $('#card');
-var innerSVG = Snap('#inner');
-var outerSVG = Snap('#outer');
-var backSVG = Snap('#back');
+var innerSVG = Snap('#inner'); //카드영역
+var outerSVG = Snap('#outer'); //표면영역
+var backSVG = Snap('#back'); //백그라운드
 var summary = $('#summary');
 var date = $('#date');
 var weatherContainer1 = Snap.select('#layer1');
@@ -22,7 +22,7 @@ var sunburst = Snap.select('#sunburst');
 var outerSplashHolder = outerSVG.group();
 var outerLeafHolder = outerSVG.group();
 var outerSnowHolder = outerSVG.group();
-
+var SummaryHTML = $('#summary').html();
 var lightningTimeout;
 
 // Set mask for leaf holder
@@ -97,9 +97,9 @@ function init()
 	for(var i = 0; i < weather.length; i++)
 	{
 		var w = weather[i];
-		var b = $('#button-' + w.type);
+		var b = $('#button-' + w.type); //버튼 w.type
 		w.button = b;
-		b.bind('click', w, changeWeather);
+		b.bind('click', w, changeWeather);//클릭하면 weather바꿔줌
 	}
 
 	// ☁️ draw clouds
@@ -113,7 +113,29 @@ function init()
 	// ☀️ set initial weather
 
 	TweenMax.set(sunburst.node, {opacity: 0})
-	changeWeather(weather[0]);
+	var tempIndex = 4;
+	console.log("index.js : SummaryHTML" + SummaryHTML);
+	if(SummaryHTML == "snow"){
+	    tempIndex = 0;
+	    console.log(">>>index.js 시작 날씨 snow선택됨");
+	}else if(SummaryHTML == "wind"){
+	    tempIndex = 1;
+	    console.log(">>>index.js 시작 날씨 wind선택됨");
+	}else if(SummaryHTML == "rain"){
+	    tempIndex = 2;
+	    console.log(">>>index.js 시작 날씨 rain선택됨");
+	}else if(SummaryHTML == "thunder"){
+	    tempIndex = 3;
+	    console.log(">>>index.js 시작 날씨 thunder선택됨");
+	}else if(SummaryHTML == "sun"){
+	    tempIndex = 4;
+	    console.log(">>>index.js 시작 날씨 sun선택됨");
+	}else{
+	    tempIndex = 0; //snow wind rain thunder sun에 해당안되면 default로 1
+	    console.log(">>>index.js 시작 날씨 snow선택됨");
+	}
+	changeWeather(weather[tempIndex]);
+	//changeWeather(weather[0]);
 }
 
 function onResize()
@@ -477,7 +499,7 @@ function reset()
 
 function updateSummaryText()
 {
-	summary.html(currentWeather.name);
+	summary.html(SummaryHTML);
 	TweenMax.fromTo(summary, 1.5, {x: 30}, {opacity: 1, x: 0, ease: Power4.easeOut});
 }
 
@@ -589,6 +611,7 @@ function changeWeather(weather)
 	{
 		case 'sun':
 			TweenMax.to(sun.node, 4, {x: sizes.card.width / 2, y: sizes.card.height / 2, ease: Power2.easeInOut});
+//수정필요 sunburst
 			TweenMax.to(sunburst.node, 4, {scale: 1, opacity: 0.8, y: (sizes.card.height/2) + (sizes.card.offset.top), ease: Power2.easeInOut});
 			break;
 		default:

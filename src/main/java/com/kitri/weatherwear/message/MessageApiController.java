@@ -26,7 +26,7 @@ public class MessageApiController {
         String randomMessage = service.getRandomMessageByCode(temperature_code);
 
         if (randomMessage == null) {
-            log.info("MessageAPI>>>>when tempcode:"+ temperature_code + " : randomMessage is null");
+            log.info("MessageAPI>>>>when tempCode:"+ temperature_code + " : randomMessage is null");
         }
         return randomMessage;
     }

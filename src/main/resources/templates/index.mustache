@@ -9,8 +9,8 @@
             src="https://kit.fontawesome.com/a268effaf1.js"
             crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/snap.svg-min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/TweenMax.min.js"></script>
 </head>
 <body>
@@ -30,7 +30,6 @@
                 {{/userName}}
                 {{^userName}}
                     <li><a href="/login">로그인</a></li>
-                    <li><a href="/signup">회원가입</a></li>
                 {{/userName}}
             </ul>
             <ul class="navbar_icons">
@@ -91,13 +90,13 @@
             <div class="info-side">
                 <div class="today-info-container">
                     <div class="today-info">
-                        <div class="precipitation"> <span class="title">PRECIPITATION</span><span class="value">0 %</span>
+                        <div class="precipitation"> <span class="title">CLOUDS</span><span class="value" id="clouds">0 %</span>
                             <div class="clear"></div>
                         </div>
-                        <div class="humidity"> <span class="title">HUMIDITY</span><span class="value">34 %</span>
+                        <div class="humidity"> <span class="title">HUMIDITY</span><span class="value" id="humidity">34 %</span>
                             <div class="clear"></div>
                         </div>
-                        <div class="wind"> <span class="title">WIND</span><span class="value">0 km/h</span>
+                        <div class="wind"> <span class="title">WIND</span><span class="value" id="wind">0 km/h</span>
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -118,6 +117,6 @@
     </div>
 </div>
 <script src="/js/weather.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/index.js" defer></script>
 </body>
 </html>

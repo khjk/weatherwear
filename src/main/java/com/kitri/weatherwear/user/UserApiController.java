@@ -1,13 +1,16 @@
 package com.kitri.weatherwear.user;
 
-import org.apache.coyote.Response;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.net.URI;
 import java.util.List;
 
+@Slf4j
 @RestController
 public class UserApiController {
     private UserDaoService service;
@@ -16,9 +19,20 @@ public class UserApiController {
         this.service = service;
     }
 
-    @GetMapping("api/v1/users")
+    @GetMapping("api/v1/users/list")
     public List<User> retrieveAllUsers() {
         return service.findAll();
+    }
+
+    @PostMapping("api/v1/validation")
+    public User loginUser(@RequestBody UserLoginRequestDto userLoginRequestDto, HttpSession session) { //로그인
+        User user = service.login(userLoginRequestDto);
+        if (user == null) {
+            throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
+        }else {
+            session.setAttribute("id", user.getId());
+        }
+        return user;
     }
 
     @GetMapping("api/v1/users/{id}")

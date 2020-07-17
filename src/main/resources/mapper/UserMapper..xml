@@ -21,4 +21,8 @@
     <update id="changeLocationById" parameterType="map">
         UPDATE USERDATA SET USER_LOC_LATITUDE = #{requestDto.loc_latitude}, USER_LOC_LONGITUDE = #{requestDto.loc_longitude} where USER_ID = #{id}
     </update>
+
+    <select id="loginValidation" parameterType="userLoginRequestDto" resultType="User" >
+        SELECT * FROM USERDATA WHERE user_id = #{id} and user_pwd = #{password}
+    </select>
 </mapper>

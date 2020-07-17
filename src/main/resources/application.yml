@@ -8,9 +8,8 @@ spring:
       jdbc-url: jdbc:mysql://localhost:3306/weatherwear?serverTimezone=UTC&characterEncoding=UTF-8
       username: root
       password: 1234
-#mybatis.type-aliases-package:매퍼용클래스가 위차한 경로 package com.kitri.weatherwear.util;
-#mybatis.mapper-locations: xml파일이 위치한 경로 package com.kitri.weatherwear.mybatis;
-
+  messages:
+    basename: messages
 
 logging:
   level:
