@@ -7,67 +7,72 @@
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-<!--
-This was created based on the Dribble shot by Deepak Yadav that you can find at https://goo.gl/XRALsw
-I'm @hk95 on GitHub. Feel free to message me anytime.
--->
+<p class="tip">Click on button in image container</p>
+<div class="cont">
 
-<section class="user">
-    <div class="user_options-container">
-        <div class="user_options-text">
-            <div class="user_options-unregistered">
-                <h2 class="user_unregistered-title">Don't have an account?</h2>
-                <p class="user_unregistered-text">가입하시고, 웨더웨어의 추천을 받아 편하게 날씨에 맞는 옷차림을 결정해보세요!</p>
-                <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+        <div class="form sign-in">
+            <form id="loginForm">
+            <h2>Welcome back,</h2>
+            <label>
+                <span>Email</span>
+                <input type="email" id="login_id"/>
+
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" id="login_password"/>
+
+            </label>
+            <p class="forgot-pass">Forgot password?</p>
+            <button type="button" id="btn-login" class="submit">Sign In</button>
+            <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
+            </form>
+        </div>
+
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+                <h2>New here?</h2>
+                <p>Sign up and discover great amount of new opportunities!</p>
             </div>
-
-            <div class="user_options-registered">
-                <h2 class="user_registered-title">Have an account?</h2>
-                <p class="user_registered-text">이미 아이디를 가지고 계시다면, 바로 로그인해보세요!<br>웨더웨어가 날씨에 맞는 개인별 옷 추천을 해드려요!</p>
-                <button class="user_registered-login" id="login-button">Login</button>
+            <div class="img__text m--in">
+                <h2>One of us?</h2>
+                <p>If you already has an account, just sign in. We've missed you!</p>
+            </div>
+            <div class="img__btn">
+                <span class="m--up">Sign Up</span>
+                <span class="m--in">Sign In</span>
             </div>
         </div>
 
-        <div class="user_options-forms" id="user_options-forms">
-            <div class="user_forms-login">
-                <h2 class="forms_title">Login</h2>
-                <form class="forms_form" >
-                    <fieldset class="forms_fieldset">
-                        <div class="forms_field">
-                            <input type="text" placeholder="ID" class="forms_field-input" id="login_id" required autofocus />
-                        </div>
-                        <div class="forms_field">
-                            <input type="password" placeholder="Password" class="forms_field-input" id="login_password" required />
-                        </div>
-                    </fieldset>
-                    <div class="forms_buttons">
-                        <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-                        <input type="button" value="Log In" id="btn-login" class="forms_buttons-action">
-                    </div>
+            <div class="form sign-up">
+                <form id="signupForm">
+                <h2>Time to feel like home,</h2>
+                <label>
+                    <span>Name</span>
+                    <input type="text" id="signup_name"/>
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" id="signup_id"/>
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" id="signup_password"/>
+                </label>
+                <button type="button" id="btn-signup"  class="submit">Sign Up</button>
+                <button type="button" class="fb-btn">Join with <span>facebook</span></button>
                 </form>
             </div>
-            <div class="user_forms-signup">
-                <h2 class="forms_title">Sign Up</h2>
-                <form class="forms_form">
-                    <fieldset class="forms_fieldset">
-                        <div class="forms_field">
-                            <input type="text" placeholder="Full Name" class="forms_field-input" id="signup_name" required />
-                        </div>
-                        <div class="forms_field">
-                            <input type="email" placeholder="Email" class="forms_field-input" id="signup_id" required />
-                        </div>
-                        <div class="forms_field">
-                            <input type="password" placeholder="Password" class="forms_field-input" id="signup_password" required />
-                        </div>
-                    </fieldset>
-                    <div class="forms_buttons">
-                        <input type="button" value="Sign up" id="btn-signup" class="forms_buttons-action">
-                    </div>
-                </form>
-            </div>
-        </div>
+
     </div>
-</section>
+</div>
+
+<script type= "text/javascript">
+  document.querySelector('.img__btn').addEventListener('click', function() {
+  document.querySelector('.cont').classList.toggle('s--signup');
+});
+</script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/login.js"></script>
 </body>

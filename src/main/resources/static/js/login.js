@@ -1,17 +1,10 @@
-const signupButton = document.getElementById('signup-button'),
-    loginButton = document.getElementById('login-button'),
-    userForms = document.getElementById('user_options-forms');
 var login = {
     init : function () {
         var _this = this;
         $('#btn-login').on('click', function () {
-            userForms.classList.remove('bounceLeft');
-            userForms.classList.add('bounceRight');
             _this.login();
         });
-        $('btn-signup').on('click',function () {
-              userForms.classList.remove('bounceRight');
-              userForms.classList.add('bounceLeft');
+        $('#btn-signup').on('click',function () {
              _this.signup();
         });
     },
