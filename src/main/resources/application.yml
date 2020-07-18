@@ -1,2 +1,16 @@
 server:
   port: 8088
+
+spring:
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/weatherwear?serverTimezone=UTC&characterEncoding=UTF-8
+      username: root
+      password: 1234
+  messages:
+    basename: messages
+
+logging:
+  level:
+    ROOT: INFO

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<!--
+This was created based on the Dribble shot by Deepak Yadav that you can find at https://goo.gl/XRALsw
+I'm @hk95 on GitHub. Feel free to message me anytime.
+-->
+
+<section class="user">
+    <div class="user_options-container">
+        <div class="user_options-text">
+            <div class="user_options-unregistered">
+                <h2 class="user_unregistered-title">Don't have an account?</h2>
+                <p class="user_unregistered-text">가입하시고, 웨더웨어의 추천을 받아 편하게 날씨에 맞는 옷차림을 결정해보세요!</p>
+                <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+            </div>
+
+            <div class="user_options-registered">
+                <h2 class="user_registered-title">Have an account?</h2>
+                <p class="user_registered-text">이미 아이디를 가지고 계시다면, 바로 로그인해보세요!<br>웨더웨어가 날씨에 맞는 개인별 옷 추천을 해드려요!</p>
+                <button class="user_registered-login" id="login-button">Login</button>
+            </div>
+        </div>
+
+        <div class="user_options-forms" id="user_options-forms">
+            <div class="user_forms-login">
+                <h2 class="forms_title">Login</h2>
+                <form class="forms_form" >
+                    <fieldset class="forms_fieldset">
+                        <div class="forms_field">
+                            <input type="text" placeholder="ID" class="forms_field-input" id="login_id" required autofocus />
+                        </div>
+                        <div class="forms_field">
+                            <input type="password" placeholder="Password" class="forms_field-input" id="login_password" required />
+                        </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                        <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+                        <input type="button" value="Log In" id="btn-login" class="forms_buttons-action">
+                    </div>
+                </form>
+            </div>
+            <div class="user_forms-signup">
+                <h2 class="forms_title">Sign Up</h2>
+                <form class="forms_form">
+                    <fieldset class="forms_fieldset">
+                        <div class="forms_field">
+                            <input type="text" placeholder="Full Name" class="forms_field-input" id="signup_name" required />
+                        </div>
+                        <div class="forms_field">
+                            <input type="email" placeholder="Email" class="forms_field-input" id="signup_id" required />
+                        </div>
+                        <div class="forms_field">
+                            <input type="password" placeholder="Password" class="forms_field-input" id="signup_password" required />
+                        </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                        <input type="button" value="Sign up" id="btn-signup" class="forms_buttons-action">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
