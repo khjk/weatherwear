@@ -24,9 +24,9 @@
             </div>
             <ul class="navbar_menu">
                 {{#userName}}
-                    <li><a href="">옷차림저장</a></li>
-                    <li><a href="">평가하기</a></li>
-                    <li><a href="">로그아웃</a></li>
+                    <li><a href="/save-wear">옷차림저장</a></li>
+                    <li><a href="/eval-wear">평가하기</a></li>
+                    <li><a href="/logout">로그아웃</a></li> <!--페이지없이 js로처리-->
                 {{/userName}}
                 {{^userName}}
                     <li><a href="/login">로그인</a></li>
@@ -117,6 +117,6 @@
     </div>
 </div>
 <script src="/js/weather.js"></script>
-<script src="/js/index.js" defer></script>
+<script src="/js/animation.js" defer></script>
 </body>
 </html>
