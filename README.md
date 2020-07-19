@@ -7,8 +7,8 @@ visit [WebApp-Link](https://www.naver.com/)
 *개발중으로 링크 동작하지 않습니다.*
  
 
-> SpringBoot 2.1.15.RELEASE, MyBatis, MySQL, JSP  
-  //Naver Oauth, Weather API
+> SpringBoot 2.1.15 , MyBatis, MySQL, mustache, javascript  
+  //using Naver Oauth, Weather API
 
 ----
 ## usage
