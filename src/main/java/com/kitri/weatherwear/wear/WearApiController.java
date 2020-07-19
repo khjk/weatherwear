@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,6 +29,16 @@ public class WearApiController {
             throw new WearNotFoundException(String.format("Wear_No[%s] not found", wear_no));
         }
         return wear;
+    }
+    /*
+    * 언니가 요청한 API
+    * 요청방식 : GET
+    * 필요한 요청인자 : user_id
+    * 반환값 : User_id가 평가하지 않은 날짜 List
+    * */
+    @GetMapping("api/v1/wears/list/{user_id}/no-eval")
+    public List<Date> retrieveNoEvaluatedDate(@PathVariable String user_id) {
+        return service.findNotEvaluatedDate(user_id);
     }
 
     @PostMapping("api/v1/wears")

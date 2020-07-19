@@ -10,6 +10,10 @@
         Select * from WEAR where wear_no = #{wear_no}
     </select>
 
+    <select id="findNotEvalDate" parameterType="String" resultType="java.util.Date">
+        Select wear_date from WEAR where eval = 'N' and user_id = #{user_id}
+    </select>
+
     <insert id="save" parameterType="Wear">
         INSERT INTO WEAR(wear_no, user_id, wear_date, wear_code, temp_code, like_no, eval)
         VALUES (#{wear_no},#{user_id},#{wear_date},#{wear_code},#{temp_code},#{like_no},#{eval})

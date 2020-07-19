@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -35,6 +36,10 @@ public class WearDaoService {
 
     public Integer deleteById(int wear_no) {
         return wearMapper.deleteById(wear_no);
+    }
+
+    public List<Date> findNotEvaluatedDate(String user_id) {
+        return wearMapper.findNotEvalDate(user_id);
     }
 
 }
