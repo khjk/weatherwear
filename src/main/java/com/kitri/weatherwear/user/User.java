@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class User {
     private String id;
-    private String pwd;
+    private String password;
     private String name;
 
     private String loc_latitude;

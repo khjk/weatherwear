@@ -20,8 +20,8 @@ public class UserDaoService {
         return userMapper.findAll();
     }
 
-    public int save(User user) {
-        return userMapper.save(user);
+    public int save(UserSignUpRequestDto userSignUpRequestDto) {
+        return userMapper.save(userSignUpRequestDto);
     }
 
     public User findOne(String id) {

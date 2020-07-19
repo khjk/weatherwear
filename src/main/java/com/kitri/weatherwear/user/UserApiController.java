@@ -46,19 +46,16 @@ public class UserApiController {
     }
 
     @PostMapping("api/v1/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        Integer savedResult = service.save(user);
+    public int createUser(@RequestBody UserSignUpRequestDto userSignUpRequestDto, HttpSession session) {
+        Integer savedResult = service.save(userSignUpRequestDto);
 
         if(savedResult == 0) {
-            throw new UserNotFoundException(String.format("ID[%s]를 생성할 수 없습니다.",user.getId()));
+            throw new UserNotFoundException(String.format("ID[%s]를 생성할 수 없습니다.",userSignUpRequestDto.getId()));
+        }else {
+            session.setAttribute("id",userSignUpRequestDto.getId());
         }
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(user.getId())
-                .toUri();
-
-        return ResponseEntity.created(location).build();
+        return savedResult;
     }
 
     @DeleteMapping("api/v1/users/{id}")

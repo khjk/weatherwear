@@ -1,5 +1,11 @@
 server:
   port: 8088
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: kitri1234
+    key-password: kitri1234
+    key-alias: spring
 
 spring:
   datasource:

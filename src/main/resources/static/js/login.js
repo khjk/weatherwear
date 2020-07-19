@@ -32,7 +32,7 @@ var login = {
     },
     signup : function () {
         var data = {
-            name : $('signup_name').val(),
+            name : $('#signup_name').val(),
             id: $('#signup_id').val(),
             password : $('#signup_password').val()
         };
@@ -43,11 +43,11 @@ var login = {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function() {
+        }).done(function (response) {
             alert('회원 가입 완료되었습니다.');
             window.location.href="/";
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            console.log(error.json);
         });
     }
 
