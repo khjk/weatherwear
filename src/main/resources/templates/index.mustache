@@ -1,15 +1,11 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <title>WeatherWear</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+{{>layout/header}}
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/nav.css">
     <script
             src="https://kit.fontawesome.com/a268effaf1.js"
             crossorigin="anonymous"
     ></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/snap.svg-min.js"></script>
     <script src="js/TweenMax.min.js"></script>
 </head>
@@ -23,14 +19,14 @@
                 <a class="nav_title" href="#">WeatherWear</a>
             </div>
             <ul class="navbar_menu">
-                {{#userName}}
+                {{#id}}
                     <li><a href="/save-wear">옷차림저장</a></li>
                     <li><a href="/eval-wear">평가하기</a></li>
                     <li><a href="/logout">로그아웃</a></li> <!--페이지없이 js로처리-->
-                {{/userName}}
-                {{^userName}}
+                {{/id}}
+                {{^id}}
                     <li><a href="/login">로그인</a></li>
-                {{/userName}}
+                {{/id}}
             </ul>
             <ul class="navbar_icons">
                 <li><i class="fab fa-twitter"></i></li>
@@ -118,5 +114,5 @@
 </div>
 <script src="/js/weather.js"></script>
 <script src="/js/animation.js" defer></script>
-</body>
-</html>
+
+{{>layout/footer}}

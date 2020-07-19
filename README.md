@@ -8,7 +8,7 @@ visit [WebApp-Link](https://www.naver.com/)
  
 
 > SpringBoot 2.1.15 , MyBatis, MySQL, mustache, javascript  
-  //using Naver Oauth, Weather API
+  using Naver Oauth, Weather API
 
 ----
 ## usage
