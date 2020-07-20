@@ -34,23 +34,6 @@
         // beforeShowDay: disableDoneDay
     };
 
-    //등록된 날짜 넣기
-    // var disableDoneDay = ["2020-07-09", "2020-07-07", "2020-07-08"];
-    //
-    // function disableDoneDay(date){
-    //     var year = date.getFullYear();
-    //     var month = date.getMonth();
-    //     var day = date.getDate();
-    //
-    //     for(i=0; i < disableDoneDay.length; i++){
-    //         if($.inArray(year + '-' + (month+1)+ '-' + day, disableDoneDay) != -1) {
-    //             return [false];
-    //         }
-    //     }
-    //     return [true];
-    // };
-
-
     datepicker.setDefaults( datepicker.regional.ko );
 
     return datepicker.regional.ko;
