@@ -257,7 +257,8 @@ body {
 
 .week-list>li .day-icon {
 	display: block;
-	height: 30px;
+	height: 70px;
+	padding : 0;
 	width: auto;
 	margin: 0 auto;
 }

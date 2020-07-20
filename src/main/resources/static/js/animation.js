@@ -22,7 +22,8 @@ var sunburst = Snap.select('#sunburst');
 var outerSplashHolder = outerSVG.group();
 var outerLeafHolder = outerSVG.group();
 var outerSnowHolder = outerSVG.group();
-var SummaryHTML = $('#summary').html();
+var SummaryHTML;
+var currentWeather;
 var lightningTimeout;
 
 // Set mask for leaf holder
@@ -78,7 +79,7 @@ var snow = [];
 
 // ⚙ initialize app
 
-init();
+//init();
 
 // 👁 watch for window resize
 
@@ -88,10 +89,10 @@ $(window).resize(onResize);
 
 requestAnimationFrame(tick);
 
-function init()
+function initAnimation()
 {
 	onResize();
-
+    var SummaryHTML = $('#summary').html();
 	// 🖱 bind weather menu buttons
 
 	for(var i = 0; i < weather.length; i++)
@@ -99,7 +100,7 @@ function init()
 		var w = weather[i];
 		var b = $('#button-' + w.type); //버튼 w.type
 		w.button = b;
-		b.bind('click', w, changeWeather);//클릭하면 weather바꿔줌
+		//b.bind('click', w, changeWeather);//클릭하면 weather바꿔줌
 	}
 
 	// ☁️ draw clouds
@@ -118,23 +119,24 @@ function init()
 	if(SummaryHTML == "snow"){
 	    tempIndex = 0;
 	    console.log(">>>index.js 시작 날씨 snow선택됨");
-	}else if(SummaryHTML == "wind"){
+	}else if(SummaryHTML == "wind" || SummaryHTML == "Clouds"){
 	    tempIndex = 1;
 	    console.log(">>>index.js 시작 날씨 wind선택됨");
-	}else if(SummaryHTML == "rain"){
+	}else if(SummaryHTML == "rain" || SummaryHTML == "Rain"){
 	    tempIndex = 2;
 	    console.log(">>>index.js 시작 날씨 rain선택됨");
-	}else if(SummaryHTML == "thunder"){
+	}else if(SummaryHTML == "thunder" || SummaryHTML == "Thunderstorm"){
 	    tempIndex = 3;
 	    console.log(">>>index.js 시작 날씨 thunder선택됨");
-	}else if(SummaryHTML == "sun"){
+	}else if(SummaryHTML == "sun" || SummaryHTML == "Clear"){
 	    tempIndex = 4;
 	    console.log(">>>index.js 시작 날씨 sun선택됨");
 	}else{
 	    tempIndex = 0; //snow wind rain thunder sun에 해당안되면 default로 1
-	    console.log(">>>index.js 시작 날씨 snow선택됨");
+	    console.log(">>>index.js 시작 날씨 default선택됨");
 	}
 	changeWeather(weather[tempIndex]);
+	requestAnimationFrame(tick);
 	//changeWeather(weather[0]);
 }
 
