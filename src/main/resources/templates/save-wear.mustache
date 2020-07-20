@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {{>header}}
+    <!--  save-wear.css  -->
+    <link rel="stylesheet" href="../css/save-wear.css">
+
+    <!-- datePicker - jquery-ui  -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script type="text/javascript">
+        // // 날짜 선택(달력) -- datepicker
+        // $(function() {
+        //     var today = new Date();
+        //     $('#date-piker-input').val($.datepicker.formatDate("yy-mm-dd", today));
+        //
+        //     $( "#date-piker-input" ).datepicker({
+        //         dateFormat: "yy-mm-dd",
+        //         duration: "fast",
+        //         maxDate: today,
+        //         beforeShowDay: DisableDates
+        //     });
+        // } );
+        //
+        // // 이미 그 user가 옷차림을 저장한 날짜들 불러오기 -- 한 날짜당 하나의 옷차림만 등록가능
+        // var disableDoneDay = ["2020-07-09", "2020-07-07", "2020-07-08"];
+        //
+        // function DisableDates(date) {
+        //     var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+        //     return [disableDoneDay.indexOf(string) == -1];
+        // }
+        //
+        //
+        // $(function () {
+        //     optionAppend("outer");
+        //     optionAppend("top");
+        //     optionAppend("bottom");
+        // });
+        //
+        // $(function () {
+        //     $("#clothes-form").submit(function () {
+        //         var sendData = JSON.stringify(
+        //             {
+        //                 // *수정* session 처리
+        //                 user_id: $("#user_id").val(),
+        //                 // *수정* temp 코드 얻어오기
+        //                 temp_code: 1,
+        //                 wear_date: $("#date-piker-input").val(),
+        //                 wear_code: getWearCode()
+        //             });
+        //
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "../api/v1/wears",
+        //             data: sendData,
+        //             dataType: "json",
+        //             contentType: "application/json;charset=UTF-8",
+        //             async: false,
+        //             success: function (data) {
+        //                 console.log(data);
+        //             }
+        //         });
+        //     });
+        // });
+        //
+        //
+        // // <select> - 옷 유형별 <option> 추가
+        // function optionAppend(type) {
+        //     $.get("../api/v1/clothes/"+type, function(data){
+        //         for(i=0; i<data.length; i++) {
+        //                 $("#" + type + "-select").append('<option value=' + data[i].cid + '>' + data[i].cname + '</option>');
+        //         }
+        //     })
+        // }
+        //
+        // // 선택한 옵션으로 이미지 변경
+        // function changeSelectImg(type){
+        //     $.get("../api/v1/clothes/"+type, function (data) {
+        //         var selectVal = $("#"+type+"-select").val();
+        //         var key = 0;
+        //
+        //         for(i=0; i<data.length; i++){
+        //             if(data[i].cid == selectVal) {
+        //                 key = i;
+        //             }
+        //         }
+        //         $("#selected-"+type+"-img").attr("src", data[key].cimg);
+        //     })
+        // }
+        //
+        // function getWearCode(){
+        //     var outerCode = $("#outer-select").val();
+        //     var topCode = $("#top-select").val();
+        //     var bottomCode = $("#bottom-select").val();
+        //
+        //     var result = 0;
+        //
+        //     $.ajax({
+        //         url: "../api/v1/clothes/"+outerCode+"/"+topCode+"/"+bottomCode,
+        //         async: false,
+        //         success: function(data) {
+        //             result = data;
+        //         }
+        //     });
+        //     return result;
+        // }
+
+    </script>
+
+</head>
+
+<body>
+    {{>nav}}
+    <div class = "background">
+
+        <h2>홍길동이 입은 옷을 저장해보세요!</h2>
+            <form id="clothes-form" >
+<!--                  action="/">-->
+            <!--    날짜 선택    -->
+            <div class="wrapper">
+                <label id="date-piker-label" for="datepicker">Pick a Date
+                    <input type="text" id="date-piker-input" name="wear-date">
+                </label>
+            </div>
+
+            <!--   옷차림 선택     -->
+            <!-- outer -->
+            <img id="selected-outer-img" width="100px" border="0">
+            <select id="outer-select" onchange="changeSelectImg('outer')">
+                <option value="0"> 선택하세요 </option>
+                <!-- <option></option> js로 추가 -->
+            </select>
+
+            <!-- top -->
+            <img id="selected-top-img" width="100px" border="0">
+            <select id="top-select" onchange="changeSelectImg('top')">
+                <option value="0"> 선택하세요 </option>
+                <!-- <option></option> js로 추가 -->
+            </select>
+
+            <!-- bottom -->
+            <img id="selected-bottom-img" width="100px" border="0">
+            <select id="bottom-select" onchange="changeSelectImg('bottom')">
+                <option value="0"> 선택하세요 </option>
+                <!-- <option></option> js로 추가 -->
+            </select>
+
+
+            <!-- *수정* user_id - session 처리? -->
+            <input type="hidden" id="user_id" name="user_id" value="1">
+            <!-- *수정* temp_code?? -->
+            <input type="hidden" id="temp_code" name="temp_code" value="1">
+            <input type="hidden" id="wear_code" name="wear_code" value="1">
+            <input type="submit" id="submit" value="SAVE" >
+
+            </form>
+    </div>
+
+    <!-- datePicker 한글 버전 및 disable  -->
+    <script src="../js/datepicker-ko.js"></script>
+    <script src="../js/save_wear.js"></script>
+</body>
+
+</html>

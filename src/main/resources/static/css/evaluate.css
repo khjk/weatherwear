@@ -1,0 +1,83 @@
+html{
+    width:100%;
+    height: 100%;
+}
+body{
+    width:100%;
+    height: 100%;
+    margin:0;
+    padding:0;
+    background-image: linear-gradient(90deg, #9890e3 0%, #b1f4cf 100%);
+    display:flex;
+    flex-direction: column;
+}
+h1{
+    text-align: center;
+    color: white;
+}
+.container{
+    margin-top: 24px;
+    align-self: center;
+    width:75%;
+    height:75%;
+    background-color:#EDEDEB;
+    border-radius: 30px;
+    padding: 24px;
+    overflow: auto;
+}
+h2{
+    margin : 0;
+}
+p{
+    font-weight: 600;
+    font-size: 1.2em;
+    color: gray;
+    margin : 0;
+    margin-top: 5px;
+}
+.eval{
+    margin-top: 12px;
+    font-size: 1.2em;
+    font-weight: 600;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px;
+}
+.eval-date{
+    display:flex;
+    flex-direction:row;
+}
+.eval-date-2{
+    display: flex;
+    flex-direction:column;
+    margin: 0;
+}
+.eval-date-date{
+    margin-left:24px;
+    font-size: 1.5em;
+}
+.eval-date-temp{
+    margin-left:24px;
+    font-size:2.0em;
+}
+button{
+    all : unset;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
+    margin-left: 12px;
+    margin-right: 12px;
+}
+button:hover{
+    padding: 10px;
+}
+.hot-btn{
+    background-color: #ff7979;
+}
+.warm-btn{
+    background-color: #badc58;
+}
+.cold-btn{
+    background-color: #dff9fb;
+}

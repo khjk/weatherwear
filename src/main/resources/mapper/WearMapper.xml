@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kitri.weatherwear.MyBatis.WearMapper">
+
+    <select id="findAll" resultType="Wear">
+        SELECT * FROM WEAR
+    </select>
+
+    <select id="findOne" resultType="Wear">
+        Select * from WEAR where wear_no = #{wear_no}
+    </select>
+
+    <select id="findNotEvalDate" parameterType="String" resultType="java.util.Date">
+        Select wear_date from WEAR where eval = 'N' and user_id = #{user_id}
+    </select>
+
+    <insert id="save" parameterType="Wear">
+        INSERT INTO WEAR(wear_no, user_id, wear_date, wear_code, temp_code, like_no, eval)
+        VALUES (#{wear_no},#{user_id},#{wear_date},#{wear_code},#{temp_code},#{like_no},#{eval})
+    </insert>
+
+    <update id="updateEvaluationById" parameterType="map">
+        UPDATE WEAR SET LIKE_NO = #{like_no}, EVAL = #{requestDto.eval} where WEAR_NO = #{requestDto.wear_no}
+    </update>
+
+    <delete id="deleteById" parameterType="Wear">
+        DELETE FROM WEAR WHERE WEAR_NO = #{wear_no}
+    </delete>
+
+</mapper>

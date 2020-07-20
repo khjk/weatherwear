@@ -1,15 +1,22 @@
-mybatis:
-  type-aliases-package: com.kitri.weatherwear.dto
-  mapper-locations: classpath:/mapper/*.xml
 server:
   port: 8088
+  ssl:
+    enabled: true
+    key-store: classpath:keystore.p12
+    key-store-password: kitri1234
+    key-password: kitri1234
+    key-alias: spring
+
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/weatherwear?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
-    password: 1234
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/weatherwear?serverTimezone=UTC&characterEncoding=UTF-8
+      username: root
+      password: 1234
+  messages:
+    basename: messages
+
+logging:
+  level:
+    ROOT: INFO
