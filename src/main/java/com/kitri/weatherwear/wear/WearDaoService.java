@@ -42,4 +42,8 @@ public class WearDaoService {
         return wearMapper.findNotEvalDate(user_id);
     }
 
+    public List<Date> findRegiterDate(String user_id) {
+        return wearMapper.findRegiterDate(user_id);
+    }
+
 }

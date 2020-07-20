@@ -17,4 +17,5 @@ public interface WearMapper {
     Integer updateEvaluationById(@Param("wear_no") int wear_no, @Param("requestDto") WearUpdateRequestDto requestDto);
     Integer deleteById(int wear_no);
     List<Date> findNotEvalDate(String user_id);
+    List<Date> findRegiterDate(String user_id);
 }

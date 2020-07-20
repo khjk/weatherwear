@@ -27,4 +27,9 @@
         DELETE FROM WEAR WHERE WEAR_NO = #{wear_no}
     </delete>
 
+    <select id="findRegiterDate" parameterType="String" resultType="java.util.Date">
+        Select wear_date from WEAR where user_id = #{user_id}
+    </select>
+
+
 </mapper>
