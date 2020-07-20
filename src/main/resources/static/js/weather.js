@@ -54,8 +54,8 @@ function handleGeoSuccess(position){
             console.log("내일 습도:" + oneDayAfter.humidity);
             console.log("내일 구름:" + oneDayAfter.clouds);
             console.log("내일 풍속:" + oneDayAfter.wind_speed);
-            console.log("내일 강우량:" + oneDayAfter.rain);
-            console.log("내일 Summary:" + oneDayAfter.weather[0].main + "mm");
+            console.log("내일 강우량:" + oneDayAfter.rain + "mm");
+            console.log("내일 Summary:" + oneDayAfter.weather[0].main);
             var OneDayWeatherIcon =  "http://openweathermap.org/img/wn/" + oneDayAfter.weather[0].icon + "@2x.png";
             var twoDayWeatherIcon =  "http://openweathermap.org/img/wn/" + twoDayAfter.weather[0].icon + "@2x.png";
             var threeDayWeatherIcon =  "http://openweathermap.org/img/wn/" + threeDayAfter.weather[0].icon + "@2x.png";
@@ -64,6 +64,7 @@ function handleGeoSuccess(position){
             $("#twodayIcon").attr("src",twoDayWeatherIcon);
             $("#threedayIcon").attr("src",threeDayWeatherIcon);
             $("#fourdayIcon").attr("src",fourDayWeatherIcon);
+            initAnimation();
         }
     })
 }
