@@ -55,6 +55,7 @@ public class UserApiController {
             throw new UserNotFoundException(String.format("ID[%s]를 생성할 수 없습니다.",userSignUpRequestDto.getId()));
         }else {
             session.setAttribute("id",userSignUpRequestDto.getId());
+            System.out.println(">>>>apiController user_id:" + userSignUpRequestDto.getId() +"세션으로 저장");
         }
 
         return savedResult;
