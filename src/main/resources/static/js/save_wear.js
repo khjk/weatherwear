@@ -19,6 +19,7 @@ function NoEvaluatedDate() {
 
     var result = [];
     $.ajax({
+        type: "GET",
         url: "../api/v1/wears/list/"+user_id,
         async: false,
         success: function(data) {
@@ -129,6 +130,8 @@ function getWearDate(){
             return false;
         }
     }
-
+    if(date == null || date == undefined){
+        return new Date();
+    }
     return date;
 }

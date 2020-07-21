@@ -1,18 +1,18 @@
 <nav class="header">
     <div class="navbar_logo">
         <i class="fas fa-cloud-sun" id="logo"></i>
-        <a class="nav_title" href="#">WeatherWear</a>
+        <a class="nav_title" href="/">WeatherWear</a>
     </div>
     <ul class="navbar_menu">
-        {{#userName}}
+        {{#user_id}}
             <li><a href="">옷차림저장</a></li>
-            <li><a href="">평가하기</a></li>
-            <li><a href="">로그아웃</a></li>
-        {{/userName}}
-        {{^userName}}
-            <li><a href="/login">로그인</a></li>
-            <li><a href="/signup">회원가입</a></li>
-        {{/userName}}
+            <li><a href="/users/eval-wear">평가하기</a></li>
+            <li><a href="/logout">로그아웃</a></li>
+        {{/user_id}}
+        {{^user_id}}
+            <li><a href="/user/login">로그인</a></li>
+            <li><a href="/signup">회원가입</a></li> <!--참고!!! login과 singup URL같음-->
+        {{/user_id}}
     </ul>
     <ul class="navbar_icons">
         <li><i class="fab fa-twitter"></i></li>

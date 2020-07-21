@@ -76,12 +76,14 @@ public class WearApiController {
 
     @GetMapping("api/v1/wears/list/{user_id}")
     public List<String> retrievedDate(@PathVariable String user_id) {
+        System.out.println("wears/list까진옴");
         List<String> dateList = new ArrayList<String>(){};
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         for(Date d : service.findRegiterDate(user_id)){
             dateList.add(df.format(d));
+            System.out.println(d);
         }
         return dateList;
     }
