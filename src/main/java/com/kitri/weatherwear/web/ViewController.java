@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
@@ -19,14 +20,16 @@ public class ViewController {
     //메인 페이지
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
-        System.out.println(">>>>>>>>세션 아이디 : " + session.getAttribute("id"));
+        String user_id = (String)session.getAttribute("user_id");
+        System.out.println(">>>>>>>>세션 아이디 : " + user_id);
+        model.addAttribute("user_id",user_id);
         return "index";
     }
 
     //로그인 페이지
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     public String login(Model model) {
-        return "login";
+        return "user-login";
     }
 
     //마이페이지
@@ -55,7 +58,11 @@ public class ViewController {
 
     //평가하지 않은 룩들 평가하기 페이지
     @GetMapping("users/eval-wear")
-    public String evalWear(Model model) {
+    public String evalWear(Model model, HttpSession session) {
+        String user_id = (String)session.getAttribute("user_id");
+        System.out.println(">>>>>eval-wear세션아이디: "+ user_id);
+        model.addAttribute("user_id",user_id);
+        model.addAttribute("wears", wearDaoService.findNotEvaluated(user_id));
         return "eval-wear";
     }
 }

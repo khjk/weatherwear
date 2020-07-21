@@ -14,12 +14,4 @@ public class WearUpdateRequestDto {
     public WearUpdateRequestDto(int like_no) {
         this.like_no = like_no;
     }
-
-    public int getLike_no() {
-        return like_no;
-    }
-
-    public char getEval() {
-        return eval;
-    }
 }

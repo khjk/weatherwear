@@ -1,18 +1,19 @@
 package com.kitri.weatherwear.user;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.net.URI;
 import java.util.List;
-import javax.validation.Valid;
 
 @Slf4j
 @RestController
+@RequestMapping("api/v1/users")
 public class UserApiController {
     private UserDaoService service;
 
@@ -20,12 +21,12 @@ public class UserApiController {
         this.service = service;
     }
 
-    @GetMapping("api/v1/users/list")
+    @GetMapping("/list")
     public List<User> retrieveAllUsers() {
         return service.findAll();
     }
 
-    @PostMapping("api/v1/validation")
+    @PostMapping("/validation")
     public User loginUser(@RequestBody UserLoginRequestDto userLoginRequestDto, HttpSession session) { //로그인
         User user = service.login(userLoginRequestDto);
         if (user == null) {
@@ -36,7 +37,7 @@ public class UserApiController {
         return user;
     }
 
-    @GetMapping("api/v1/users/{id}")
+    @GetMapping("/{id}")
     public User retrieveUser(@PathVariable String id) {
         User user = service.findOne(id);
 
@@ -46,23 +47,21 @@ public class UserApiController {
         return user;
     }
 
-    @PostMapping("api/v1/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        Integer savedResult = service.save(user);
+    @PostMapping("")
+    public int createUser(@RequestBody UserSignUpRequestDto userSignUpRequestDto, HttpSession session) {
+        Integer savedResult = service.save(userSignUpRequestDto);
 
         if(savedResult == 0) {
-            throw new UserNotFoundException(String.format("ID[%s]를 생성할 수 없습니다.",user.getId()));
+            throw new UserNotFoundException(String.format("ID[%s]를 생성할 수 없습니다.",userSignUpRequestDto.getId()));
+        }else {
+            session.setAttribute("id",userSignUpRequestDto.getId());
+            System.out.println(">>>>apiController user_id:" + userSignUpRequestDto.getId() +"세션으로 저장");
         }
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(user.getId())
-                .toUri();
-
-        return ResponseEntity.created(location).build();
+        return savedResult;
     }
 
-    @DeleteMapping("api/v1/users/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable String id) {
         Integer deletedResult = service.deleteById(id);
 
@@ -71,7 +70,7 @@ public class UserApiController {
         }
     }
 
-    @PutMapping("api/v1/users/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody UserUpdateRequestDto requestDto) {
         Integer updatedResult = service.changeLocationById(id, requestDto);
 
@@ -84,5 +83,10 @@ public class UserApiController {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping("/id-check/{id}")
+    public int idCheck(@PathVariable String id) {
+        return service.userIdCheck(id);
     }
 }

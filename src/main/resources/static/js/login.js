@@ -16,7 +16,7 @@ var login = {
 
         $.ajax({
             type: 'POST',
-            url : 'api/v1/validation',
+            url : 'api/v1/users/validation',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
@@ -32,7 +32,7 @@ var login = {
     },
     signup : function () {
         var data = {
-            name : $('signup_name').val(),
+            name : $('#signup_name').val(),
             id: $('#signup_id').val(),
             password : $('#signup_password').val()
         };
@@ -43,13 +43,43 @@ var login = {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
-        }).done(function() {
+        }).done(function (response) {
             alert('회원 가입 완료되었습니다.');
             window.location.href="/";
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            console.log(error.json);
         });
     }
 
 }
 login.init();
+
+$(function(){
+$("#signup_id").blur(function() {
+		var id = $('#signup_id').val();
+		$.ajax({
+		    type : 'GET',
+			url : 'api/v1/users/id-check/'+id,
+//			dataType: 'json',
+//            contentType: 'application/json; charset=utf-8',
+			success : function(data) {
+
+				if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_check").text("사용중인 아이디입니다");
+						$("#id_check").css("color", "red");
+						$("#btn-signup").attr("disabled", true);
+					} else {
+							$('#id_check').text('아이디를 입력해주세요 :)');
+							$('#id_check').css('color', 'red');
+							$("#btn-signup").attr("disabled", true);
+					}
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
+
+
+});
+
