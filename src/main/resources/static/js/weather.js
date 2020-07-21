@@ -13,6 +13,10 @@ const onedayIcon = document.getElementById("onedayIcon");
 const twodayIcon = document.getElementById("twodayIcon");
 const threedayIcon = document.getElementById("threedayIcon");
 const fourdayIcon = document.getElementById("fourdayIcon");
+const onedayTemp = document.getElementById("oneday-temp");
+const twodayTemp = document.getElementById("twoday-temp");
+const threedayTemp = document.getElementById("threeday-temp");
+const fourdayTemp = document.getElementById("fourday-temp");
 function init(){
     getYoilDateMonth();
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
@@ -39,7 +43,9 @@ function handleGeoSuccess(position){
             var CurrentWeatherIcon = "http://openweathermap.org/img/wn/" + current.weather[0].icon + "@2x.png";
             $("#currentWeatherIcon").attr("src",CurrentWeatherIcon);
             weather_text.innerText = `${current.temp}°C`;
-            location_text.innerText = `${response.timezone}`;
+            var temp_loc = response.timezone;
+            var temp_loc_arr = temp_loc.split("/");
+            location_text.innerText = `${temp_loc_arr[1]}`;
             summary_text.innerHTML = `${current.weather[0].main}`;
 		    cloudy_text.innerText = `${current.clouds}%`;
 		    humidity_text.innerText = `${current.humidity }%`;
@@ -64,6 +70,10 @@ function handleGeoSuccess(position){
             $("#twodayIcon").attr("src",twoDayWeatherIcon);
             $("#threedayIcon").attr("src",threeDayWeatherIcon);
             $("#fourdayIcon").attr("src",fourDayWeatherIcon);
+            onedayTemp.innerText = `${oneDayAfter.temp.day}°C`;
+            twodayTemp.innerText = `${twoDayAfter.temp.day}°C`;
+            threedayTemp.innerText = `${threeDayAfter.temp.day}°C`;
+            fourdayTemp.innerText = `${fourDayAfter.temp.day}°C`;
             initAnimation();
         }
     })
