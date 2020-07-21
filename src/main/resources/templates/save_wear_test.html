@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>WeatherWear</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- nav22.css -->
+    <link rel="stylesheet" href="../static/css/nav22.css">
+
+    <link rel="stylesheet" href="../static/css/styles.css">
+
+</head>
+<body>
+    <!-- 그라데이션 배경 겹치게 하기 -->
+    <div class = "background">
+        <!-- nav ==> 수정할 것!  -->
+        <nav class="header">
+
+            <ul class="navbar_left_menu">
+                <!-- {{#userName}} -->
+                    <li><a href="">옷차림저장</a></li>
+                    <li><a href="">평가하기</a></li>
+                    <!-- <li><a href="">로그아웃</a></li>
+                {{/userName}}  -->
+            </ul>
+
+            <div class="navbar_logo">
+                <i class="fas fa-cloud-sun" id="logo"></i>
+                <a class="nav_title" href="#">WeatherWear</a>
+            </div>
+
+            <ul class="navbar_right_menu">
+                <!-- {{^userName}} -->
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/signup">회원가입</a></li>
+                <!-- {{/userName}} -->
+            </ul>
+
+        </nav>
+
+        <img id="outer-img">
+        <img id="top-img">
+        <img id="bottom-img">
+
+        <script type="text/javascript" src="../static/js/save_wear.js"></script>
+    </div>
+</body>

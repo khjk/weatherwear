@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    {{>header}}
+    <!--  save-wear.css  -->
+    <link rel="stylesheet" href="../css/save-wear.css">
+
+    <!-- datePicker - jquery-ui  -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    {{>nav}}
+    <div class = "background">
+
+        <h2>홍길동이 입은 옷을 저장해보세요!</h2>
+            <form id="clothes-form" >
+<!--                  action="/">-->
+            <!--    날짜 선택    -->
+            <div class="wrapper">
+                <label id="date-piker-label" for="datepicker">Pick a Date
+                    <input type="text" id="date-piker-input" name="wear-date">
+                </label>
+            </div>
+
+            <!--   옷차림 선택     -->
+            <!-- outer -->
+            <img id="selected-outer-img" width="100px" border="0">
+            <select id="outer-select" onchange="changeSelectImg('outer')">
+                <option value="0"> 선택하세요 </option>
+                <!-- <option></option> js로 추가 -->
+            </select>
+
+            <!-- top -->
+            <img id="selected-top-img" width="100px" border="0">
+            <select id="top-select" onchange="changeSelectImg('top')">
+                <option value="0"> 선택하세요 </option>
+                <!-- <option></option> js로 추가 -->
+            </select>
+
+            <!-- bottom -->
+            <img id="selected-bottom-img" width="100px" border="0">
+            <select id="bottom-select" onchange="changeSelectImg('bottom')">
+                <option value="0"> 선택하세요 </option>
+                <!-- <option></option> js로 추가 -->
+            </select>
+
+
+            <!-- *수정* user_id - session 처리? -->
+            <input type="hidden" id="user_id" name="user_id" value="1">
+            <!-- *수정* temp_code?? -->
+            <input type="hidden" id="temp_code" name="temp_code" value="1">
+            <input type="hidden" id="wear_code" name="wear_code" value="1">
+            <input type="button" id="submit" value="SAVE">
+
+            </form>
+    </div>
+
+    <!-- datePicker 한글 버전 및 disable  -->
+    <script src="../js/datepicker-ko.js"></script>
+    <script src="../js/save_wear.js"></script>
+</body>
+
+</html>
