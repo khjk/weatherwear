@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -30,7 +29,7 @@ public class WearDaoService {
     }
 
     public Integer updateEvaluationById(int wear_no, WearUpdateRequestDto requestDto) {
-        log.info("Service RequestDTO>>>>"+ wear_no + "like_no: " + requestDto.getLike_no() + "eval:" + requestDto.getEval()+"'");
+        log.info("Service RequestDTO>>>>"+ wear_no + "like_no: " + requestDto.getLike_no() + " eval:" + requestDto.getEval()+"'");
         return wearMapper.updateEvaluationById(wear_no, requestDto);
     }
 
@@ -38,8 +37,9 @@ public class WearDaoService {
         return wearMapper.deleteById(wear_no);
     }
 
-    public List<Date> findNotEvaluatedDate(String user_id) {
-        return wearMapper.findNotEvalDate(user_id);
+    public List<WearResponseDto> findNotEvaluated(String user_id) {
+        log.info("WearDAOService >> ok");
+        return wearMapper.findNotEvaluated(user_id);
     }
 
 }

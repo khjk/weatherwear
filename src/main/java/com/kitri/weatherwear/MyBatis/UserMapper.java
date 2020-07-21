@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-public interface UserMapper {
+public interface  UserMapper {
     List<User> findAll();
     Integer save(UserSignUpRequestDto userSignUpRequestDto);
     User findOne(String id);

@@ -19,14 +19,14 @@
                 <a class="nav_title" href="#">WeatherWear</a>
             </div>
             <ul class="navbar_menu">
-                {{#id}}
-                    <li><a href="/save-wear">옷차림저장</a></li>
-                    <li><a href="/eval-wear">평가하기</a></li>
+                {{#user_id}}
+                    <li><a href="users/save-wear">옷차림저장</a></li>
+                    <li><a href="users/eval-wear">평가하기</a></li>
                     <li><a href="/logout">로그아웃</a></li> <!--페이지없이 js로처리-->
-                {{/id}}
-                {{^id}}
-                    <li><a href="/login">로그인</a></li>
-                {{/id}}
+                {{/user_id}}
+                {{^user_id}}
+                    <li><a href="/user-login">로그인</a></li>
+                {{/user_id}}
             </ul>
             <ul class="navbar_icons">
                 <li><i class="fab fa-twitter"></i></li>

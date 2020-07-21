@@ -15,6 +15,9 @@ h1{
     text-align: center;
     color: white;
 }
+.hidden{
+    display: none;
+}
 .container{
     margin-top: 24px;
     align-self: center;
@@ -30,7 +33,7 @@ h2{
 }
 p{
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: 0.8em;
     color: gray;
     margin : 0;
     margin-top: 5px;
@@ -55,19 +58,18 @@ p{
 }
 .eval-date-date{
     margin-left:24px;
-    font-size: 1.5em;
+    font-size: 1.0em;
 }
-.eval-date-temp{
+.eval-wear-no{
     margin-left:24px;
-    font-size:2.0em;
+    font-size:1.5em;
 }
 button{
     all : unset;
     padding: 12px;
     border-radius: 10px;
     box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 6px;
 }
 button:hover{
     padding: 10px;
@@ -81,3 +83,4 @@ button:hover{
 .cold-btn{
     background-color: #dff9fb;
 }
+

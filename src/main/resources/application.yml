@@ -16,7 +16,19 @@ spring:
       password: 1234
   messages:
     basename: messages
-
+  profiles:
+    include:
+      - oauth
 logging:
   level:
     ROOT: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+#default password -> Using generated security password: de7bf9aa-4df6-4ad2-8068-824789997887

@@ -1,6 +1,8 @@
 package com.kitri.weatherwear.user;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@RequestMapping("api/v1/users")
 public class UserApiController {
     private UserDaoService service;
 
@@ -18,23 +21,23 @@ public class UserApiController {
         this.service = service;
     }
 
-    @GetMapping("api/v1/users/list")
+    @GetMapping("/list")
     public List<User> retrieveAllUsers() {
         return service.findAll();
     }
 
-    @PostMapping("api/v1/validation")
+    @PostMapping("/validation")
     public User loginUser(@RequestBody UserLoginRequestDto userLoginRequestDto, HttpSession session) { //로그인
         User user = service.login(userLoginRequestDto);
         if (user == null) {
             throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
         }else {
-            session.setAttribute("id", user.getId());
+            session.setAttribute("user_id", user.getId());
         }
         return user;
     }
 
-    @GetMapping("api/v1/users/{id}")
+    @GetMapping("/{id}")
     public User retrieveUser(@PathVariable String id) {
         User user = service.findOne(id);
 
@@ -44,7 +47,7 @@ public class UserApiController {
         return user;
     }
 
-    @PostMapping("api/v1/users")
+    @PostMapping("")
     public int createUser(@RequestBody UserSignUpRequestDto userSignUpRequestDto, HttpSession session) {
         Integer savedResult = service.save(userSignUpRequestDto);
 
@@ -57,7 +60,7 @@ public class UserApiController {
         return savedResult;
     }
 
-    @DeleteMapping("api/v1/users/{id}")
+    @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable String id) {
         Integer deletedResult = service.deleteById(id);
 
@@ -66,7 +69,7 @@ public class UserApiController {
         }
     }
 
-    @PutMapping("api/v1/users/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable String id, @RequestBody UserUpdateRequestDto requestDto) {
         Integer updatedResult = service.changeLocationById(id, requestDto);
 

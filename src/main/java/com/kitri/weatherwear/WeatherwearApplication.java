@@ -14,10 +14,4 @@ public class WeatherwearApplication {
 		SpringApplication.run(WeatherwearApplication.class, args);
 	}
 
-	@Bean //다국어 처리
-	public SessionLocaleResolver localResolver() {
-		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-		localeResolver.setDefaultLocale(Locale.KOREA);
-		return localeResolver;
-	}
 }

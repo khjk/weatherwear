@@ -10,8 +10,8 @@
         Select * from WEAR where wear_no = #{wear_no}
     </select>
 
-    <select id="findNotEvalDate" parameterType="String" resultType="java.util.Date">
-        Select wear_date from WEAR where eval = 'N' and user_id = #{user_id}
+    <select id="findNotEvaluated" parameterType="String" resultType="WearResponseDto">
+        Select * from WEAR where eval = 'N' and user_id = #{user_id}
     </select>
 
     <insert id="save" parameterType="Wear">
@@ -20,7 +20,7 @@
     </insert>
 
     <update id="updateEvaluationById" parameterType="map">
-        UPDATE WEAR SET LIKE_NO = #{like_no}, EVAL = #{requestDto.eval} where WEAR_NO = #{requestDto.wear_no}
+        UPDATE WEAR SET LIKE_NO = #{requestDto.like_no}, EVAL = #{requestDto.eval} where WEAR_NO = #{wear_no}
     </update>
 
     <delete id="deleteById" parameterType="Wear">
