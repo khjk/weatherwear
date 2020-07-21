@@ -473,7 +473,7 @@ function tick()
 
 	for(var i = 0; i < clouds.length; i++)
 	{
-		if(currentWeather.type == 'sun')
+		if(currentWeather == 'sun')
 		{
 			if(clouds[i].offset > -(sizes.card.width * 1.5)) clouds[i].offset += settings.windSpeed / (i + 1);
 			if(clouds[i].offset > sizes.card.width * 2.5) clouds[i].offset = -(sizes.card.width * 1.5);

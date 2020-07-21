@@ -1,36 +1,56 @@
 {{>layout/header}}
 
     <link rel="stylesheet" href="/css/evaluate.css">
+    <link rel="stylesheet" href="/css/nav2.css">
 </head>
 <body>
+<!-- 네브바 -->
+<nav class="header">
+    <div class="navbar_logo">
+        <i class="fas fa-cloud-sun" id="logo"></i>
+        <a class="nav_title" href="#">WeatherWear</a>
+    </div>
+    <ul class="navbar_menu">
+        <li><a href="/save-wear">옷차림저장</a></li>
+        <li><a href="/eval-wear" class="active">평가하기</a></li>
+        <li><a href="/logout">로그아웃</a></li> <!--페이지없이 js로처리-->
+    </ul>
+    <ul class="navbar_icons">
+        <li><i class="fab fa-twitter"></i></li>
+        <li><i class="fab fa-instagram"></i></li>
+    </ul>
+</nav>
+<!--네브바-->
 <div>
-    <h1>헤더영역</h1>
-</div>
-<div>
+    <span id="user_id">{{user_id}}</span>
     <h1>지난 옷차림은 어땠나요?</h1>
 </div>
 <div class="container">
     <h2>해당 날씨에 입으신 지난 옷차림은 어떠셨나요?</h2>
     <p>평가를 해주시면, 정확한 추천에 도움이 됩니다:)</p>
+    <p>❌를 선택하시면, 앞으로의 평가항목에서 제외됩니다.</p>
 
+    {{#wears}}
     <div class="eval">
         <div class="eval-date">
-            <span class="eval-date-icon">SUNNY</span>
             <div class="eval-date-2">
-                <span class="eval-date-date">06/15</span>
-                <span class="eval-date-temp">20'C</span>
+                <span class="eval-date-date">{{wear_date}}</span>
+                <span class="eval-date-temp">{{temp_code}}</span>
             </div>
         </div>
+        <div class="wear_code">옷코드: {{wear_code}}</div>
         <div class="eval-clothes">
             <img src="" alt="그날 입었던 옷 이미지">
         </div>
         <div class="eval-btn">
-            <button class="hot-btn">더워요</button>
-            <button class="warm-btn">적절해요</button>
-            <button class="cold-btn">추워요</button>
+            <span class="eval-wear-no hidden">{{wear_no}}</span>
+            <button id="hot-btn" class="hot-btn">더워요</button>
+            <button id="warm-btn" class="warm-btn">적절해요</button>
+            <button id="cold-btn" class="cold-btn">추워요</button>
+            <button id="del-btn">❌</button>
         </div>
     </div>
-    <hr>
+    {{/wears}}
 </div>
-
+<script src="/js/eval.js"></script>
 {{>layout/footer}}

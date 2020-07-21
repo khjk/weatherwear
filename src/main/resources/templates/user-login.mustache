@@ -1,6 +1,6 @@
 {{>layout/header}}
 
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 <p class="tip">Click on button in image container</p>
@@ -22,6 +22,7 @@
             <p class="forgot-pass">Forgot password?</p>
             <button type="button" id="btn-login" class="submit">Sign In</button>
             <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
+            <button><a href="/oauth2/authorization/naver" role="button">Naver Login</a></button>
             </form>
         </div>
 
@@ -70,6 +71,6 @@
 });
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="js/login.js"></script>
+<script src="/js/login.js"></script>
 
 {{>layout/footer}}

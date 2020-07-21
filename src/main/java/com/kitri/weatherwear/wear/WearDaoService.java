@@ -30,7 +30,7 @@ public class WearDaoService {
     }
 
     public Integer updateEvaluationById(int wear_no, WearUpdateRequestDto requestDto) {
-        log.info("Service RequestDTO>>>>"+ wear_no + "like_no: " + requestDto.getLike_no() + "eval:" + requestDto.getEval()+"'");
+        log.info("Service RequestDTO>>>>"+ wear_no + "like_no: " + requestDto.getLike_no() + " eval:" + requestDto.getEval()+"'");
         return wearMapper.updateEvaluationById(wear_no, requestDto);
     }
 
@@ -38,8 +38,9 @@ public class WearDaoService {
         return wearMapper.deleteById(wear_no);
     }
 
-    public List<Date> findNotEvaluatedDate(String user_id) {
-        return wearMapper.findNotEvalDate(user_id);
+    public List<WearResponseDto> findNotEvaluated(String user_id) {
+        log.info("WearDAOService >> ok");
+        return wearMapper.findNotEvaluated(user_id);
     }
 
     public List<Date> findRegiterDate(String user_id) {

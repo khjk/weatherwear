@@ -1,5 +1,6 @@
 package com.kitri.weatherwear.wear;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -11,7 +12,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.SimpleFormatter;
 
+@Slf4j
 @RestController
+@RequestMapping("api/v1/wears")
 public class WearApiController {
     private final WearDaoService service;
 
@@ -19,12 +22,12 @@ public class WearApiController {
         this.service = service;
     }
 
-    @GetMapping("api/v1/wears/list")
+    @GetMapping("/list")
     public List<Wear> retrieveAllWears() {
         return service.findAll();
     }
 
-    @GetMapping("api/v1/wears/{wear_no}")
+    @GetMapping("/{wear_no}")
     public Wear retrieveWear(@PathVariable int wear_no) {
         Wear wear = service.findOne(wear_no);
 
@@ -33,18 +36,14 @@ public class WearApiController {
         }
         return wear;
     }
-    /*
-    * 언니가 요청한 API
-    * 요청방식 : GET
-    * 필요한 요청인자 : user_id
-    * 반환값 : User_id가 평가하지 않은 날짜 List
-    * */
-    @GetMapping("api/v1/wears/list/{user_id}/no-eval")
-    public List<Date> retrieveNoEvaluatedDate(@PathVariable String user_id) {
-        return service.findNotEvaluatedDate(user_id);
+
+    //MappingJacksonValue로 반환하고 Filter로 조작하는 것 고려해보기
+    @GetMapping("/{user_id}/no-eval")
+    public List<WearResponseDto> retrieveUnEvaluated(@PathVariable String user_id) {
+        return service.findNotEvaluated(user_id);
     }
 
-    @PostMapping("api/v1/wears")
+    @PostMapping("")
     public ResponseEntity<Wear> saveWear(@RequestBody Wear wear) {
         Integer saveResult = service.save(wear);
 
@@ -60,22 +59,18 @@ public class WearApiController {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping("api/v1/wears/{wear_no}")
-    public ResponseEntity<Wear> evaluateWear(@PathVariable int wear_no, @RequestBody WearUpdateRequestDto requestDto) {
+    @PutMapping("/{wear_no}")
+    public int evaluateWear(@PathVariable int wear_no, @RequestBody WearUpdateRequestDto requestDto) {
         Integer updateResult = service.updateEvaluationById(wear_no, requestDto);
 
         if (updateResult == 0) {
             throw new WearNotFoundException(String.format("Wear[%s] cannot update now", wear_no));
         }
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .buildAndExpand(wear_no)
-                .toUri();
-
-        return ResponseEntity.created(location).build();
+        return updateResult;
     }
 
-    @DeleteMapping("api/v1/wears/{wear_no}")
+    @DeleteMapping("/{wear_no}")
     public void deleteWear(@PathVariable int wear_no) {
         Integer deleteResult = service.deleteById(wear_no);
 
