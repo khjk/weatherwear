@@ -8,7 +8,7 @@
 <nav class="header">
     <div class="navbar_logo">
         <i class="fas fa-cloud-sun" id="logo"></i>
-        <a class="nav_title" href="#">WeatherWear</a>
+        <a class="nav_title" href="/">WeatherWear</a>
     </div>
     <ul class="navbar_menu">
         <li><a href="/users/save-wear">옷차림저장</a></li>
@@ -35,12 +35,16 @@
         <div class="eval-date">
             <div class="eval-date-2">
                 <span class="eval-date-date">{{wear_date}}</span>
+                <span>날씨코드</span>
                 <span class="eval-date-temp">{{temp_code}}</span>
             </div>
         </div>
-        <div class="wear_code">옷코드: {{wear_code}}</div>
+        <span>옷코드</span>
+        <div class="wear_code">{{wear_code}}</div>
         <div class="eval-clothes">
-            <img src="" alt="그날 입었던 옷 이미지">
+            <img class="outerImg" src="" alt="OUTER">
+            <img class="topImg" src="" alt="TOP">
+            <img class="bottomImg" src="" alt="BOTTOM">
         </div>
         <div class="eval-btn">
             <span class="eval-wear-no hidden">{{wear_no}}</span>

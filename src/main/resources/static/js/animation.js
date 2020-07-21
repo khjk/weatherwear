@@ -122,7 +122,7 @@ function initAnimation()
 	}else if(SummaryHTML == "wind" || SummaryHTML == "Clouds"){
 	    tempIndex = 1;
 	    console.log(">>>index.js 시작 날씨 wind선택됨");
-	}else if(SummaryHTML == "rain" || SummaryHTML == "Rain"){
+	}else if(SummaryHTML == "rain" || SummaryHTML == "Rain" || SummaryHTML == "Mist"){
 	    tempIndex = 2;
 	    console.log(">>>index.js 시작 날씨 rain선택됨");
 	}else if(SummaryHTML == "thunder" || SummaryHTML == "Thunderstorm"){

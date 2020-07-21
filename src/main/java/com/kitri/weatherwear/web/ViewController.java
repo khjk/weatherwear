@@ -52,7 +52,10 @@ public class ViewController {
 
    //룩저장하기
    @GetMapping("users/save-wear")
-    public String saveWear(Model model) {
+    public String saveWear(Model model, HttpSession session) {
+        String user_id = (String)session.getAttribute("user_id");
+       System.out.println(">>>>>save-wear세션아이디: "+ user_id);
+       model.addAttribute("user_id",user_id);
         return "save-wear";
    }
 

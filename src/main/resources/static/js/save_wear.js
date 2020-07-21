@@ -45,7 +45,6 @@ $(function () {
     $("#submit").click(function () {
         var sendData = JSON.stringify(
             {
-                // *수정* session 처리
                 user_id: $("#user_id").val(),
                 // *수정* temp 코드 얻어오기
                 temp_code: 1,

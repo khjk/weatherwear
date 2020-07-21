@@ -63,5 +63,16 @@
 		WHERE c_name= "우산"
 	</select>
 
+	<select id="getClothesNameByCode" parameterType="int" resultType="ClothesNameList">
+		SELECT outer_wear,top_wear,bottom_wear
+		FROM clothes
+		WHERE wear_code = #{wCode}
+	</select>
+
+	<select id="selectThreeImageByNameList" parameterType="ClothesNameList" resultType="java.lang.String">
+		SELECT c_img
+		FROM clothes_sorts
+		WHERE c_name IN (#{outer_wear},#{top_wear},#{bottom_wear})
+	</select>
 
 </mapper>
