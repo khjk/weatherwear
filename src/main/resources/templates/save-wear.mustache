@@ -15,7 +15,6 @@
 
         <h2>홍길동이 입은 옷을 저장해보세요!</h2>
             <form id="clothes-form" >
-<!--                  action="/">-->
             <!--    날짜 선택    -->
             <div class="wrapper">
                 <label id="date-piker-label" for="datepicker">Pick a Date
@@ -46,11 +45,8 @@
             </select>
 
 
-            <!-- *수정* user_id - session 처리? -->
+            <!-- **수정** user_id - session 처리!!!!! -->
             <input type="hidden" id="user_id" name="user_id" value="1">
-            <!-- *수정* temp_code?? -->
-            <input type="hidden" id="temp_code" name="temp_code" value="1">
-            <input type="hidden" id="wear_code" name="wear_code" value="1">
             <input type="button" id="submit" value="SAVE">
 
             </form>
