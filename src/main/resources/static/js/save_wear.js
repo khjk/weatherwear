@@ -1,12 +1,15 @@
 // 날짜 선택(달력) -- datepicker
 $(function() {
     var today = new Date();
-    // $('#date-piker-input').val($.datepicker.formatDate("yy-mm-dd", today));
+    var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24)
+
+    $('#date-piker-input').val($.datepicker.formatDate("yy-mm-dd", today));
 
     $( "#date-piker-input" ).datepicker({
         dateFormat: "yy-mm-dd",
         duration: "fast",
-        // maxDate: today,
+        minDate: before5Day,
+        maxDate: today,
         beforeShowDay: DisableDates
     });
 } );
@@ -39,6 +42,9 @@ $(function () {
     optionAppend("outer");
     optionAppend("top");
     optionAppend("bottom");
+    console.log($("#outer-select").val());
+    console.log($("#top-select").val());
+    console.log($("#bottom-select").val());
 });
 
 //submit
@@ -49,8 +55,7 @@ $(function () {
                 user_id: $("#user_id").val(),
                 // *수정* temp 코드 얻어오기
                 temp_code: 1,
-                // wear_date: $("#date-piker-input").val(),
-                wear_date: '1996-09-06',
+                wear_date: getWearDate(),
                 wear_code: getWearCode()
             });
 
@@ -63,7 +68,6 @@ $(function () {
             success: function (data) {
                 confirm("등록 하시겠습니까?");
                 window.location.href="/";
-                //location.href = "../";
             }
         });
     });
