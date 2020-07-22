@@ -32,11 +32,11 @@ public class UserApiController {
         if (user == null) {
             throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
         }else {
-<<<<<<< HEAD
+
             session.setAttribute("id", user.getId());
-=======
+
             session.setAttribute("user_id", user.getId());
->>>>>>> origin/develop
+
         }
         return user;
     }
@@ -88,12 +88,10 @@ public class UserApiController {
 
         return ResponseEntity.created(location).build();
     }
-<<<<<<< HEAD
 
     @GetMapping("/id-check/{id}")
     public int idCheck(@PathVariable String id) {
         return service.userIdCheck(id);
     }
-=======
->>>>>>> origin/develop
+
 }

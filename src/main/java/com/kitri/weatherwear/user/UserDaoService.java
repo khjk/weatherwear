@@ -27,15 +27,11 @@ public class UserDaoService {
     public User findOne(String id) {
         return userMapper.findOne(id);
     }
-<<<<<<< HEAD
 
-    public User login(UserLoginRequestDto userLoginRequestDto) {
-        //log.info("Service RequestDTO>>>>"+ userLoginRequestDto.getId() + userLoginRequestDto.getPassword() );
-=======
     
     public User login(UserLoginRequestDto userLoginRequestDto) {
         log.info("Service RequestDTO>>>>"+ userLoginRequestDto.getId() + userLoginRequestDto.getPassword() );
->>>>>>> origin/develop
+
         return userMapper.loginValidation(userLoginRequestDto);
     }
 
@@ -46,11 +42,10 @@ public class UserDaoService {
     public int changeLocationById(String id, UserUpdateRequestDto requestDto) {
         return userMapper.changeLocationById(id, requestDto);
     }
-<<<<<<< HEAD
+
 
     public int userIdCheck(String id) {
         return userMapper.userIdCheck(id);
     }
-=======
->>>>>>> origin/develop
+
 }
