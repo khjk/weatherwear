@@ -50,7 +50,7 @@ $(function () {
                 // *수정* temp 코드 얻어오기
                 temp_code: 1,
                 // wear_date: $("#date-piker-input").val(),
-                wear_date: getWearDate(),
+                wear_date: '1996-09-06',
                 wear_code: getWearCode()
             });
 

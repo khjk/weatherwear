@@ -23,7 +23,7 @@ var login = {
         }).done(function(response) {
             loginSuccess(response); //return response.json();
         }).fail(function (error) {
-            console.log(error.json);
+            alert(error.json);
         });
         function loginSuccess(user){
            alert(user.id + "님의 브라우저 위치 접근을 허락해주세요!");
@@ -47,7 +47,7 @@ var login = {
             alert('회원 가입 완료되었습니다.');
             window.location.href="/";
         }).fail(function (error) {
-            console.log(error.json);
+            alert(error.json);
         });
     }
 
