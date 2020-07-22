@@ -44,14 +44,20 @@ $(function () {
     optionAppend("bottom");
 });
 
+// 그 날의 평균기온 가져오기
+$("#date-piker-input").on('blur', function () {
+    var user_id = $("#user_id").val();
+    $("#avg-temp").attr("value", getTemp(user_id));
+});
+
 //submit
 $(function () {
+    var user_id = $("#user_id").val();
     $("#submit").click(function () {
         var sendData = JSON.stringify(
             {
-                user_id: $("#user_id").val(),
-                // *수정* temp 코드 얻어오기
-                temp_code: 1,
+                user_id: user_id,
+                temp_code: getTempCode(user_id),
                 wear_date: getWearDate(),
                 wear_code: getWearCode()
             });
@@ -63,13 +69,12 @@ $(function () {
             contentType: "application/json;charset=UTF-8",
             async: false,
             success: function (data) {
-                confirm("등록 하시겠습니까?");
-                window.location.href="/";
+                alert("성공적으로 등록되었습니다! 옷차림에 평가해주세요")
+                    window.location.href="/users/eval-wear";
             }
         });
     });
 });
-
 
 // <select> - 옷 유형별 <option> 추가
 function optionAppend(type) {
@@ -136,3 +141,112 @@ function getWearDate(){
     }
     return date;
 }
+
+function getTempCode(user_id) {
+
+    var date = getWearDate();
+    var latitude = 0;
+    var longitude = 0;
+
+    $.ajax({
+        url: "../api/v1/users/"+user_id,
+        async: false,
+        success: function(data) {
+            latitude = data.loc_latitude;
+            longitude = data.loc_longitude;
+        }
+    });
+
+    var regDate = new Date(date);
+
+    var uRegDate = Math.floor(+regDate/1000);
+
+    var apiURI = "https://api.openweathermap.org/data/2.5/onecall/timemachine?"
+        + "lat=" + latitude
+        + "&lon=" + longitude
+        + "&dt="+ uRegDate
+        +"&appid=6e80afc16299c60c68363797958861a6";
+
+    var avg = 0;
+
+    $.ajax({
+        url: apiURI,
+        dataType: "json",
+        type: "GET",
+        async: false,
+        success: function(data) {
+            var sum = 0;
+            for(i=0; i<data.hourly.length; i++){
+                sum += data.hourly[i].temp - 273.15
+            }
+            avg = sum/data.hourly.length;
+            console.log("평균기온 : "+ avg);
+
+        }
+    });
+
+    var tempCode = searchTempCode(avg);
+
+    return tempCode;
+}
+
+function getTemp(user_id) {
+
+    var date = getWearDate();
+    var latitude = 0;
+    var longitude = 0;
+
+    $.ajax({
+        url: "../api/v1/users/"+user_id,
+        async: false,
+        success: function(data) {
+            latitude = data.loc_latitude;
+            longitude = data.loc_longitude;
+        }
+    });
+
+    var regDate = new Date(date);
+
+    var uRegDate = Math.floor(+regDate/1000);
+
+    var apiURI = "https://api.openweathermap.org/data/2.5/onecall/timemachine?"
+        + "lat=" + latitude
+        + "&lon=" + longitude
+        + "&dt="+ uRegDate
+        +"&appid=6e80afc16299c60c68363797958861a6";
+
+    var avg = 0;
+
+    $.ajax({
+        url: apiURI,
+        dataType: "json",
+        type: "GET",
+        async: false,
+        success: function(data) {
+            var sum = 0;
+            for(i=0; i<data.hourly.length; i++){
+                sum += data.hourly[i].temp - 273.15
+            }
+            avg = sum/data.hourly.length;
+            console.log("평균기온 : "+ avg);
+        }
+    });
+
+    return Math.floor(avg);
+}
+
+function searchTempCode(temp) {
+    var tempCode = 0;
+    if(temp >= 28){ tempCode = 1; }
+    else if(temp<28 && temp>=23){ tempCode = 2; }
+    else if(temp<23 && temp>=20){ tempCode = 3; }
+    else if(temp<20 && temp>=17){ tempCode = 4;}
+    else if(temp<17 && temp>=12){ tempCode = 5;}
+    else if(temp<12 && temp>=9){ tempCode = 6;}
+    else if(temp<9 && temp>=5){ tempCode = 7;}
+    else if(temp<5){ tempCode = 8;}
+
+    return tempCode;
+}
+
+
