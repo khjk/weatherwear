@@ -74,7 +74,7 @@ public class WearApiController {
     }
 
 
-    @GetMapping("api/v1/wears/list/{user_id}")
+    @GetMapping("/list/{user_id}")
     public List<String> retrievedDate(@PathVariable String user_id) {
         System.out.println("wears/list까진옴");
         List<String> dateList = new ArrayList<String>(){};
