@@ -1,31 +1,81 @@
-{{>layout/header}}
-<link rel="stylesheet" href="../css/mypage.css">
-<script src="js/mypage.js"></script>
+<!--{{>layout/header}}-->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>WeatherWear</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/css/favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="/css/mypage.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+body {
+  color: #6a6c6f;
+  background-color: #f1f3f6;
+  margin-top: 30px;
+}
+    </style>
 </head>
 <body>
-<body>
-<header>
-    <div class="header-banner"></div>
-</header>
+<div class="container">
+    <div class="accordion-option">
+        <h3 class="title">{{user_id}}님, 만나서 반갑습니다!</h3>
+        <a href="javascript:void(0)" class="toggle-accordion active" accordion-id="#accordion"></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        How to Use
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    1. 회원가입 후 로그인을 합니다. <br> 2. [옷차림저장]에서 자신이 입은 옷을 저장합니다. <br> 3. [평가하기]에서 입은 옷을 평가해주세요. <br> 4. 추천 알고리즘을 통해 기온에 맞는 옷을 추천 받을 수 있습니다.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        지난 평가 수정하기
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body">
+                    지난 평가를 수정해 더 정확한 추천 알고리즘을 이용해보세요.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        회원 탈퇴하기
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <span id="user_id" class="hidden" value={{user_id}}></span>
+                    <button type="button" id="btn-delete">탈퇴하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<section class="content">
-    <article>
-        <h2>How to Use</h2>
-        <p>1.회원가입 후 로그인을 합니다. <br> 2.자신이 입은 옷을 저장합니다. <br> 3.추천 알고리즘을 통해 기온에 맞는 옷을 추천 받을 수 있습니다.</p>
-        <hr>
-        <h2>지난 평가 수정하기</h2>
-        <p>지난 평가를 수정해 더 정확한 추천 알고리즘을 이용해보세요. </p>
-        <hr>
-        <h2>회원 탈퇴하기</h2>
-        <button type="button" id="btn-delete">탈퇴하기</button>
 
-    </article>
+<script src="/js/mypage.js"></script>
+</body>
+</html>
 
-    <aside>
-        <img src="http://placehold.it/144x150">
-        <img src="http://placehold.it/144x150">
-    </aside>
-</section>
-
-
-{{>layout/footer}}
+<!--{{>layout/footer}}-->

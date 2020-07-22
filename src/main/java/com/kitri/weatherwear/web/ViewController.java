@@ -34,8 +34,10 @@ public class ViewController {
 
    //마이페이지
    @GetMapping("/users/{id}")
-    public String myPage(Model model) {
-        return "mypage";
+    public String myPage(Model model, HttpSession session) {
+       String user_id = (String)session.getAttribute("user_id");
+       model.addAttribute("user_id",user_id);
+       return "mypage";
    }
 
    //과거에 입은 옷 (지난 평가보기)
