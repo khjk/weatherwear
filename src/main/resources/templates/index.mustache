@@ -84,6 +84,10 @@
             </div> <!-- left card -->
             <div class="info-side">
                 <div class="today-info-container">
+                    {{#user_id}}
+                    <span class="hidden" id="user_id_js">{{user_id}}</span>
+                    {{/user_id}}
+                     <!--user_id가 있으면 toggle해야될듯-->
                     <div class="today-info">
                         <div class="precipitation"> <span class="title">CLOUDS</span><span class="value" id="clouds">0 %</span>
                             <div class="clear"></div>
@@ -95,6 +99,20 @@
                             <div class="clear"></div>
                         </div>
                     </div>
+                    <!--user_id가 있으면 toggle해야될듯-->
+                        <div class="today-recommend">
+                            <span>오늘의 추천</span>
+                            <div class="precipitation"> <span class="title">OUTER</span><img id="OUTER_BEST" src="" alt="OUTER">
+                                <div class="clear"></div>
+                            </div>
+                            <div class="humidity"> <span class="title">TOP</span><img id="TOP_BEST" src="" alt="TOP">
+                                <div class="clear"></div>
+                            </div>
+                            <div class="wind"> <span class="title">BOTTOM</span><img id="BOTTOM_BEST" src="" alt="TOP">
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
                 </div>
                 <div class="week-container">
                     <ul class="week-list">
@@ -111,7 +129,7 @@
         <svg id="outer"></svg>
     </div>
 </div>
-<script src="js/weather.js"></script>
-<script src="js/animation.js" defer></script>
-
+<script src="/js/weather.js"></script>
+<script src="/js/animation.js" defer></script>
+<script src="/js/recommendation.js"></script>
 {{>layout/footer}}

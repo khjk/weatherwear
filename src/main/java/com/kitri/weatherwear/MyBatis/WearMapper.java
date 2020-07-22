@@ -1,9 +1,6 @@
 package com.kitri.weatherwear.MyBatis;
 
-import com.kitri.weatherwear.wear.Wear;
-import com.kitri.weatherwear.wear.WearResponseDto;
-import com.kitri.weatherwear.wear.WearSaveRequestDto;
-import com.kitri.weatherwear.wear.WearUpdateRequestDto;
+import com.kitri.weatherwear.wear.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,4 +17,6 @@ public interface WearMapper {
     Integer deleteById(int wear_no);
     List<WearResponseDto> findNotEvaluated(String user_id);
     List<Date> findRegiterDate(String user_id);
+    String getBestLikeByTempCode(WearFindLikeRequestDto wearFindLikeRequestDto);
+    String getBestWearCodeByBestLike(@Param("bestLike") String bestLike, @Param("requestDto") WearFindLikeRequestDto requestDto);
 }

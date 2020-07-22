@@ -47,4 +47,11 @@ public class WearDaoService {
         return wearMapper.findRegiterDate(user_id);
     }
 
+    public String getBestLikeByTempCode(WearFindLikeRequestDto wearFindLikeRequestDto) {
+        return wearMapper.getBestLikeByTempCode(wearFindLikeRequestDto);
+    }
+
+    public String getBestWearCodeByBestLike(String bestLike, WearFindLikeRequestDto wearFindLikeRequestDto) {
+        return wearMapper.getBestWearCodeByBestLike(bestLike, wearFindLikeRequestDto);
+    }
 }

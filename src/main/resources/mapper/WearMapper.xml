@@ -31,8 +31,23 @@
         Select wear_date from WEAR where user_id = #{user_id}
     </select>
 
-    <select id="findNotEvalDate" parameterType="String" resultType="java.util.Date">
-        Select wear_date from WEAR where eval = 'N' and user_id = #{user_id}
+    <select id="getBestLikeByTempCode" parameterType="wearFindLikeRequestDto" resultType="java.lang.String">
+        Select max(likeSum)
+        From (Select sum(like_no) as likeSum
+                From wear
+                where user_id = #{user_id} and temp_code = #{temp_code}
+                Group by wear_code ) as A
+    </select>
+
+    <select id="getBestWearCodeByBestLike" parameterType="map" resultType="java.lang.String">
+        Select B.wear_code
+        From ( Select wear_code, sum(like_no) as likeSum, wear_date
+                From wear
+                Where user_id = #{requestDto.user_id} and temp_code = #{requestDto.temp_code}
+                group by wear_code) as B
+        where B.likeSum = #{bestLike}
+        order by wear_date desc
+        limit 1
     </select>
 
 </mapper>
