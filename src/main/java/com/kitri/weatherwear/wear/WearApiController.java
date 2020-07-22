@@ -93,7 +93,7 @@ public class WearApiController {
         System.out.println(">>>getBestLikeAPI 첫번쨰 조회결과" + BestLike + wearFindLikeRequestDto.getUser_id() + wearFindLikeRequestDto.getTemp_code());
         if(BestLike == null ) {
             //해당 날짜에 데이터가 없거나 sql 오류 ->defualt 넣어줘야함
-            System.out.println("해당 날짜에 유저데이터가 없습니다.");
+            System.out.println("오늘에 날씨 코드에 해당하는 유저데이터가 없습니다.");
             switch(wearFindLikeRequestDto.getTemp_code()){
                 case 1 : //28도 이상
                     BestWearCode = "177";
