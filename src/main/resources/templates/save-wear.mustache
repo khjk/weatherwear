@@ -13,7 +13,7 @@
     {{>nav}}
     <div class = "background">
 
-        <h2>홍길동이 입은 옷을 저장해보세요!</h2>
+        <h2>{{user_id}}님, 입은 옷을 저장해보세요!</h2>
             <form id="clothes-form" >
 <!--                  action="/">-->
             <!--    날짜 선택    -->
@@ -47,7 +47,7 @@
 
 
             <!-- *수정* user_id - session 처리? -->
-            <input type="hidden" id="user_id" name="user_id" value="1">
+            <input type="hidden" id="user_id" name="user_id" value="{{user_id}}">
             <!-- *수정* temp_code?? -->
             <input type="hidden" id="temp_code" name="temp_code" value="1">
             <input type="hidden" id="wear_code" name="wear_code" value="1">

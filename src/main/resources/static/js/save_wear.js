@@ -19,6 +19,7 @@ function NoEvaluatedDate() {
 
     var result = [];
     $.ajax({
+        type: "GET",
         url: "../api/v1/wears/list/"+user_id,
         async: false,
         success: function(data) {
@@ -45,12 +46,11 @@ $(function () {
     $("#submit").click(function () {
         var sendData = JSON.stringify(
             {
-                // *수정* session 처리
                 user_id: $("#user_id").val(),
                 // *수정* temp 코드 얻어오기
                 temp_code: 1,
                 // wear_date: $("#date-piker-input").val(),
-                wear_date: getWearDate(),
+                wear_date: '1996-09-06',
                 wear_code: getWearCode()
             });
 
@@ -130,6 +130,8 @@ function getWearDate(){
             return false;
         }
     }
-
+    if(date == null || date == undefined){
+        return new Date();
+    }
     return date;
 }

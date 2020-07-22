@@ -17,9 +17,11 @@ const onedayTemp = document.getElementById("oneday-temp");
 const twodayTemp = document.getElementById("twoday-temp");
 const threedayTemp = document.getElementById("threeday-temp");
 const fourdayTemp = document.getElementById("fourday-temp");
+const changeLocBtn = document.getElementById("changeLocBtn");
 function init(){
     getYoilDateMonth();
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+    changeLocBtn.addEventListener('click',handleChangeLocation);
 }
 function handleGeoSuccess(position){
 	const latitude = position.coords.latitude;
@@ -33,13 +35,7 @@ function handleGeoSuccess(position){
         type: "GET",
         async: "false",
         success: function(response) {
-            console.log(response);
             var current = response.current;
-            console.log("현재 온도" + current.temp);
-            console.log("현재 습도:"+ current.humidity +"%");
-            console.log("현재 구름:"+ current.clouds +"%");
-            console.log("현재 풍속:"+ current.wind_speed + "m/s");
-            console.log("현재 Summary:"+ current.weather[0].main);
             var CurrentWeatherIcon = "http://openweathermap.org/img/wn/" + current.weather[0].icon + "@2x.png";
             $("#currentWeatherIcon").attr("src",CurrentWeatherIcon);
             weather_text.innerText = `${current.temp}°C`;
@@ -50,18 +46,11 @@ function handleGeoSuccess(position){
 		    cloudy_text.innerText = `${current.clouds}%`;
 		    humidity_text.innerText = `${current.humidity }%`;
             wind_text.innerText = `${current.wind_speed} m/s`;
-
             var oneDayAfter = response.daily[1];
             var twoDayAfter = response.daily[2];
             var threeDayAfter = response.daily[3];
             var fourDayAfter = response.daily[4];
             var fiveDayAfter = response.daily[5];
-            console.log("내일 온도:" + oneDayAfter.temp.day);
-            console.log("내일 습도:" + oneDayAfter.humidity);
-            console.log("내일 구름:" + oneDayAfter.clouds);
-            console.log("내일 풍속:" + oneDayAfter.wind_speed);
-            console.log("내일 강우량:" + oneDayAfter.rain + "mm");
-            console.log("내일 Summary:" + oneDayAfter.weather[0].main);
             var OneDayWeatherIcon =  "http://openweathermap.org/img/wn/" + oneDayAfter.weather[0].icon + "@2x.png";
             var twoDayWeatherIcon =  "http://openweathermap.org/img/wn/" + twoDayAfter.weather[0].icon + "@2x.png";
             var threeDayWeatherIcon =  "http://openweathermap.org/img/wn/" + threeDayAfter.weather[0].icon + "@2x.png";
@@ -145,7 +134,8 @@ function getMonthName(month) {
 
 function getDayName(day) {
     var dayName = "";
-    switch (day) {
+    var temp_day = day % 7;
+    switch (temp_day) {
         case 0:
             dayName = "Sunday";
           break;
@@ -169,5 +159,8 @@ function getDayName(day) {
       }
       return dayName;
 }
-
+function handleChangeLocation(){
+    navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+    alert('현재 사용자의 위치로 update하였습니다.');
+}
 init();

@@ -39,5 +39,4 @@ public class ClothesDaoService {
     public List<String> selectThreeImage(ClothesNameList nameList){
         return clothesMapper.selectThreeImageByNameList(nameList);
     }
-
 }

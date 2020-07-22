@@ -8,11 +8,11 @@
 <nav class="header">
     <div class="navbar_logo">
         <i class="fas fa-cloud-sun" id="logo"></i>
-        <a class="nav_title" href="#">WeatherWear</a>
+        <a class="nav_title" href="/">WeatherWear</a>
     </div>
     <ul class="navbar_menu">
-        <li><a href="/save-wear">옷차림저장</a></li>
-        <li><a href="/eval-wear" class="active">평가하기</a></li>
+        <li><a href="/users/save-wear">옷차림저장</a></li>
+        <li><a href="/users/eval-wear" class="active">평가하기</a></li>
         <li><a href="/logout">로그아웃</a></li> <!--페이지없이 js로처리-->
     </ul>
     <ul class="navbar_icons">
@@ -22,7 +22,6 @@
 </nav>
 <!--네브바-->
 <div>
-    <span id="user_id">{{user_id}}</span>
     <h1>지난 옷차림은 어땠나요?</h1>
 </div>
 <div class="container">
@@ -34,13 +33,19 @@
     <div class="eval">
         <div class="eval-date">
             <div class="eval-date-2">
+                {{#wear_date}}
                 <span class="eval-date-date">{{wear_date}}</span>
+                {{/wear_date}}
+                {{#temp_code}}
                 <span class="eval-date-temp">{{temp_code}}</span>
+                {{/temp_code}}
             </div>
         </div>
-        <div class="wear_code">옷코드: {{wear_code}}</div>
+        <div class="wear_code">{{wear_code}}</div>
         <div class="eval-clothes">
-            <img src="" alt="그날 입었던 옷 이미지">
+            <img class="outerImg" src="" alt="OUTER">
+            <img class="topImg" src="" alt="TOP">
+            <img class="bottomImg" src="" alt="BOTTOM">
         </div>
         <div class="eval-btn">
             <span class="eval-wear-no hidden">{{wear_no}}</span>

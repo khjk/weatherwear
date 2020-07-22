@@ -1,13 +1,17 @@
-{{>layout/header}}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 <p class="tip">Click on button in image container</p>
 <div class="cont">
 
-        <div class="form sign-in">
-            <form id="loginForm">
+    <div class="form sign-in">
+        <form id="loginForm">
             <h2>Welcome back,</h2>
             <label>
                 <span>Email</span>
@@ -22,9 +26,9 @@
             <p class="forgot-pass">Forgot password?</p>
             <button type="button" id="btn-login" class="submit">Sign In</button>
             <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
-            <button><a href="/oauth2/authorization/naver" role="button">Naver Login</a></button>
-            </form>
-        </div>
+            <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+        </form>
+    </div>
 
     <div class="sub-cont">
         <div class="img">
@@ -42,8 +46,8 @@
             </div>
         </div>
 
-            <div class="form sign-up">
-                <form id="signupForm">
+        <div class="form sign-up">
+            <form id="signupForm">
                 <h2>Time to feel like home,</h2>
                 <label>
                     <span>Name</span>
@@ -60,8 +64,8 @@
                 </label>
                 <button type="button" id="btn-signup"  class="submit">Sign Up</button>
                 <button type="button" class="fb-btn">Join with <span>facebook</span></button>
-                </form>
-            </div>
+            </form>
+        </div>
 
     </div>
 </div>
@@ -73,5 +77,5 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="/js/login.js"></script>
-
-{{>layout/footer}}
+</body>
+</html>
