@@ -21,8 +21,8 @@ public class WearDaoService {
         return wearMapper.findAll();
     }
 
-    public Integer save(Wear wear) {
-        return wearMapper.save(wear);
+    public Integer save(WearSaveRequestDto wearSaveRequestDto) {
+        return wearMapper.save(wearSaveRequestDto);
     }
 
     public Wear findOne(int wear_no) {
@@ -46,9 +46,5 @@ public class WearDaoService {
     public List<Date> findRegiterDate(String user_id) {
         return wearMapper.findRegiterDate(user_id);
     }
+}
 
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> origin/develop

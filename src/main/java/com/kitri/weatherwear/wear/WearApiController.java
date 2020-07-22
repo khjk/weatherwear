@@ -1,16 +1,12 @@
 package com.kitri.weatherwear.wear;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
 
 @Slf4j
 @RestController
@@ -44,19 +40,14 @@ public class WearApiController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Wear> saveWear(@RequestBody Wear wear) {
-        Integer saveResult = service.save(wear);
+    public int saveWear(@RequestBody WearSaveRequestDto wearSaveRequestDto) {
+        Integer saveResult = service.save(wearSaveRequestDto);
 
         if (saveResult == 0) {
-            throw new WearNotFoundException(String.format("Wear[%s] cannot be saved..",wear.getWear_code()));
+            throw new WearNotFoundException("Wear[%s] cannot be saved..");
         }
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{wear_id}")
-                .buildAndExpand(wear.getWear_no())
-                .toUri();
-
-        return ResponseEntity.created(location).build();
+        return saveResult;
     }
 
     @PutMapping("/{wear_no}")
@@ -80,14 +71,16 @@ public class WearApiController {
     }
 
 
-    @GetMapping("api/v1/wears/list/{user_id}")
+    @GetMapping("/list/{user_id}")
     public List<String> retrievedDate(@PathVariable String user_id) {
+        System.out.println("wears/list까진옴");
         List<String> dateList = new ArrayList<String>(){};
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         for(Date d : service.findRegiterDate(user_id)){
             dateList.add(df.format(d));
+            System.out.println(d);
         }
         return dateList;
     }

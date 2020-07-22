@@ -9,8 +9,5 @@ public class WearNotFoundException extends RuntimeException {
     public WearNotFoundException(String message) {
         super(message);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/develop
+

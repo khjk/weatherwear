@@ -14,8 +14,5 @@ public class WearUpdateRequestDto {
     public WearUpdateRequestDto(int like_no) {
         this.like_no = like_no;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/develop
+
