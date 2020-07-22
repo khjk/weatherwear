@@ -1,0 +1,47 @@
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <img src="/images/logo-color.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    <a class="navbar-brand" href="#">weatherwear</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
+        <ul class="navbar-nav justify-content-end ml-auto">
+            {{#user_id}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="users/eval-wear">옷차림 저장</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="users/eval-wear">옷차림 평가</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">로그아웃</a>
+                </li>
+            {{/user_id}}
+            {{^user_id}}
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login">로그인</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">회원가입</a>
+                </li>
+            {{/user_id}}
+        </ul>
+    </div>
+</nav>
+
+
+<!--<nav class="header">-->
+<!--    <div class="navbar_logo">-->
+<!--        <i class="fas fa-cloud-sun" id="logo"></i>-->
+<!--        <a class="nav_title" href="#">WeatherWear</a>-->
+<!--    </div>-->
+<!--    <ul class="navbar_menu">-->
+
+<!--    </ul>-->
+<!--    <ul class="navbar_icons">-->
+<!--        <li><i class="fab fa-twitter"></i></li>-->
+<!--        <li><i class="fab fa-instagram"></i></li>-->
+<!--    </ul>-->
+<!--</nav>-->

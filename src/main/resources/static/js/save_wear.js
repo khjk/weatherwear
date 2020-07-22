@@ -71,26 +71,34 @@ $(function () {
 
 // <select> - 옷 유형별 <option> 추가
 function optionAppend(type) {
-    $.get("../api/v1/clothes/"+type, function(data){
-        for(i=0; i<data.length; i++) {
-            $("#" + type + "-select").append('<option value=' + data[i].cid + '>' + data[i].cname + '</option>');
+    $.ajax({
+        type: "get",
+        url: "../api/v1/clothes/"+type,
+        success: function (data){
+            for(i=0; i<data.length; i++) {
+                $("#" + type + "-select").append('<option value=' + data[i].cid + '>' + data[i].cname + '</option>');
+            }
         }
-    })
+    });
 }
 
 // 선택한 옵션으로 이미지 변경
 function changeSelectImg(type){
-    $.get("../api/v1/clothes/"+type, function (data) {
-        var selectVal = $("#"+type+"-select").val();
-        var key = 0;
+    $.ajax({
+        type: "get",
+        url: "../api/v1/clothes/"+type,
+        success: function (data){
+            var selectVal = $("#"+type+"-select").val();
+            var key = 0;
 
-        for(i=0; i<data.length; i++){
-            if(data[i].cid == selectVal) {
-                key = i;
+            for(i=0; i<data.length; i++){
+                if(data[i].cid == selectVal) {
+                    key = i;
+                }
             }
+            $("#selected-"+type+"-img").attr("src", data[key].cimg);
         }
-        $("#selected-"+type+"-img").attr("src", data[key].cimg);
-    })
+    });
 }
 
 function getWearCode(){

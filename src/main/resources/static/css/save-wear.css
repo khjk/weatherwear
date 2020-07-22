@@ -1,5 +1,54 @@
 
 
+.site-section {
+    padding: 7rem 0;
+}
+
+.des {
+    color: #282828;
+}
+
+.des p{
+    margin-top: 20px;
+}
+
+
+#date-piker-input{
+    border-color: #e2d9fc;
+}
+
+#choose-section{
+    margin-top: 8rem;
+}
+
+#choose{
+    text-align: center;
+}
+
+#choose img{
+    width: 150px;
+}
+
+#choose select {
+    margin-top: 25px;
+    width: 10rem;
+    border-color: #e2d9fc;
+}
+
+#div-save{
+    margin-top: 9rem;
+}
+#submit{
+    color: #c0abfd;
+    border-color: #c0abfd;
+}
+
+@media (max-width: 780px) {
+    .custom-navbar > .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
 
 
 
@@ -7,6 +56,7 @@
 DatePicker
 */
 .wrapper {
+    margin-right: 30px;
     max-width: 18rem;
     /* 달력 선택 위치 조정 */
     /*padding: 0 0.5rem;*/
