@@ -1,9 +1,6 @@
 package com.kitri.weatherwear.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -21,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/","/user/login","/css/**","/images/**","/js/**","/api/v1/**","/users/save-wear","users/eval-wear").permitAll()
+                    .antMatchers("/","/user/login","/css/**","/images/**","/js/**","/api/v1/**","/users/**").permitAll()
                     //.antMatchers("/api/v1/**").hasRole("USER")
                     .anyRequest().authenticated()
                 .and()
