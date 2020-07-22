@@ -46,20 +46,16 @@ public class ViewController {
 
    //오늘의 추천
    @GetMapping("/users/today-wear")
-    public String todayWear(Model model, HttpSession session) {
-       String user_id = (String)session.getAttribute("user_id");
-       System.out.println(">>>>>>>>세션 아이디 : " + user_id);
-       model.addAttribute("user_id",user_id);
+    public String todayWear(Model model) {
         return "today-wear";
    }
 
    //룩저장하기
    @GetMapping("users/save-wear")
     public String saveWear(Model model, HttpSession session) {
-       String user_id = (String)session.getAttribute("user_id");
-       System.out.println(">>>>>>>>save-wear 세션 아이디 : " + user_id);
-       model.addAttribute("user_id", user_id);
-       model.addAttribute("user_name", userDaoService.findOne(user_id).getName());
+        String user_id = (String)session.getAttribute("user_id");
+       System.out.println(">>>>>save-wear세션아이디: "+ user_id);
+       model.addAttribute("user_id",user_id);
         return "save-wear";
    }
 

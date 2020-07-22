@@ -115,25 +115,18 @@ function initAnimation()
 
 	TweenMax.set(sunburst.node, {opacity: 0})
 	var tempIndex = 4;
-	console.log("index.js : SummaryHTML" + SummaryHTML);
 	if(SummaryHTML == "snow"){
 	    tempIndex = 0;
-	    console.log(">>>index.js 시작 날씨 snow선택됨");
 	}else if(SummaryHTML == "wind" || SummaryHTML == "Clouds"){
 	    tempIndex = 1;
-	    console.log(">>>index.js 시작 날씨 wind선택됨");
-	}else if(SummaryHTML == "rain" || SummaryHTML == "Rain"){
+	}else if(SummaryHTML == "rain" || SummaryHTML == "Rain" || SummaryHTML == "Mist"){
 	    tempIndex = 2;
-	    console.log(">>>index.js 시작 날씨 rain선택됨");
 	}else if(SummaryHTML == "thunder" || SummaryHTML == "Thunderstorm"){
 	    tempIndex = 3;
-	    console.log(">>>index.js 시작 날씨 thunder선택됨");
 	}else if(SummaryHTML == "sun" || SummaryHTML == "Clear"){
 	    tempIndex = 4;
-	    console.log(">>>index.js 시작 날씨 sun선택됨");
 	}else{
 	    tempIndex = 0; //snow wind rain thunder sun에 해당안되면 default로 1
-	    console.log(">>>index.js 시작 날씨 default선택됨");
 	}
 	changeWeather(weather[tempIndex]);
 	requestAnimationFrame(tick);

@@ -16,7 +16,7 @@ var login = {
 
         $.ajax({
             type: 'POST',
-            url : 'api/v1/users/validation',
+            url : '../api/v1/users/validation',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)
@@ -39,7 +39,7 @@ var login = {
 
         $.ajax({
             type: 'POST',
-            url : 'api/v1/users',
+            url : '../api/v1/users',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data)

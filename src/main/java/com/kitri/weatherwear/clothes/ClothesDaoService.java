@@ -32,5 +32,11 @@ public class ClothesDaoService {
 
     public Clothes selectRain() { return clothesMapper.selectRain();}
 
+    public ClothesNameList getClothesNameByCode(int wCode) {
+        return clothesMapper.getClothesNameByCode(wCode);
+    }
 
+    public List<String> selectThreeImage(ClothesNameList nameList){
+        return clothesMapper.selectThreeImageByNameList(nameList);
+    }
 }

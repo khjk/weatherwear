@@ -29,6 +29,7 @@ public class UserApiController {
     @PostMapping("/validation")
     public User loginUser(@RequestBody UserLoginRequestDto userLoginRequestDto, HttpSession session) { //로그인
         User user = service.login(userLoginRequestDto);
+        System.out.println(">>>validation: " + user.getId());
         if (user == null) {
             throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
         }else {
@@ -50,7 +51,7 @@ public class UserApiController {
     @PostMapping("")
     public int createUser(@RequestBody UserSignUpRequestDto userSignUpRequestDto, HttpSession session) {
         Integer savedResult = service.save(userSignUpRequestDto);
-
+        System.out.println(">>>회원가입:"+userSignUpRequestDto.getId());
         if(savedResult == 0) {
             throw new UserNotFoundException(String.format("ID[%s]를 생성할 수 없습니다.",userSignUpRequestDto.getId()));
         }else {

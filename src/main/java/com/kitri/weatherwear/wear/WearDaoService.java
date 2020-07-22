@@ -21,8 +21,8 @@ public class WearDaoService {
         return wearMapper.findAll();
     }
 
-    public Integer save(Wear wear) {
-        return wearMapper.save(wear);
+    public Integer save(WearSaveRequestDto wearSaveRequestDto) {
+        return wearMapper.save(wearSaveRequestDto);
     }
 
     public Wear findOne(int wear_no) {

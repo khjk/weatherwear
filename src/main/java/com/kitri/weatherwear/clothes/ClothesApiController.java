@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ClothesApiController {
@@ -61,5 +62,13 @@ public class ClothesApiController {
         return cService.selectRain();
     }
 
-
+    /*
+    wear-code에 따른 clothes 이름 리스트 불러오고,
+    그 이름 리스트로 이미지 리스트 세개 반환하기
+    */
+    @GetMapping("api/v1/clothes/img/{wCode}")
+    public List<String> getThreeImage(@PathVariable int wCode){
+        ClothesNameList nameList = cService.getClothesNameByCode(wCode);
+        return cService.selectThreeImage(nameList);
+    }
 }

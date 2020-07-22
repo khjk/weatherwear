@@ -20,17 +20,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .headers().frameOptions().disable()
                 .and()
-                .authorizeRequests()
-                .antMatchers("/","/user/login","/css/**","/images/**","/js/**","/api/v1/**").permitAll()
-                //.antMatchers("api/v1/**").hasRole("USER")
-                .anyRequest().authenticated()
+                    .authorizeRequests()
+                    .antMatchers("/","/user/login","/css/**","/images/**","/js/**","api/v1/**").permitAll()
+                    //.antMatchers("api/v1/**").hasRole("USER")
+                    .anyRequest().authenticated()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/")
+                    .logout()
+                        .logoutSuccessUrl("/")
                 .and()
-                .oauth2Login()
-                .userInfoEndpoint()
-                .userService(customOAuth2UserService);
+                    .oauth2Login()
+                        .userInfoEndpoint()
+                            .userService(customOAuth2UserService);
     }
 
 }

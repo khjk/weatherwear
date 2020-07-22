@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-
-{{>layout/header}}
-
+    <title>WeatherWear</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/css/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
@@ -24,9 +25,9 @@
 
             </label>
             <p class="forgot-pass">Forgot password?</p>
-            <button type="button" id="btn-login" class="submit">Sign In</button>
+            <button id="btn-login" >Sign In</button>
             <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
-            <button><a href="/oauth2/authorization/naver" role="button">Naver Login</a></button>
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
             </form>
         </div>
 
@@ -61,7 +62,7 @@
                     <span>Password</span>
                     <input type="password" id="signup_password"/>
                 </label>
-                <button type="button" id="btn-signup"  class="submit">Sign Up</button>
+                <button id="btn-signup" >Sign Up</button>
                 <button type="button" class="fb-btn">Join with <span>facebook</span></button>
                 </form>
             </div>
@@ -78,7 +79,3 @@
 <script src="/js/login.js"></script>
 
 {{>layout/footer}}
-
-
-</body>
-</html>
