@@ -47,4 +47,8 @@ public class WearDaoService {
         return wearMapper.findRegiterDate(user_id);
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

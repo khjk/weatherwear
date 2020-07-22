@@ -19,4 +19,8 @@ public interface WearMapper {
     Integer deleteById(int wear_no);
     List<WearResponseDto> findNotEvaluated(String user_id);
     List<Date> findRegiterDate(String user_id);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

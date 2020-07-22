@@ -5,7 +5,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+<<<<<<< HEAD
 
+=======
+/*
+* 하드코딩....EVA....
+* */
+>>>>>>> origin/develop
 @Service
 public class MessageService {
     private static List<Message> messages = new ArrayList<>();

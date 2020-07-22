@@ -21,12 +21,21 @@ public class SwaggerConfig {
             "https://github.com/khjk/weatherwear","begywjd@naver.com");
 
     private ApiInfo apiInfo() {
+<<<<<<< HEAD
         return new ApiInfoBuilder().title("WeatherWear API")
                 .description("We provide the right outfit for the weather")
                 .version("1.0")
                 .contact(DEFAULT_CONTACT)
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0").build();
+=======
+       return new ApiInfoBuilder().title("WeatherWear API")
+               .description("We provide the right outfit for the weather")
+               .version("1.0")
+               .contact(DEFAULT_CONTACT)
+               .license("Apache 2.0")
+               .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0").build();
+>>>>>>> origin/develop
     }
     private static final String DEFAULT_PRODUCES_AND_CONSUMES = "application/json";
 

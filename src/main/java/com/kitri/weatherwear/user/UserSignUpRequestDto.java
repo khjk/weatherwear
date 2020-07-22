@@ -27,4 +27,8 @@ public class UserSignUpRequestDto {
         this.name = name;
         this.id = email;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

@@ -1,5 +1,9 @@
 package com.kitri.weatherwear.clothes;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

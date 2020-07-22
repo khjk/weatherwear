@@ -34,4 +34,8 @@ public class OAuthAttributes {
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

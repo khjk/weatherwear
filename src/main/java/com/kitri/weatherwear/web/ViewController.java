@@ -32,6 +32,7 @@ public class ViewController {
         return "user-login";
     }
 
+<<<<<<< HEAD
     //마이페이지
     @GetMapping("/users/{id}")
     public String myPage(Model model) {
@@ -58,11 +59,43 @@ public class ViewController {
 
     //평가하지 않은 룩들 평가하기 페이지
     @GetMapping("users/eval-wear")
+=======
+   //마이페이지
+   @GetMapping("/users/{id}")
+    public String myPage(Model model) {
+        return "mypage";
+   }
+
+   //과거에 입은 옷 (지난 평가보기)
+   @GetMapping("/users/closet")
+    public String myPageCloset(Model model) {
+        return "closet";
+   }
+
+   //오늘의 추천
+   @GetMapping("/users/today-wear")
+    public String todayWear(Model model) {
+        return "today-wear";
+   }
+
+   //룩저장하기
+   @GetMapping("users/save-wear")
+    public String saveWear(Model model) {
+        return "save-wear";
+   }
+
+   //평가하지 않은 룩들 평가하기 페이지
+   @GetMapping("users/eval-wear")
+>>>>>>> origin/develop
     public String evalWear(Model model, HttpSession session) {
         String user_id = (String)session.getAttribute("user_id");
         System.out.println(">>>>>eval-wear세션아이디: "+ user_id);
         model.addAttribute("user_id",user_id);
         model.addAttribute("wears", wearDaoService.findNotEvaluated(user_id));
         return "eval-wear";
+<<<<<<< HEAD
     }
+=======
+   }
+>>>>>>> origin/develop
 }

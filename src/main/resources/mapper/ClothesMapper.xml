@@ -3,6 +3,7 @@
 
 <mapper namespace="com.kitri.weatherwear.MyBatis.ClothesMapper">
 
+<<<<<<< HEAD
     <!-- clothes_sort 테이블 전체 호출 -->
     <select id="selectAllClothes" resultType="Clothes">
         SELECT *
@@ -62,6 +63,67 @@
         FROM clothes_sorts
         WHERE c_name= "우산"
     </select>
+=======
+	<!-- clothes_sort 테이블 전체 호출 -->
+    <select id="selectAllClothes" resultType="Clothes">
+		SELECT *
+		FROM clothes_sorts
+	</select>
+
+	<!-- 옷 종류별로 호출 -->
+	<select id="selectCsort" parameterType="String" resultType="Clothes" >
+		SELECT *
+		FROM clothes_sorts
+		WHERE c_sort=#{sort}
+	</select>
+
+	<!-- wear-code 호출 -->
+	<select id="getWcode" parameterType="int" resultType="int" >
+		SELECT wear_code
+		FROM clothes
+		WHERE outer_wear = <choose>
+							<when test="outer == 0">
+								''
+							</when>
+							<otherwise>
+								(select c_name from clothes_sorts where c_id = #{outer})
+							</otherwise>
+							</choose>
+		AND top_wear = <choose>
+						<when test="top == 0">
+							''
+						</when>
+						<otherwise>
+							(select c_name from clothes_sorts where c_id = #{top})
+						</otherwise>
+						</choose>
+		AND bottom_wear = <choose>
+							<when test="bottom == 0">
+								''
+							</when>
+							<otherwise>
+								(select c_name from clothes_sorts where c_id = #{bottom})
+							</otherwise>
+						</choose>
+	</select>
+
+	<!-- wear-code의 옷 객체 불러오기 -->
+	<select id="selectGetWcode" parameterType="int" resultType="Clothes">
+		select *
+		from clothes_sorts
+		where c_name IN (select outer_wear from clothes where wear_code = #{wCode})
+		OR c_name IN (select top_wear from clothes where wear_code = #{wCode})
+		OR c_name IN (select bottom_wear from clothes where wear_code = #{wCode})
+	</select>
+
+
+	<!-- 비 올때 우산 이미지 링크 불러오기 -->
+	<select id="selectRain" resultType="Clothes" >
+		SELECT *
+		FROM clothes_sorts
+		WHERE c_name= "우산"
+	</select>
+>>>>>>> origin/develop
 
 
 </mapper>
