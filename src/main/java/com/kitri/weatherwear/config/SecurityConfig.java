@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/","/user/login","/css/**","/images/**","/js/**","/api/v1/users/**","/users/save-wear","users/eval-wear").permitAll()
+                    .antMatchers("/","/user/login","/css/**","/images/**","/js/**","/api/v1/**","/users/save-wear","users/eval-wear").permitAll()
                     //.antMatchers("/api/v1/**").hasRole("USER")
                     .anyRequest().authenticated()
                 .and()
