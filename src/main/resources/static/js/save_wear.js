@@ -42,9 +42,6 @@ $(function () {
     optionAppend("outer");
     optionAppend("top");
     optionAppend("bottom");
-    console.log($("#outer-select").val());
-    console.log($("#top-select").val());
-    console.log($("#bottom-select").val());
 });
 
 //submit
