@@ -1,9 +1,9 @@
 // 날짜 선택(달력) -- datepicker
 $(function() {
     var today = new Date();
-    var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24)
+    var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24);
 
-    $('#date-piker-input').val($.datepicker.formatDate("yy-mm-dd", today));
+    $('#date-piker-input').val($.datepicker.formatDate("yy-mm-dd", lastEnableDay));
 
     $( "#date-piker-input" ).datepicker({
         dateFormat: "yy-mm-dd",
@@ -16,6 +16,7 @@ $(function() {
 
 // 이미 그 user가 옷차림을 저장한 날짜들 불러오기 -- 한 날짜당 하나의 옷차림만 등록가능
 var disableDoneDay = NoEvaluatedDate();
+var lastEnableDay = getEnableLastDay();
 
 function NoEvaluatedDate() {
     var user_id = $("#user_id").val();
@@ -47,7 +48,7 @@ $(function () {
 // 그 날의 평균기온 가져오기
 $("#date-piker-input").on('blur', function () {
     var user_id = $("#user_id").val();
-    $("#avg-temp").attr("value", getTemp(user_id));
+    $("#avg-temp").attr("value", getAvgTemp(user_id));
 });
 
 //submit
@@ -90,7 +91,6 @@ function changeSelectImg(type){
     $.get("../api/v1/clothes/"+type, function (data) {
 
         var selectVal = $("#"+type+"-select").val();
-        console.log("seletVal: " + selectVal);
         var key = -1;
 
         for(i=0; i<data.length; i++){
@@ -197,7 +197,7 @@ function getTempCode(user_id) {
     return tempCode;
 }
 
-function getTemp(user_id) {
+function getAvgTemp(user_id) {
 
     var date = getWearDate();
     var latitude = 0;
@@ -255,5 +255,24 @@ function searchTempCode(temp) {
 
     return tempCode;
 }
+
+
+function getEnableLastDay() {
+    var today = new Date();
+    var before1Day= new Date(Date.parse(today) - 1 * 1000 * 60 * 60 * 24);
+    var before2Day= new Date(Date.parse(today) - 2 * 1000 * 60 * 60 * 24);
+    var before3Day= new Date(Date.parse(today) - 3 * 1000 * 60 * 60 * 24);
+    var before4Day= new Date(Date.parse(today) - 4 * 1000 * 60 * 60 * 24);
+    var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24);
+
+    var dates = [before5Day,before4Day,before3Day,before2Day,before1Day,today];
+
+
+    for(i=0; i<disableDoneDay.length; i++){
+        dates.splice(dates.indexOf(disableDoneDay[i]),1);
+    }
+
+    return dates.pop();
+    }
 
 
