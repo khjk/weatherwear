@@ -1,6 +1,6 @@
 .navbar{
     padding: 10px 80px;
-    /* background-color: white; */
+    background: linear-gradient( to bottom, #fff, #f3f3f6 ) !important;
 }
 
 .navbar-brand {
