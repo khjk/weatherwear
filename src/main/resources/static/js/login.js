@@ -54,32 +54,52 @@ var login = {
 }
 login.init();
 
-$(function(){
-$("#signup_id").blur(function() {
-		var id = $('#signup_id').val();
-		$.ajax({
-		    type : 'GET',
-			url : 'api/v1/users/id-check/'+id,
-//			dataType: 'json',
-//            contentType: 'application/json; charset=utf-8',
-			success : function(data) {
-
-				if (data == 1) {
-						// 1 : 아이디가 중복되는 문구
-						$("#id_check").text("사용중인 아이디입니다");
-						$("#id_check").css("color", "red");
-						$("#btn-signup").attr("disabled", true);
-					} else {
-							$('#id_check').text('아이디를 입력해주세요 :)');
-							$('#id_check').css('color', 'red');
-							$("#btn-signup").attr("disabled", true);
-					}
-				}, error : function() {
-						console.log("실패");
-				}
-			});
-		});
-
-
-});
-
+//$(function(){
+//$("#signup_id").blur(function() {
+//		var id = $('#signup_id').val();
+//		$.ajax({
+//		    type : 'GET',
+//			url : 'api/v1/users/id-check/'+id,
+////			dataType: 'json',
+////            contentType: 'application/json; charset=utf-8',
+//			success : function(data) {
+//
+//				if (data == 1) {
+//						// 1 : 아이디가 중복되는 문구
+//						$("#id_check").text("사용중인 아이디입니다.");
+//						$("#id_check").css("color", "red");
+//						$("#btn-signup").attr("disabled", true);
+//					} else {
+//						$("#id_check").text("사용 가능한 아이디입니다.");
+//                        $("#id_check").css("color", "blue");
+//                        $("#btn-signup").attr("disabled", false);
+//					}
+//				}, error : function() {
+//						console.log("실패");
+//				}
+//			});
+//		});
+//});
+//
+//window.onload = function() {
+//    var id = document.querySelector("input[name='signup_id']");
+//    var password = document.querySelector("input[name='signup_password']");
+//    var btn-signup = document.getElementById("btn-signup");
+//    btn-signup.onclick = function() {
+//        if(id.value == "") {
+//            document.getElementById("id_check").innerText="아이디를 입력하세요.";
+//            document.getElementById("id_check").style.color="red";
+//            return;
+//        } else {
+//            document.getElementById("id_check").innerText="";
+//        }
+//        if(password.value == "") {
+//            document.getElementById("pwd_check").innerText="패스워드를 입력하세요."
+//            document.getElementById("pwd_check").style.color="red";
+//            return;
+//        } else {
+//            document.getElementById("pwd_check").innerText="";
+//        }
+//        document.getElementById("signupForm").submit();
+//    }
+//}
