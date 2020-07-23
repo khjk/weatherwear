@@ -88,15 +88,22 @@ function optionAppend(type) {
 // 선택한 옵션으로 이미지 변경
 function changeSelectImg(type){
     $.get("../api/v1/clothes/"+type, function (data) {
+
         var selectVal = $("#"+type+"-select").val();
-        var key = 0;
+        console.log("seletVal: " + selectVal);
+        var key = -1;
 
         for(i=0; i<data.length; i++){
             if(data[i].cid == selectVal) {
                 key = i;
             }
         }
-        $("#selected-"+type+"-img").attr("src", data[key].cimg);
+
+        if(key == -1){
+            $("#selected-"+type+"-img").attr("src", "../images/no-"+type+".png");
+        } else{
+            $("#selected-"+type+"-img").attr("src", data[key].cimg);
+        }
     })
 }
 
