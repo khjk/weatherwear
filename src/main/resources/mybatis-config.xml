@@ -16,5 +16,6 @@
         <typeAlias type="com.kitri.weatherwear.wear.WearResponseDto" alias="WearResponseDto" />
         <typeAlias type="com.kitri.weatherwear.clothes.ClothesNameList" alias="ClothesNameList"/>
         <typeAlias type="com.kitri.weatherwear.wear.WearSaveRequestDto" alias="wearSaveRequestDto"/>
+        <typeAlias type="com.kitri.weatherwear.wear.WearFindLikeRequestDto" alias="wearFindLikeRequestDto"/>
     </typeAliases>
 </configuration>

@@ -22,7 +22,8 @@
                 {{#user_id}}
                     <li><a href="users/save-wear">옷차림저장</a></li>
                     <li><a href="users/eval-wear">평가하기</a></li>
-                    <li><a href="/logout">로그아웃</a></li> <!--페이지없이 js로처리-->
+                    <li><a href="users/mypage">마이페이지</a></li>
+                    <li><a href="/logout">로그아웃</a></li>
                 {{/user_id}}
                 {{^user_id}}
                     <li><a href="/user/login">로그인</a></li>
@@ -84,6 +85,10 @@
             </div> <!-- left card -->
             <div class="info-side">
                 <div class="today-info-container">
+                    {{#user_id}}
+                    <span class="hidden" id="user_id_js">{{user_id}}</span>
+                    {{/user_id}}
+                     <!--user_id가 있으면 toggle해야될듯-->
                     <div class="today-info">
                         <div class="precipitation"> <span class="title">CLOUDS</span><span class="value" id="clouds">0 %</span>
                             <div class="clear"></div>
@@ -95,6 +100,20 @@
                             <div class="clear"></div>
                         </div>
                     </div>
+                    <!--user_id가 있으면 toggle해야될듯-->
+                        <div class="today-recommend">
+                            <span class="recommend_text">오늘의 추천</span>
+                            <div class="precipitation"> <img id="OUTER_BEST" src="" alt="OUTER">
+                                <div class="clear"></div>
+                            </div>
+                            <div class="humidity"> <img id="TOP_BEST" src="" alt="TOP">
+                                <div class="clear"></div>
+                            </div>
+                            <div class="wind"> <img id="BOTTOM_BEST" src="" alt="TOP">
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
                 </div>
                 <div class="week-container">
                     <ul class="week-list">
@@ -111,7 +130,7 @@
         <svg id="outer"></svg>
     </div>
 </div>
-<script src="js/weather.js"></script>
-<script src="js/animation.js" defer></script>
-
+<script src="/js/weather.js"></script>
+<script src="/js/animation.js" defer></script>
+<script src="/js/recommendation.js"></script>
 {{>layout/footer}}

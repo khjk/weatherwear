@@ -48,3 +48,14 @@ public class WearDaoService {
     }
 }
 
+<<<<<<< HEAD
+=======
+    public String getBestLikeByTempCode(WearFindLikeRequestDto wearFindLikeRequestDto) {
+        return wearMapper.getBestLikeByTempCode(wearFindLikeRequestDto);
+    }
+
+    public String getBestWearCodeByBestLike(String bestLike, WearFindLikeRequestDto wearFindLikeRequestDto) {
+        return wearMapper.getBestWearCodeByBestLike(bestLike, wearFindLikeRequestDto);
+    }
+}
+>>>>>>> a41aff1f47a289dcecf3e54118ac14c508e11599

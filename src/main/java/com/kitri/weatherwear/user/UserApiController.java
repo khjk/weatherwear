@@ -67,11 +67,12 @@ public class UserApiController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable String id) {
+    public void deleteUser(@PathVariable String id, HttpSession session) {
         Integer deletedResult = service.deleteById(id);
-
         if(deletedResult == 0) {
             throw new UserNotFoundException(String.format("ID[%s]를 삭제할 수 없습니다.", id));
+        }else{
+            session.invalidate();
         }
     }
 

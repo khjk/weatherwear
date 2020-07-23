@@ -33,10 +33,17 @@ public class ViewController {
     }
 
    //마이페이지
+<<<<<<< HEAD
    @GetMapping("/users/{id}")
     public String myPage(Model model, HttpSession session) {
        String user_id = (String)session.getAttribute("user_id");
        model.addAttribute("user_id",user_id);
+=======
+   @GetMapping("/users/mypage")
+   public String myPage(Model model, HttpSession session) {
+       String user_id = (String) session.getAttribute("user_id");
+       model.addAttribute("user_id", user_id);
+>>>>>>> a41aff1f47a289dcecf3e54118ac14c508e11599
        return "mypage";
    }
 

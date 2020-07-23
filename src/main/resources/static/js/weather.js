@@ -18,11 +18,14 @@ const twodayTemp = document.getElementById("twoday-temp");
 const threedayTemp = document.getElementById("threeday-temp");
 const fourdayTemp = document.getElementById("fourday-temp");
 const changeLocBtn = document.getElementById("changeLocBtn");
+var login_flag = 0; //0일떄는 로그인 안한거
+var user_id_ = "";
 function init(){
     getYoilDateMonth();
-    navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
-    changeLocBtn.addEventListener('click',handleChangeLocation);
+   navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
+   changeLocBtn.addEventListener('click',handleChangeLocation);
 }
+
 function handleGeoSuccess(position){
 	const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -64,8 +67,76 @@ function handleGeoSuccess(position){
             threedayTemp.innerText = `${threeDayAfter.temp.day}°C`;
             fourdayTemp.innerText = `${fourDayAfter.temp.day}°C`;
             initAnimation();
+            user_id_ = $('#user_id_js').html();
+           if(user_id_ == undefined || user_id_ == null || user_id_ == ""){ //로그인 안했을때
+                $('.today-recommend').addClass('hidden');
+                $('.today-info').removeClass('hidden');
+                login_flag = 0;
+           }else{ //로그인 했을때
+                $('.today-info').addClass('hidden');
+                $('.today-recommend').removeClass('hidden');
+                login_flag = 1;
+           }
+            if(login_flag == 1){
+                var temp_code = getTempCode(current.temp);
+                console.log("템프코드"+ temp_code);
+                console.log("유저아이디" + user_id_);
+                getBestLike(temp_code, user_id_);
+            }
+             // current.temp //지금 온도
+                    //console.log("지금 온도"+_temp_to_code);
+                   // console.log("변환 코드"+getTempCode(_temp_to_code));
+                    //로그인시에 -> current.temp -> temp_code로 변환하고,,, -> 로그인 아이디와 temp_code 사용해서 API(WEAR) 옷코드 받고
+                   // -> 옷코드 받은걸 -> api(CLOTHES) -> 이미지로 변환
         }
     })
+}
+//로그인 아이디와 temp_code 사용해서 WEAR 코드 받기
+function getBestLike(temp_code,user_id_){
+   var data = {
+       user_id : user_id_,
+       temp_code : temp_code
+   };
+  $.ajax({
+            type: 'POST',
+            url : '../api/v1/wears/best-like',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function(response){
+            console.log(response);
+            getImgByBestCode(response);
+        }).fail(function (error) {
+            alert(error.json);
+  });
+}
+function getImgByBestCode(best_code){
+  $.ajax({
+            type: 'GET',
+            url : '../api/v1/clothes/img/' + best_code,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function(response){
+            console.log("옷url" + response);
+            if(response.length == 3){ //반환값 3개일 때
+             console.log("반환값이 3개");
+                $('#OUTER_BEST').attr("src",response[0]);
+                $('#TOP_BEST').attr("src", response[1]);
+                $('#BOTTOM_BEST').attr("src", response[2]);
+            }else if(response.length ==2){ //반환값 2개일 때
+             console.log("반환값이 2개");
+                $('#OUTER_BEST').remove();
+                $('#TOP_BEST').attr("src",response[0]);
+                $('#BOTTOM_BEST').attr("src",response[1]);
+            }else{ //반환값 1개일 때
+                 console.log("반환값이 1개");
+                $('#OUTER_BEST').remove();
+                $('#TOP_BEST').attr("src",response[0]);
+                $('#BOTTOM_BEST').remove();
+            }
+        }).fail(function (error) {
+            alert(error.json);
+  });
 }
 
 function handleGeoError(){
@@ -89,7 +160,20 @@ function getYoilDateMonth(){
     threeday_text.innerHTML = `${threedayName}`;
     fourday_text.innerHTML = `${fourdayName}`;
 }
+function getTempCode(temp) {
+    var tempCode = 0;
+    var temperature = Number(temp);
+    if(temperature >= 28){ tempCode = 1; }
+    else if(temperature<28 && temperature>=23){ tempCode = 2; }
+    else if(temperature<23 && temperature>=20){ tempCode = 3; }
+    else if(temperature<20 && temperature>=17){ tempCode = 4;}
+    else if(temperature<17 && temperature>=12){ tempCode = 5;}
+    else if(temperature<12 && temperature>=9){ tempCode = 6;}
+    else if(temperature<9 && temperature>=5){ tempCode = 7;}
+    else if(temperature<5){ tempCode = 8;}
 
+    return tempCode;
+}
 function getMonthName(month) {
     var tempMonthName = "";
     switch(month){
