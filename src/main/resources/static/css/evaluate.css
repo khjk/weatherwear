@@ -24,6 +24,11 @@ h2{
     margin : 0;
 }
 
+#btn-reg{
+    color: #c0abfd;
+    border-color: #c0abfd;
+}
+
 .eval{
     margin-top: 12px;
     font-weight: 300;
