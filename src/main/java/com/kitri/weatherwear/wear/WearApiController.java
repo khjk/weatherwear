@@ -1,11 +1,8 @@
 package com.kitri.weatherwear.wear;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -85,6 +82,56 @@ public class WearApiController {
             System.out.println(d);
         }
         return dateList;
+    }
+    /*
+    user_id별 오늘의 옷차림 추천
+     */
+    @PostMapping("/best-like")
+    public String getWearCodeByBestLikeByTempCode(@RequestBody WearFindLikeRequestDto wearFindLikeRequestDto) {
+        String BestLike = service.getBestLikeByTempCode(wearFindLikeRequestDto);
+        String BestWearCode = "1"; //default
+        System.out.println(">>>getBestLikeAPI 첫번쨰 조회결과" + BestLike + wearFindLikeRequestDto.getUser_id() + wearFindLikeRequestDto.getTemp_code());
+        if(BestLike == null ) {
+            //해당 날짜에 데이터가 없거나 sql 오류 ->defualt 넣어줘야함
+            System.out.println("오늘에 날씨 코드에 해당하는 유저데이터가 없습니다.");
+            switch(wearFindLikeRequestDto.getTemp_code()){
+                case 1 : //28도 이상
+                    BestWearCode = "177";
+                    break;
+                case 2 : //23도 이상
+                    BestWearCode = "178";
+                    break;
+                case 3 : //20도 이상
+                    BestWearCode = "186";
+                    break;
+                case 4 : //17도 이상
+                    BestWearCode = "7";
+                    break;
+                case 5 : //12도 이상
+                    BestWearCode = "18";
+                    break;
+                case 6 : //9도이상
+                    BestWearCode = "50";
+                    break;
+                case 7 : //5도이상
+                    BestWearCode = "74";
+                    break;
+                case 8: //5도미만
+                    BestWearCode = "150";
+                    break;
+                default : //이상한 Temp_CODE 요청시
+                    BestWearCode = "193";
+                    break;
+            }
+        }
+        String result = service.getBestWearCodeByBestLike(BestLike, wearFindLikeRequestDto);
+        if(result == null) {
+            System.out.println(">>>getBestWearCode API DEFAULT BEST_WEAR_CODE:" + BestWearCode);
+            return BestWearCode;
+        } else {
+            System.out.println(">>>getBestWearCode API 두번째 조회결과:" + result);
+            return result;
+        }
     }
 
 }

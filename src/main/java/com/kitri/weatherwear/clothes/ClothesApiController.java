@@ -69,6 +69,7 @@ public class ClothesApiController {
     @GetMapping("api/v1/clothes/img/{wCode}")
     public List<String> getThreeImage(@PathVariable int wCode){
         ClothesNameList nameList = cService.getClothesNameByCode(wCode);
+        System.out.println(nameList.getBottom_wear() + nameList.getTop_wear() + nameList.getOuter_wear());
         return cService.selectThreeImage(nameList);
     }
 }
