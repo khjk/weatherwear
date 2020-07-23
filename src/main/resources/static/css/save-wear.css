@@ -1,7 +1,6 @@
 
-
 .site-section {
-    padding: 7rem 0;
+    padding: 11rem 0;
 }
 
 .des {
@@ -17,6 +16,10 @@
     border-color: #e2d9fc;
 }
 
+#avg-temp{
+    border-color: #e2d9fc;
+}
+
 #choose-section{
     margin-top: 8rem;
 }
@@ -27,6 +30,7 @@
 
 #choose img{
     width: 150px;
+    height: 150px;
 }
 
 #choose select {
@@ -50,43 +54,17 @@
     }
 }
 
-
-
 /*
 DatePicker
 */
 .wrapper {
     margin-right: 30px;
-    max-width: 18rem;
-    /* 달력 선택 위치 조정 */
-    /*padding: 0 0.5rem;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    /*padding-top: 4rem;*/
+    max-width: 10rem;
 }
-#date-piker-label {
-    font-size: 0.75rem;
-    font-weight: 400;
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #baacc4;
-    border: 1px solid #ECEFF1;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.5rem;
+#date-piker-label{
+    /*display: inline-block;*/
 }
-#date-piker-input {
-    font-family: 'Roboto', sans-serif;
-    display:block;
-    border: none;
-    border-radius: 0.25rem;
-    border: 1px solid transparent;
-    line-height: 1.5rem;
-    padding: 0;
-    font-size: 1rem;
-    color: #554c5f;
-    width: 100%;
-    margin-top: 0.5rem;
-}
+
 input:focus {outline: none;}
 #ui-datepicker-div {
     display: none;
@@ -132,7 +110,7 @@ table {
 }
 
 .ui-datepicker-calendar tbody td a:hover {
-    background-color: #E0F2F1;
+    background-color: #baacc4;
 }
 .ui-datepicker-calendar tbody td a.ui-state-active {
     background-color: #9571a5;

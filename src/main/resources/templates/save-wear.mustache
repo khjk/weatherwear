@@ -1,28 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>WeatherWear</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <!-- jquery -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- icon -->
-    <script src="https://kit.fontawesome.com/f5f9bb1bf4.js" crossorigin="anonymous"></script>
-
-
-    <!--favicon-->
-    <link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/css/favicon.ico" type="image/x-icon">
-
-    <!-- bootstrap -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-    <!-- nav -->
-    <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/styles.css">
+    {{>layout/header}}
 
     <!-- datePicker - jquery-ui  -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -32,6 +11,7 @@
 </head>
 
 <body>
+    <!--  nav  -->
     {{>layout/nav}}
 
     <div class="site-section ">
@@ -45,9 +25,12 @@
                         <p class="mb-0">오늘 어떤 옷을 입었나요?<br>최대 5일전 옷차림까지 저장 가능합니다</p>
                     </div>
                     <div class="col-md-12 col-lg-6 text-left text-lg-right">
-                        <div class="wrapper">
+                        <div class="wrapper ml-auto">
                             <label id="date-piker-label" for="datepicker"><i class="far fa-calendar-alt"></i><span style="margin-left: 8px;">Date</span>
-                                <input type="text" class="form-control" id="date-piker-input" name="wear-date">
+                                <input type="text" class="form-control text-right" id="date-piker-input" name="wear-date">
+                            </label>
+                            <label><i class="fas fa-thermometer-half"></i><span style="margin-left: 8px;">Temperature</span>
+                                <input type="text" class="form-control text-right" id="avg-temp" name="avg-temp" readonly>
                             </label>
                         </div>
                     </div>
@@ -74,7 +57,7 @@
 
                     <div id="choose" class="col-sm-6 col-md-4 col-lg-4 mb-4 px-4">
                         <!-- bottom -->
-                        <img id="selected-bottom-img"><br>
+                        <img id="selected-bottom-img" alt=""><br>
                         <select id="bottom-select" class="custom-select" onchange="changeSelectImg('bottom')">
                             <option value="0"> [bottom]선택하세요 </option>
                             <!-- <option></option> js로 추가 -->
