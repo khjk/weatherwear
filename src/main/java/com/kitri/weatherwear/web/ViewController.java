@@ -37,6 +37,7 @@ public class ViewController {
    public String myPage(Model model, HttpSession session) {
        String user_id = (String) session.getAttribute("user_id");
        model.addAttribute("user_id", user_id);
+       model.addAttribute("wears", wearDaoService.findEvaluated(user_id));
        return "mypage";
    }
 

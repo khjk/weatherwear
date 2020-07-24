@@ -1,3 +1,4 @@
+var change-eval-btn = document.querySelectorAll(".change-eval");
 var login = {
     init : function () {
         var _this = this;

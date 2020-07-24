@@ -50,4 +50,7 @@
         limit 1
     </select>
 
+    <select id="findEvaluated" parameterType="String" resultType="WearResponseDto">
+        Select * from WEAR where eval = 'Y' and user_id = #{user_id} limit 10
+    </select>
 </mapper>
