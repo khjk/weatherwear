@@ -23,7 +23,7 @@ var eval = {
     },
     evaluateHot : function (wear_no, del) {
         var data = {
-            like_no : 1
+            like_no : -1
         };
         $.ajax({
             type: 'PUT',

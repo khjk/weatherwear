@@ -1,61 +1,80 @@
-{{>layout/header}}
-
-    <link rel="stylesheet" href="/css/evaluate.css">
-    <link rel="stylesheet" href="/css/nav2.css">
+<!DOCTYPE HTML>
+<html>
+<head>
+    {{>layout/header}}
+    <link rel="stylesheet" href="/css/evaluate.css">>
 </head>
 <body>
-<!-- 네브바 -->
-<nav class="header">
-    <div class="navbar_logo">
-        <i class="fas fa-cloud-sun" id="logo"></i>
-        <a class="nav_title" href="/">WeatherWear</a>
-    </div>
-    <ul class="navbar_menu">
-        <li><a href="/users/save-wear">옷차림저장</a></li>
-        <li><a href="/users/eval-wear" class="active">평가하기</a></li>
-        <li><a href="/logout">로그아웃</a></li> <!--페이지없이 js로처리-->
-    </ul>
-    <ul class="navbar_icons">
-        <li><i class="fab fa-twitter"></i></li>
-        <li><i class="fab fa-instagram"></i></li>
-    </ul>
-</nav>
-<!--네브바-->
-<div>
-    <h1>지난 옷차림은 어땠나요?</h1>
-</div>
-<div class="container">
-    <h2>해당 날씨에 입으신 지난 옷차림은 어떠셨나요?</h2>
-    <p>평가를 해주시면, 정확한 추천에 도움이 됩니다:)</p>
-    <p>❌를 선택하시면, 앞으로의 평가항목에서 제외됩니다.</p>
+    {{>layout/nav}}
 
-    {{#wears}}
-    <div class="eval">
-        <div class="eval-date">
-            <div class="eval-date-2">
-                {{#wear_date}}
-                <span class="eval-date-date">{{wear_date}}</span>
-                {{/wear_date}}
-                {{#temp_code}}
-                <span class="eval-date-temp">{{temp_code}}</span>
-                {{/temp_code}}
+    <div class="container">
+        <div class="row mb-5 align-items-center">
+            <div id="page-header" class="col-md-12 col-lg-6 mb-4 mb-lg-0">
+                <h3>해당 날씨에 입으신 지난 옷차림은 어떠셨나요?</h3>
+            <!--   평가할 내용 없을 때     -->
+            {{^wears}}
+                <p class="mt-4">아쉽지만 아직 평가할 옷차림이 없네요...<br>
+                    지난 옷차림 등록하고, 내 체감온도에 맞는 옷차림을 추천 받아보세요 <i class="far fa-smile"></i></p>
+                 <a id="btn-reg" href="/users/save-wear" class="btn btn-outline-light stretched-link">등록하러 가기</a>
             </div>
         </div>
-        <div class="wear_code">{{wear_code}}</div>
-        <div class="eval-clothes">
-            <img class="outerImg" src="" alt="OUTER">
-            <img class="topImg" src="" alt="TOP">
-            <img class="bottomImg" src="" alt="BOTTOM">
-        </div>
-        <div class="eval-btn">
-            <span class="eval-wear-no hidden">{{wear_no}}</span>
-            <button id="hot-btn" class="hot-btn">더워요</button>
-            <button id="warm-btn" class="warm-btn">적절해요</button>
-            <button id="cold-btn" class="cold-btn">추워요</button>
-            <button id="del-btn">❌</button>
-        </div>
+            {{/wears}}
+
+                <p class="mt-4">평가를 해주시면, 정확한 추천에 도움이 됩니다 <i class="far fa-smile"></i><br>
+                    ❌를 선택하시면, 앞으로의 평가항목에서 제외됩니다</p>
+            </div>
+        <div>
+            {{#wears}}
+            <div class="eval-list-section">
+                <div class="eval row media-body pb-3 mx-2 mb-0 lh-125 rounded my-3 p-3">
+                    <div class="wear_code" style="display: none">{{wear_code}}</div>
+                    <!--     그 날의 옷차림       -->
+                    <div class="eval-clothes my-auto col-md-4 pl-2 themed-grid-col text-center">
+                        <img class="outerImg" src="" alt="OUTER">
+                        <img class="topImg" src="" alt="TOP">
+                        <img class="bottomImg" src="" alt="BOTTOM">
+                    </div>
+                    <!--      날짜      -->
+                    <div class="eval-date eval-date col-md-2 themed-grid-col pt-3 border-left">
+                        <span class="sub-title font-weight-light text-lg-left">날짜</span>
+                        {{#wear_date}}
+                        <div class="eval-date-2 eval-date-date my-auto text-monospace">{{wear_date}}</div>
+                        {{/wear_date}}
+                    </div>
+                    <!--      기온      -->
+                    <div class="eval-date col-md-2 themed-grid-col pt-3 border-left">
+                        <span class="sub-title font-weight-light text-lg-left">기온</span>
+                        {{#temp_code}}
+                            <div class="eval-date-2 eval-date-temp my-auto text-monospace">{{temp_code}}</div>
+                        {{/temp_code}}
+                    </div>
+                    <!--    버튼        -->
+                    <div class="eval-btn col-md-4 themed-grid-col pr-1 pt-2 border-left">
+                        <span class="eval-wear-no hidden">{{wear_no}}</span>
+                            <button id="hot-btn" class="btn">
+                                <i class="fas fa-thermometer-full"></i>
+                                <p class="btn-text">더워요</p>
+                            </button>
+                            <button id="warm-btn" class="btn" >
+                                <i class="fas fa-thermometer-half"></i>
+                                <p class="btn-text">적절해요</p>
+                            </button>
+                            <button id="cold-btn" class="btn" >
+                                <i class="fas fa-thermometer-empty"></i>
+                                <p class="btn-text">추워요</p>
+                            </button>
+                            <button id="del-btn" class="btn">
+                                <i class="fas fa-times"></i>
+                                <p class="btn-text mt-2">삭제</p>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        {{/wears}}
     </div>
-    {{/wears}}
-</div>
-<script src="/js/eval.js"></script>
-{{>layout/footer}}
+
+    <script src="/js/eval.js"></script>
+    {{>layout/footer}}
+
+</body>
+</html>

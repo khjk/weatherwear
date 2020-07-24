@@ -3,27 +3,19 @@
 	 margin: 0;
 	 padding: 0;
 }
- body {
-	 font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-	 background: #ededed;
-}
+
  input, button {
 	 border: none;
 	 outline: none;
 	 background: none;
-	 font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
- .tip {
-	 font-size: 20px;
-	 margin: 40px auto 50px;
-	 text-align: center;
-}
+
  .cont {
 	 overflow: hidden;
 	 position: relative;
 	 width: 900px;
 	 height: 550px;
-	 margin: 0 auto 100px;
+	 margin: 70px auto 100px;
 	 background: #fff;
 }
  .form {
@@ -74,7 +66,7 @@
 	 top: 0;
 	 width: 900px;
 	 height: 100%;
-	 background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg');
+	 /*background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/sections-3.jpg');*/
 	 background-size: cover;
 	 transition: transform 1.2s ease-in-out;
 }
@@ -199,9 +191,16 @@
 	 background: #d4af7a;
 	 text-transform: uppercase;
 }
+<<<<<<< HEAD
  .naver-btn {
 	 border: 2px solid #2DB400;
 	 color: #2DB400;
+=======
+ .fb-btn {
+	 background: url( "../images/naver-login-btn.png" ) no-repeat;
+	 border: 2px solid #d3dae9;
+	 color: #8fa1c7;
+>>>>>>> fd12d8c70c8916dfb478b315641dc5fe264edcd8
 }
  .naver-btn span {
 	 font-weight: bold;

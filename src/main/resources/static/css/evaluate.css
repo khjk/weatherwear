@@ -2,87 +2,85 @@ html{
     width:100%;
     height: 100%;
 }
-body{
-    width:100%;
-    height: 100%;
-    margin:0;
-    padding:0;
-    background-image: linear-gradient(90deg, #9890e3 0%, #b1f4cf 100%);
-    display:flex;
-    flex-direction: column;
-}
-img{
+
+.eval img{
     width:50px;
     height: 50px;
 }
-h1{
-    text-align: center;
-    color: white;
-}
+
 .hidden{
     display: none;
 }
+
 .container{
-    margin-top: 24px;
-    align-self: center;
-    width:75%;
-    height:75%;
-    background-color:#EDEDEB;
-    border-radius: 30px;
-    padding: 24px;
-    overflow: auto;
+    padding: 11rem 0;
 }
+
+#page-header{
+    color: #282828;
+}
+
 h2{
     margin : 0;
 }
-p{
-    font-weight: 600;
-    font-size: 0.8em;
-    color: gray;
-    margin : 0;
-    margin-top: 5px;
+
+#btn-reg{
+    color: #c0abfd;
+    border-color: #c0abfd;
 }
+
 .eval{
     margin-top: 12px;
-    font-size: 1.2em;
-    font-weight: 600;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+    font-weight: 300;
+    background-color: rgba(247, 247, 247, 0.973);
+    box-shadow: 0 .125rem .25rem rgba(226, 219, 255, 0.75) !important;
     padding: 12px;
 }
-.eval-date{
-    display:flex;
-    flex-direction:row;
+
+.sub-title{
+    font-size: 0.8em;
 }
-.eval-date-2{
-    display: flex;
-    flex-direction:column;
-    margin: 0;
-}
-.eval-date-date{
-    font-size: 1.0em;
-}
-.eval-wear-no{
-    margin-left:24px;
-    font-size:1.5em;
+
+button>span{
+    margin-left: 5px;
 }
 button{
-    all : unset;
-    padding: 12px;
-    border-radius: 10px;
-    box-shadow: 0 13px 27px -5px rgba(50,50,93,.25), 0 8px 16px -8px rgba(0,0,0,.3), 0 -6px 16px -6px rgba(0,0,0,.025);
-    margin-left: 6px;
+    margin-right: 5px;
 }
-button:hover{
-    padding: 10px;
+
+.eval-btn p{
+    margin: 0;
+    font-size: 0.8em;
+    color:#616161;
 }
-.hot-btn{
+
+
+#hot-btn .fa-thermometer-full{
+    color: #ff7979;
+    font-size: 2em;
+}
+
+#hot-btn:hover{
     background-color: #ff7979;
 }
-.warm-btn{
+
+#hot-btn:hover .fa-thermometer-full{
+     color: white;
+ }
+
+#hot-btn:hover p.btn-text{
+    color: white !important;
+}
+
+#warm-btn .fa-thermometer-half{
+    color: #badc58;
+    font-size: 2em;
+}
+
+#warm-btn:hover{
     background-color: #badc58;
 }
+<<<<<<< HEAD
 .cold-btn{
     background-color: #dff9fb;
 <<<<<<< HEAD
@@ -91,3 +89,47 @@ button:hover{
 }
 
 >>>>>>> origin/develop
+=======
+
+#warm-btn:hover .fa-thermometer-half{
+    color: white;
+}
+
+#warm-btn:hover p.btn-text{
+    color: white !important;
+}
+
+#cold-btn .fa-thermometer-empty{
+    color: #93beff;
+    font-size: 2em;
+}
+
+#cold-btn:hover{
+    background-color: #93beff;
+}
+
+#cold-btn:hover .fa-thermometer-empty{
+    color: white;
+}
+
+#cold-btn:hover p.btn-text{
+    color: white !important;
+}
+
+#del-btn .fa-times{
+    color: red;
+    font-size: 1.4em;
+}
+
+#del-btn:hover{
+    background-color: red;
+}
+
+#del-btn:hover .fa-times{
+    color: white;
+}
+
+#del-btn:hover p.btn-text{
+    color: white !important;
+}
+>>>>>>> fd12d8c70c8916dfb478b315641dc5fe264edcd8

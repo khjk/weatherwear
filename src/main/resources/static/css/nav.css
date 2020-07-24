@@ -1,109 +1,23 @@
-:root{
-    --text-color: #f0f4f5;
-    --accent-color:#54a0ff;
-    --background-color: #263343;
-}
-.header{
-    display: flex;
-    justify-content:space-between;
-    width: 100%;
-    align-items: center;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-}
-.header a{
-    text-decoration: none;
-    color: var(--text-color);
-}
-.header .nav_title{
-    margin-left: 24px;
+.navbar{
+    padding: 10px 80px;
+    background: linear-gradient( to bottom, #fff, #f3f3f6 ) !important;
 }
 
-.header .navbar_menu li {
-    margin-left: 80px;
-    font-size: 1.2em;
-}
-.header .navbar_menu li a{
-    width:auto;
-}
-.header .navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:var(--background-color);
-    padding: 8px 12px;
-}
-.header .nav_title {
-    font-size: 24px;
-    font-weight: 600;
-}
-.header .navbar_log{
-    font-size:36px;
-    color:var(--text-color);
-}
-.header .navbar_logo i{
-    color: var(--accent-color);
-    margin-left: 36px;
-    font-size: 48px;
-}
-.header .navbar_menu{
-    display:flex;
-    list-style:none;
-    padding-left:0;
-}
-.header .navbar_menu li{
-    padding: 8px 12px;
-}
-.header .navbar_menu li:hover{
-    background-color:var(--accent-color);
-    border-radius:4px;
-}
-.header .navbar_icons{
-    margin-right: 48px;
-    font-size: 1.2em;
-    list-style:none;
-    color: var(--text-color);
-    display:flex;
-    padding-left:0;
-}
-.header .navbar_icons li{
-    padding: 8px 12px;
-}
-.header.navbar_toggleBtn{
-    display: none;
-    position: absolute;
-    right: 32px;
-    font-size:24px;
-    color:var(--accent-color);
+.navbar-brand {
+    color: #616161 !important;
 }
 
-@media screen and (max-width:768px){
-    .header .navbar{
-        flex-direction: column;
-        align-items:flex-start;
-        padding: 8px 24px;
-    }
-    .header .navbar_menu{
-        display: none;
-        flex-direction: column;
-        align-items:center;
-        width:100%;
-    }
-    .header .navbar_menu li{
-        width:100%;
-        text-align:center;
-    }
-    .header .navbar_icons{
-        display: none;
-        justify-content: center;
-        width: 100%;
-    }
-    .header .navbar_toggleBtn{
-        display:block;
-    }
-    .header .navbar_menu.active,
-    .header .navbar_icons.active{
-        display:flex;
-    }
+
+nav img {
+    margin-right: 10px;
+}
+
+#navbarSupportedContent a {
+    color: #616161;
+}
+
+#navbarSupportedContent a:hover {
+    color: #282828;
+    border-bottom: 2px solid #e2d9fc;
+
 }

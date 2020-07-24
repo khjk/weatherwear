@@ -59,6 +59,7 @@ public class ViewController {
         String user_id = (String)session.getAttribute("user_id");
        System.out.println(">>>>>save-wear세션아이디: "+ user_id);
        model.addAttribute("user_id",user_id);
+       model.addAttribute("user_name",userDaoService.findOne(user_id).getName());
         return "save-wear";
    }
 

@@ -1,7 +1,7 @@
 //datepicker 설정
 
 // 한글 설정
-( function( factory ) {
+$( function( factory ) {
     if ( typeof define === "function" && define.amd ) {
 
         // AMD. Register as an anonymous module.

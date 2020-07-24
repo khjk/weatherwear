@@ -3,12 +3,34 @@
 <head>
     <title>WeatherWear</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
     {{>header}}
 
-    <div id="container">
+    <script type="text/javascript">
+        $(function () {
+            // ** 수정 ** 추가 해야함!! 오늘의 코디 이미지 불러오기..
 
+            $("#submit-btn").onclick(function () {
+                var result = confirm('Are you sure you want to do this?');
+                if(result) {
+                    location.replace('/save-wear');
+                } else
+                { //no
+                }
+
+            });
+        })
+
+
+    </script>
+
+</head>
+<body>
+    {{>nav}}
+    <div id="background">
+        <img id="outer" width="100px">
+        <img id="top" width="100px">
+        <img id="bottom" width="100px">
+        <div id="weather-talk"></div>
+        <button id="submit-btn">등록하기</button>
     </div>
 </body>
