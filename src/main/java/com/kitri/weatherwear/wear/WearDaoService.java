@@ -46,10 +46,7 @@ public class WearDaoService {
     public List<Date> findRegiterDate(String user_id) {
         return wearMapper.findRegiterDate(user_id);
     }
-}
 
-<<<<<<< HEAD
-=======
     public String getBestLikeByTempCode(WearFindLikeRequestDto wearFindLikeRequestDto) {
         return wearMapper.getBestLikeByTempCode(wearFindLikeRequestDto);
     }
@@ -57,5 +54,9 @@ public class WearDaoService {
     public String getBestWearCodeByBestLike(String bestLike, WearFindLikeRequestDto wearFindLikeRequestDto) {
         return wearMapper.getBestWearCodeByBestLike(bestLike, wearFindLikeRequestDto);
     }
+
+    public List<WearResponseDto> findEvaluated(String user_id) {
+        return wearMapper.findEvaluated(user_id);
+    }
 }
->>>>>>> a41aff1f47a289dcecf3e54118ac14c508e11599
+

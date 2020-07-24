@@ -199,13 +199,13 @@
 	 background: #d4af7a;
 	 text-transform: uppercase;
 }
- .fb-btn {
-	 border: 2px solid #d3dae9;
-	 color: #8fa1c7;
+ .naver-btn {
+	 border: 2px solid #2DB400;
+	 color: #2DB400;
 }
- .fb-btn span {
+ .naver-btn span {
 	 font-weight: bold;
-	 color: #455a81;
+	 color: #2DB400;
 }
  .sign-in {
 	 transition-timing-function: ease-out;

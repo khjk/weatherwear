@@ -3,6 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
     <title>WeatherWear</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon">
@@ -20,6 +21,7 @@ body {
     </style>
 </head>
 <body>
+
 <div class="container">
     <div class="accordion-option">
         <h3 class="title">{{user_id}}님, 만나서 반갑습니다!</h3>
@@ -51,7 +53,31 @@ body {
             </div>
             <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
-                    지난 평가를 수정해 더 정확한 추천 알고리즘을 이용해보세요.
+                    <p>지난 평가를 수정해 더 정확한 추천 알고리즘을 이용해보세요.</p>
+                    {{#wears}}
+                        <div class="eval">
+                            <div class="eval-date">
+                                <div class="eval-date-2">
+                                    {{#wear_date}}
+                                        <span class="eval-date-date">{{wear_date}}</span>
+                                    {{/wear_date}}
+                                    {{#temp_code}}
+                                        <span class="eval-date-temp">{{temp_code}}</span>
+                                    {{/temp_code}}
+                                </div>
+                            </div>
+                            <div class="wear_code">{{wear_code}}</div>
+                            <div class="eval-clothes">
+                                <img class="outerImg" src="" alt="OUTER">
+                                <img class="topImg" src="" alt="TOP">
+                                <img class="bottomImg" src="" alt="BOTTOM">
+                            </div>
+                            <div class="eval-btn">
+                                <span class="eval-wear-no hidden">{{wear_no}}</span>
+                                <button id="eval-btn" class="eval-btn">수정하기</button>
+                            </div>
+                        </div>
+                    {{/wears}}
                 </div>
             </div>
         </div>
@@ -75,7 +101,6 @@ body {
 
 
 <script src="/js/mypage.js"></script>
-<<<<<<< HEAD
 <script>
 $(document).ready(function() {
 
@@ -107,9 +132,4 @@ $(document).ready(function() {
 </html>
 
 <!--{{>layout/footer}}-->
-=======
-</body>
-</html>
 
-<!--{{>layout/footer}}-->
->>>>>>> a41aff1f47a289dcecf3e54118ac14c508e11599

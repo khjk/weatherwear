@@ -55,31 +55,53 @@ var login = {
 login.init();
 
 //$(function(){
-//$("#signup_id").blur(function() {
+//$("#signup_id").on("blur",function() {
 //		var id = $('#signup_id').val();
 //		$.ajax({
 //		    type : 'GET',
 //			url : 'api/v1/users/id-check/'+id,
-////			dataType: 'json',
-////            contentType: 'application/json; charset=utf-8',
 //			success : function(data) {
+//			console.log(data);
+//			     if(data == 0) {
+//			        $("#id_check").text("사용가능한 아이디입니다.");
+//                    $("#id_check").css("color", "blue");
 //
-//				if (data == 1) {
-//						// 1 : 아이디가 중복되는 문구
-//						$("#id_check").text("사용중인 아이디입니다.");
-//						$("#id_check").css("color", "red");
-//						$("#btn-signup").attr("disabled", true);
-//					} else {
-//						$("#id_check").text("사용 가능한 아이디입니다.");
-//                        $("#id_check").css("color", "blue");
-//                        $("#btn-signup").attr("disabled", false);
-//					}
+//			    } else if(data == 1) {
+//			        $("#id_check").text("사용중인 아이디입니다.");
+//                    $("#id_check").css("color", "red");
+//
+//			    }
 //				}, error : function() {
 //						console.log("실패");
 //				}
 //			});
 //		});
 //});
+
+//$(function(){
+//$("#signup_id").on("blur",function(){
+//    var id = $('#signup_id').val();
+//    if(id == "") {
+//    	$("#id_check").text("아이디를 입력해주세요.");
+//        $("#id_check").css("color", "red");
+//     } else{
+//        $("#id_check").text("");
+//     }
+//});
+//$("#signup_password").on("blur",function(){
+//    var id = $('#signup_password').val();
+//    if(id == "") {
+//    	$("#pwd_check").text("패스워드를 입력해주세요.");
+//        $("#pwd_check").css("color", "red");
+//     } else{
+//        $("#pwd_check").text("");
+//     }
+//});
+//
+//});
+
+
+
 //
 //window.onload = function() {
 //    var id = document.querySelector("input[name='signup_id']");

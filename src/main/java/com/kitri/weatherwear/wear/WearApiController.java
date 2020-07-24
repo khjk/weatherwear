@@ -134,4 +134,9 @@ public class WearApiController {
         }
     }
 
+    @GetMapping("/{user_id}/eval")
+    public List<WearResponseDto> retrieveEvaluated(@PathVariable String user_id) {
+        return service.findEvaluated(user_id);
+    }
+
 }
