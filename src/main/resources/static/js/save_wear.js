@@ -267,7 +267,6 @@ function getEnableLastDay() {
 
     var dates = [before5Day,before4Day,before3Day,before2Day,before1Day,today];
 
-
     for(i=0; i<disableDoneDay.length; i++){
         dates.splice(dates.indexOf(disableDoneDay[i]),1);
     }

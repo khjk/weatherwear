@@ -228,3 +228,14 @@
 	 left: auto;
 	 right: 5px;
 }
+
+.check {
+    all : unset;
+    padding : 5px;
+    background-color: #DDDDDD;
+    position : relative;
+    left : 180px;
+    bottom: 50px;
+    border-radius : 10px;
+    font-weight: 600;
+}
