@@ -3,7 +3,31 @@ var user_id = $("#user_id").val();
 var today = new Date();
 var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24);
 
+
 var disableDoneDay = NoEvaluatedDate();
+
+function DisableDates(date) {
+    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+    return [disableDoneDay.indexOf(string) == -1];
+}
+
+function NoEvaluatedDate() {
+
+    var result = [];
+    $.ajax({
+        type: "GET",
+        url: "../api/v1/wears/list/"+user_id,
+        async: false,
+        success: function(data) {
+            result = data;
+        },
+        error: function() {
+                alert("등록할 날짜가 없습니다.");
+                window.location.href="/";
+        }
+    });
+    return result;
+}
 
 // 날짜 선택(달력) -- datepicker
 $(function() {
@@ -16,25 +40,6 @@ $(function() {
         beforeShowDay: DisableDates
     });
 } );
-
-function NoEvaluatedDate() {
-
-    var result = [];
-    $.ajax({
-        type: "GET",
-        url: "../api/v1/wears/list/"+user_id,
-        async: false,
-        success: function(data) {
-               result = data;
-        }
-    });
-    return result;
-}
-
-function DisableDates(date) {
-    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
-    return [disableDoneDay.indexOf(string) == -1];
- }
 
  // select - option 뿌려지기
 $(function () {
@@ -134,7 +139,7 @@ function getWearCode(){
 function getWearDate(){
     var date = $("#date-piker-input").val();
 
-    if(date == null){
+    if(date == ''){
         alert("날짜를 다시 확인해주세요:)");
         return false;
     }
