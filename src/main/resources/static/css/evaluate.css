@@ -13,7 +13,7 @@ html{
 }
 
 .container{
-    padding: 11rem 0;
+    padding: 12rem 0;
 }
 
 #page-header{
@@ -121,4 +121,13 @@ button{
 
 #del-btn:hover p.btn-text{
     color: white !important;
+}
+.eval-header{
+    position: relative;
+}
+.no-eval-header{
+    position: absolute;
+    z-index: 100;
+    background-color: #f3f3f6;
+    top: 60px;
 }
