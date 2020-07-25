@@ -1,7 +1,6 @@
 {{>layout/header}}
 
     <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/nav.css">
     <script
             src="https://kit.fontawesome.com/a268effaf1.js"
             crossorigin="anonymous"
@@ -13,28 +12,8 @@
 <div class="background">
     <div class="container">
         <!-- 네브바 -->
-        <nav class="header">
-            <div class="navbar_logo">
-                <i class="fas fa-cloud-sun" id="logo"></i>
-                <a class="nav_title" href="#">WeatherWear</a>
-            </div>
-            <ul class="navbar_menu">
-                {{#user_id}}
-                    <li><a href="users/save-wear">옷차림저장</a></li>
-                    <li><a href="users/eval-wear">평가하기</a></li>
-                    <li><a href="users/mypage">마이페이지</a></li>
-                    <li><a href="/logout">로그아웃</a></li>
-                {{/user_id}}
-                {{^user_id}}
-                    <li><a href="/user/login">로그인</a></li>
-                {{/user_id}}
-            </ul>
-            <ul class="navbar_icons">
-                <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-instagram"></i></li>
-            </ul>
-        </nav>
-        <!--네브바-->
+        {{>layout/nav}}
+
         <svg id="back">
             <radialGradient id="SVGID_1_" cx="0" cy="0" r="320.8304" gradientUnits="userSpaceOnUse">
                 <stop  offset="0" style="stop-color:#FFDE17;stop-opacity:0.7"/>
@@ -88,7 +67,6 @@
                     {{#user_id}}
                     <span class="hidden" id="user_id_js">{{user_id}}</span>
                     {{/user_id}}
-                     <!--user_id가 있으면 toggle해야될듯-->
                     <div class="today-info">
                         <div class="precipitation"> <span class="title">CLOUDS</span><span class="value" id="clouds">0 %</span>
                             <div class="clear"></div>
@@ -100,7 +78,6 @@
                             <div class="clear"></div>
                         </div>
                     </div>
-                    <!--user_id가 있으면 toggle해야될듯-->
                         <div class="today-recommend">
                             <span class="recommend_text">오늘의 추천</span>
                             <div class="precipitation"> <img id="OUTER_BEST" src="" alt="OUTER">

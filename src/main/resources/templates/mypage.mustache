@@ -1,12 +1,7 @@
-<!--{{>layout/header}}-->
 <!DOCTYPE HTML>
 <html>
 <head>
-
-    <title>WeatherWear</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/css/favicon.ico" type="image/x-icon">
+    {{>layout/header}}
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="/css/mypage.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -20,7 +15,7 @@ body {
     </style>
 </head>
 <body>
-
+{{>layout/nav}}
 <div class="container">
     <div class="accordion-option">
         <h3 class="title">{{user_id}}님, 만나서 반갑습니다!</h3>

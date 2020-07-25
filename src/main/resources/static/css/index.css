@@ -13,6 +13,21 @@ html, body, .background {
 html {
   background: #fff;
 }
+.navbar{
+    background: none !important;
+    font-size: 20px;
+}
+.navbar-brand{
+    font-size:25px;
+    font-weight: 600;
+}
+.navbar a{
+    width: auto;
+}
+.recommend_text{
+    margin-right: 12px;
+    vertical-align:center;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -186,10 +201,10 @@ body {
 }
 
 .info-side {
-  background-color :#54A0FF;
+  background-color :#A8A1E5;
   border-radius: 25px;
   padding-top: 25px;
-  height : 80%;
+  height : 90%;
   margin-top: 30px;
   align-self: center;
 }
@@ -325,4 +340,10 @@ body {
 img{
     width:70px;
     height: 70px;
+}
+@media all and (min-width:768px) {
+   .container {
+        border-radius: 0px;
+        max-width: none;
+   }
 }
