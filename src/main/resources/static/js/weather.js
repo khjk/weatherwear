@@ -82,6 +82,7 @@ function handleGeoSuccess(position){
                 console.log("템프코드"+ temp_code);
                 console.log("유저아이디" + user_id_);
                 getBestLike(temp_code, user_id_);
+                getMessage(temp_code);
             }
              // current.temp //지금 온도
                     //console.log("지금 온도"+_temp_to_code);
@@ -115,7 +116,7 @@ function getImgByBestCode(best_code){
             type: 'GET',
             url : '../api/v1/clothes/img/' + best_code,
             dataType: 'json',
-            contentType: 'application/json; charset=utf-8'
+            contentType: 'application/json; charset=utf-8',
         }).done(function(response){
             console.log("옷url" + response);
             if(response.length == 3){ //반환값 3개일 때
@@ -137,6 +138,15 @@ function getImgByBestCode(best_code){
         }).fail(function (error) {
             alert(error.json);
   });
+}
+
+function getMessage(temp_code) {
+    $.ajax({
+        type: 'GET',
+        url : '../api/v1/messages/' + temp_code,
+    }).done(function(response) {
+        $(".today-recommend-msg").text(response);
+    });
 }
 
 function handleGeoError(){
@@ -221,30 +231,30 @@ function getDayName(day) {
     var temp_day = day % 7;
     switch (temp_day) {
         case 0:
-            dayName = "Sunday";
+            dayName = "일요일";
           break;
         case 1:
-            dayName = "Monday";
+            dayName = "월요일";
           break;
         case 2:
-            dayName = "Tuesday";
+            dayName = "화요일";
           break;
         case 3:
-            dayName = "Wednesday";
+            dayName = "수요일";
           break;
         case 4:
-            dayName = "Thursday";
+            dayName = "목요일";
           break;
         case 5:
-            dayName = "Friday";
+            dayName = "금요일";
           break;
         case 6:
-            dayName = "Saturday";
+            dayName = "토요일";
       }
       return dayName;
 }
 function handleChangeLocation(){
     navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError);
-    alert('현재 사용자의 위치로 update하였습니다.');
+    alert('현재 사용자의 위치로 업데이트 하였습니다.');
 }
 init();
