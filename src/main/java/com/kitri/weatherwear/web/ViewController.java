@@ -48,8 +48,12 @@ public class ViewController {
    }
 
    //오늘의 추천
-   @GetMapping("/users/today-wear")
-    public String todayWear(Model model) {
+   @GetMapping("users/today-wear")
+    public String todayWear(Model model, HttpSession session) {
+       String user_id = (String)session.getAttribute("user_id");
+       System.out.println(">>>>>today-wear세션아이디: "+ user_id);
+       model.addAttribute("user_id",user_id);
+       model.addAttribute("user_name",userDaoService.findOne(user_id).getName());
         return "today-wear";
    }
 
