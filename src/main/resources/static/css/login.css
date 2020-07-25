@@ -52,10 +52,11 @@ body{
 	 display: block;
 	 margin: 0 auto;
 	 width: 260px;
-	 height: 36px;
-	 border-radius: 30px;
+	 height: 50px;
+	 border-radius: 5px;
 	 color: #fff;
-	 font-size: 15px;
+	 font-weight: 500;
+	 font-size: 18px;
 	 cursor: pointer;
 }
  .img {
@@ -67,6 +68,7 @@ body{
 	 width: 260px;
 	 height: 100%;
 	 padding-top: 360px;
+	 background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
 }
  .img:before {
 	 content: '';
@@ -86,7 +88,10 @@ body{
 	 top: 0;
 	 width: 100%;
 	 height: 100%;
-	 background: rgba(0, 0, 0, 0.6);
+	 /*background-color: #e2d9fc;*/
+	 /*background: rgba(0, 0, 0, 0.6);*/
+	 background: linear-gradient(240deg, rgba(150, 50, 50, 0.3), rgba(0, 0, 200, 0));
+
 }
  .cont.s--signup .img:before {
 	 transform: translate3d(640px, 0, 0);
@@ -197,14 +202,15 @@ body{
  .submit {
 	 margin-top: 40px;
 	 margin-bottom: 20px;
-	 background: #d4af7a;
+	 background-color: #9E9E9E;
+	 color: #fff;
 	 text-transform: uppercase;
 }
  .fb-btn {
-	 background: url( "../images/naver-login-btn.png" ) no-repeat;
-	 border: 2px solid #d3dae9;
-	 color: #fff;
-	 background-color:#66C971;
+	 /*background: url( "../images/naver-login-btn.PNG" ) no-repeat;*/
+	 border: 2px solid #66C971;
+	 color: #66C971;
+	 background-color:#fff;
 }
  .fb-btn span {
 	 font-weight: bold;
