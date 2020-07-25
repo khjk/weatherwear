@@ -210,6 +210,9 @@ body{
 	 font-weight: bold;
 	 color: #455a81;
 }
+a{
+    text-decoration: none;
+}
  .sign-in {
 	 transition-timing-function: ease-out;
 }

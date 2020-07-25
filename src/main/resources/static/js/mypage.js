@@ -169,9 +169,14 @@ var deleteUser = {
         }).done(function(response){
             alert('탈퇴했습니다. 그동안 이용해주셔서 감사합니다.');
             window.location.href= "/";
-        }).fail(function(error){
-            console.log(error.json);
-        });
+        }).fail(function (jqXHR, textStatus) {
+               if(jqXHR.status == '500'){
+                   alert('탈퇴했습니다. 그동안 이용해주셔서 감사합니다.');
+                   window.location.href= "/";
+               }else{
+                    console.log("오류발생");
+               }
+           });
     }
  }
 
