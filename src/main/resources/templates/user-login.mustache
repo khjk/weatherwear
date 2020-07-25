@@ -22,8 +22,7 @@
 
             </label>
             <button type="button" id="btn-login" class="submit">Sign In</button>
-            <button type="button" class="fb-btn">Connect with <span>facebook</span></button>
-            <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+            <button type="button" class="fb-btn"><a href="/oauth2/authorization/naver">Connect with <span>Naver</span></a></button>
         </form>
     </div>
 
@@ -49,17 +48,21 @@
                 <label>
                     <span>Name</span>
                     <input type="text" id="signup_name"/>
+                    <span style="color: red;"></span>
                 </label>
                 <label>
                     <span>Email</span>
                     <input type="email" id="signup_id"/>
+                    <span id="email_val_text" style="color: red;"></span>
+                    <button type="button" class="check" id="check">중복검사</button>
                 </label>
                 <label>
                     <span>Password</span>
                     <input type="password" id="signup_password"/>
+                    <span style="color: red;"></span>
                 </label>
                 <button type="button" id="btn-signup"  class="submit">Sign Up</button>
-                <button type="button" class="fb-btn">Join with <span>facebook</span></button>
+                <button type="button" class="fb-btn"><a href="/oauth2/authorization/naver">Join with <span>Naver</span></a></button>
             </form>
         </div>
 

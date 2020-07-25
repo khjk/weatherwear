@@ -27,6 +27,10 @@
         DELETE FROM WEAR WHERE WEAR_NO = #{wear_no}
     </delete>
 
+    <delete id="deleteAllById">
+        DELETE FROM WEAR WHERE USER_ID = #{user_id}
+    </delete>
+
     <select id="findRegiterDate" parameterType="String" resultType="java.util.Date">
         Select wear_date from WEAR where user_id = #{user_id}
     </select>
@@ -50,4 +54,7 @@
         limit 1
     </select>
 
+    <select id="findEvaluated" parameterType="String" resultType="WearResponseDto">
+        Select * from WEAR where eval = 'Y' and user_id = #{user_id} limit 10
+    </select>
 </mapper>

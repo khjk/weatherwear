@@ -54,4 +54,12 @@ public class WearDaoService {
     public String getBestWearCodeByBestLike(String bestLike, WearFindLikeRequestDto wearFindLikeRequestDto) {
         return wearMapper.getBestWearCodeByBestLike(bestLike, wearFindLikeRequestDto);
     }
+
+    public List<WearResponseDto> findEvaluated(String user_id) {
+        return wearMapper.findEvaluated(user_id);
+    }
+
+    public Integer deleteAllById(String user_id) {
+        return wearMapper.deleteAllById(user_id);
+    }
 }

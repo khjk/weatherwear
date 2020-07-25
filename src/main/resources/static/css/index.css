@@ -1,4 +1,3 @@
-/*@import 'https://fonts.googleapis.com/css?family=Lato:300';*/
 @import 'https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css';
 :root {
   --gradient: linear-gradient( 135deg, #72EDF2 10%, #5151E5 100%);
@@ -11,6 +10,21 @@ html, body, .background {
 }
 html {
   background: #fff;
+}
+.navbar{
+    background: none !important;
+    font-size: 20px;
+}
+.navbar-brand{
+    font-size:25px;
+    font-weight: 600;
+}
+.navbar a{
+    width: auto;
+}
+.recommend_text{
+    margin-right: 12px;
+    vertical-align:center;
 }
 body {
   display: flex;
@@ -185,18 +199,14 @@ nav#weather-btn li a {
 }
 
 .info-side {
-  /*background-color :#f3f3f6;*/
-  /*border-radius: 25px;*/
   padding-top: 25px;
   height : 80%;
-  /*margin-top: 30px;*/
   align-self: center;
 }
 
 .today-info {
 	padding: 15px;
 	margin: 0 30px 25px 30px;
-/* 	box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25); */
 	border-radius: 10px;
 }
 
@@ -217,7 +227,6 @@ nav#weather-btn li a {
 	list-style-type: none;
 	padding: 0;
     margin: 0 20px;
-	/*margin: 10px 35px;*/
 	-webkit-box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
 	        box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
@@ -365,16 +374,24 @@ nav img {
 
 @media (max-width: 990px){
     .left_card {
-        margin-top: 15rem;
+        margin-top: 20rem;
     }
 }
 
-@media (min-width: 991px) and (max-width: 1200px){
+@media (min-width: 991px) and (max-width: 1200px) {
     .left_card {
         margin-right: 6rem;
     }
-    nav#weather-btn ul{
+
+    nav#weather-btn ul {
         margin: 10px 0 0 20px;
         padding: 0;
     }
 }
+
+/*@media all and (min-width:768px) {*/
+/*   .container {*/
+/*        border-radius: 0px;*/
+/*        max-width: none;*/
+/*   }*/
+/*}*/

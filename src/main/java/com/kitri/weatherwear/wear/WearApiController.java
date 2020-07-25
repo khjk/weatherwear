@@ -53,7 +53,7 @@ public class WearApiController {
     @PutMapping("/{wear_no}")
     public int evaluateWear(@PathVariable int wear_no, @RequestBody WearUpdateRequestDto requestDto) {
         Integer updateResult = service.updateEvaluationById(wear_no, requestDto);
-
+        System.out.println("updateReulst:" + updateResult + "wear_no" + wear_no + "RequestDto:" + requestDto.getEval() + requestDto.getLike_no());
         if (updateResult == 0) {
             throw new WearNotFoundException(String.format("Wear[%s] cannot update now", wear_no));
         }
@@ -62,12 +62,13 @@ public class WearApiController {
     }
 
     @DeleteMapping("/{wear_no}")
-    public void deleteWear(@PathVariable int wear_no) {
+    public int deleteWear(@PathVariable int wear_no) {
         Integer deleteResult = service.deleteById(wear_no);
-
+        System.out.println("지움:" + wear_no);
         if (deleteResult == 0) {
             throw new WearNotFoundException(String.format("Wear_no[%s] cannot be deleted", wear_no));
         }
+        return deleteResult;
     }
 
 
@@ -132,6 +133,16 @@ public class WearApiController {
             System.out.println(">>>getBestWearCode API 두번째 조회결과:" + result);
             return result;
         }
+    }
+
+    @DeleteMapping("/data/{user_id}")
+    public int deleteAllByUserID(@PathVariable String user_id) {
+        Integer deleteResult = service.deleteAllById(user_id);
+        System.out.println("지움:" + user_id);
+        if (deleteResult == 0) {
+            throw new WearNotFoundException(String.format("UserID[%s]'s Wear Data cannot be deleted", user_id));
+        }
+        return deleteResult;
     }
 
 }

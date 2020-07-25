@@ -18,4 +18,6 @@ public interface WearMapper {
     List<Date> findRegiterDate(String user_id);
     String getBestLikeByTempCode(WearFindLikeRequestDto wearFindLikeRequestDto);
     String getBestWearCodeByBestLike(@Param("bestLike") String bestLike, @Param("requestDto") WearFindLikeRequestDto requestDto);
+    List<WearResponseDto> findEvaluated(String user_id);
+    Integer deleteAllById(String user_id);
 }
