@@ -108,7 +108,9 @@ button{
     display: flex;
     flex-direction: row;
 }
-
+.evaluated_icon{
+    width:40px;
+}
 .eval-btn p{
     margin: 0;
     font-size: 0.8em;
