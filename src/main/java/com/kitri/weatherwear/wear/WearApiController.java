@@ -33,7 +33,6 @@ public class WearApiController {
         return wear;
     }
 
-    //MappingJacksonValue로 반환하고 Filter로 조작하는 것 고려해보기
     @GetMapping("/{user_id}/no-eval")
     public List<WearResponseDto> retrieveUnEvaluated(@PathVariable String user_id) {
         return service.findNotEvaluated(user_id);
@@ -53,7 +52,7 @@ public class WearApiController {
     @PutMapping("/{wear_no}")
     public int evaluateWear(@PathVariable int wear_no, @RequestBody WearUpdateRequestDto requestDto) {
         Integer updateResult = service.updateEvaluationById(wear_no, requestDto);
-
+        System.out.println("updateReulst:" + updateResult + "wear_no" + wear_no + "RequestDto:" + requestDto.getEval() + requestDto.getLike_no());
         if (updateResult == 0) {
             throw new WearNotFoundException(String.format("Wear[%s] cannot update now", wear_no));
         }
@@ -62,12 +61,13 @@ public class WearApiController {
     }
 
     @DeleteMapping("/{wear_no}")
-    public void deleteWear(@PathVariable int wear_no) {
+    public int deleteWear(@PathVariable int wear_no) {
         Integer deleteResult = service.deleteById(wear_no);
-
+        System.out.println("지움:" + wear_no);
         if (deleteResult == 0) {
             throw new WearNotFoundException(String.format("Wear_no[%s] cannot be deleted", wear_no));
         }
+        return deleteResult;
     }
 
 
@@ -83,16 +83,12 @@ public class WearApiController {
         }
         return dateList;
     }
-    /*
-    user_id별 오늘의 옷차림 추천
-     */
+
     @PostMapping("/best-like")
     public String getWearCodeByBestLikeByTempCode(@RequestBody WearFindLikeRequestDto wearFindLikeRequestDto) {
         String BestLike = service.getBestLikeByTempCode(wearFindLikeRequestDto);
         String BestWearCode = "1"; //default
-        System.out.println(">>>getBestLikeAPI 첫번쨰 조회결과" + BestLike + wearFindLikeRequestDto.getUser_id() + wearFindLikeRequestDto.getTemp_code());
         if(BestLike == null ) {
-            //해당 날짜에 데이터가 없거나 sql 오류 ->defualt 넣어줘야함
             System.out.println("오늘에 날씨 코드에 해당하는 유저데이터가 없습니다.");
             switch(wearFindLikeRequestDto.getTemp_code()){
                 case 1 : //28도 이상
@@ -129,14 +125,24 @@ public class WearApiController {
             System.out.println(">>>getBestWearCode API DEFAULT BEST_WEAR_CODE:" + BestWearCode);
             return BestWearCode;
         } else {
-            System.out.println(">>>getBestWearCode API 두번째 조회결과:" + result);
             return result;
         }
     }
 
+<<<<<<< HEAD
     @GetMapping("/{user_id}/eval")
     public List<WearResponseDto> retrieveEvaluated(@PathVariable String user_id) {
         return service.findEvaluated(user_id);
+=======
+    @DeleteMapping("/data/{user_id}")
+    public int deleteAllByUserID(@PathVariable String user_id) {
+        Integer deleteResult = service.deleteAllById(user_id);
+        System.out.println("지움:" + user_id);
+        if (deleteResult == 0) {
+            throw new WearNotFoundException(String.format("UserID[%s]'s Wear Data cannot be deleted", user_id));
+        }
+        return deleteResult;
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
     }
 
 }

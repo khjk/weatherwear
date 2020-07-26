@@ -1,4 +1,3 @@
-@import 'https://fonts.googleapis.com/css?family=Lato:300';
 @import 'https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css';
 :root {
   --gradient: linear-gradient( 135deg, #72EDF2 10%, #5151E5 100%);
@@ -8,10 +7,24 @@ html, body, .background {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Lato', sans-serif;
 }
 html {
   background: #fff;
+}
+.navbar{
+    background: none !important;
+    font-size: 20px;
+}
+.navbar-brand{
+    font-size:25px;
+    font-weight: 600;
+}
+.navbar a{
+    width: auto;
+}
+.recommend_text{
+    margin-right: 12px;
+    vertical-align:center;
 }
 body {
   display: flex;
@@ -19,18 +32,18 @@ body {
   background: #eee;
   background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
 }
-#marker {
-  font-size: 36px;
+.marker {
+  font-size: 1.3em;
 }
 .js-location{
-  font-size: 36px;
-  margin-left: 12px;
+  font-size: 1.3em;
+  margin-left: 10px;
 }
 .background {
   background: #eee;
   background: linear-gradient(120deg, rgba(50, 150, 100, 0.2), rgba(0, 0, 100, 0));
 }
-.container {
+.sub-background {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,160 +57,156 @@ body {
   background: #eee;
   background: linear-gradient(240deg, rgba(150, 50, 50, 0.3), rgba(0, 0, 200, 0));
 }
-nav ul {
+nav#weather-btn ul {
   margin: 20px 20px 0 20px;
   list-style-type: none;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-}
-nav li a {
-  display: block;
-  width: 50px;
-  text-align: center;
-  color: #aaa;
-  cursor: pointer;
-}
-nav li a:hover {
-  color: #444;
-}
-nav li a.active {
-  color: #4444ff;
-}
-#card {
-  box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  width: 300px;
-  padding: 0;
-  height: 400px;
-  min-height: 300px;
-  margin: 20px;
-  border-radius: 5px;
-  position: relative;
-}
-#card .details {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 16px 20px;
-  color: #888;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  transition: color 2s ease;
-}
-.thunder #card .details {
-  color: #ddd;
-}
-#card .details .right {
-  text-align: right;
-}
-#card .details #date {
-  margin: 4px 0;
-}
-#card .details #summary {
-  font-weight: 600;
-  font-size: 22px;
-}
-#card .details .temp {
-  font-size: 40px;
-  line-height: 60px;
-}
-#card .details .temp span {
-  font-size: 18px;
-  line-height: 30px;
-  vertical-align: top;
-  margin-left: 5px;
-}
-.weather {
-  background-color: #DAE3FD;
-  transition: background-color 2s ease;
-}
-.thunder .weather {
-  background-color: #9FA4AD;
-}
-.rain .weather {
-  background-color: #D8D8D8;
-}
-.sun .weather {
-  background-color: #ccccff;
-}
-.weather #inner {
-  background-color: white;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
-}
-.weather .cloud {
-  transition: fill 2s ease;
-}
-.weather #cloud1 {
-  fill: #efefef;
-}
-.thunder .weather #cloud1 {
-  fill: #9FA4AD;
-}
-.weather #cloud2 {
-  fill: #E6E6E6;
-}
-.thunder .weather #cloud2 {
-  fill: #8B8E98;
-}
-.weather #cloud3 {
-  fill: #D5D5D5;
-}
-.thunder .weather #cloud3 {
-  fill: #7B7988;
-}
-#outer, #back {
-  position: fixed;
-  pointer-events: none;
-}
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
-
-.clear {
-	clear: both;
-}
-
-body {
-	margin: 0;
-	width: 100%;
-	height: 100vh;
-	font-family: 'Montserrat', sans-serif;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
-}
-.two_card {
+  padding: 0 15px;
   display: flex;
   flex-direction: row;
 }
 
-.container {
-	border-radius: 25px;
+nav#weather-btn li a {
+    display: block;
+    width: 50px;
+    text-align: center;
+    /*color: #aaa;*/
+    /*cursor: pointer;*/
+   }
+
+    nav li a.active {
+      color: #4444ff;
+    }
+
+    #card {
+      box-shadow: 9px 7px 40px -6px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      width: 300px;
+      padding: 0;
+      height: 400px;
+      min-height: 300px;
+      margin: 20px;
+      border-radius: 5px;
+      position: relative;
+    }
+    #card .details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 20px;
+      color: #888;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      transition: color 2s ease;
+    }
+    .thunder #card .details {
+      color: #ddd;
+    }
+    #card .details .right {
+      text-align: right;
+    }
+    #card .details #date {
+      margin: 4px 0;
+    }
+    #card .details #summary {
+      font-weight: 600;
+      font-size: 22px;
+    }
+    #card .details .temp {
+      font-size: 40px;
+      line-height: 60px;
+    }
+    #card .details .temp span {
+      font-size: 18px;
+      line-height: 30px;
+      vertical-align: top;
+      margin-left: 5px;
+    }
+    .weather {
+      background-color: #DAE3FD;
+      transition: background-color 2s ease;
+    }
+    .thunder .weather {
+      background-color: #9FA4AD;
+    }
+    .rain .weather {
+      background-color: #D8D8D8;
+    }
+    .sun .weather {
+      background-color: #ccccff;
+    }
+    .weather #inner {
+      background-color: white;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+    }
+    .weather .cloud {
+      transition: fill 2s ease;
+    }
+    .weather #cloud1 {
+      fill: #efefef;
+    }
+    .thunder .weather #cloud1 {
+      fill: #9FA4AD;
+    }
+    .weather #cloud2 {
+      fill: #E6E6E6;
+    }
+    .thunder .weather #cloud2 {
+      fill: #8B8E98;
+    }
+    .weather #cloud3 {
+      fill: #D5D5D5;
+    }
+    .thunder .weather #cloud3 {
+      fill: #7B7988;
+    }
+    #outer, #back {
+      position: fixed;
+      pointer-events: none;
+    }
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900&display=swap');
+
+    .clear {
+        clear: both;
+    }
+
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        font-family: 'Montserrat', sans-serif;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+    .two_card {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .sub-background {
+        /*border-radius: 25px;*/
 	-webkit-box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
 	        box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
 	color: #ffffff;
 }
 
 .info-side {
-  background-color :#54A0FF;
-  border-radius: 25px;
   padding-top: 25px;
   height : 80%;
-  margin-top: 30px;
   align-self: center;
 }
 
 .today-info {
 	padding: 15px;
-	margin: 0 25px 25px 25px;
-/* 	box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25); */
+	margin: 0 30px 25px 30px;
 	border-radius: 10px;
 }
 
@@ -217,7 +226,7 @@ body {
 .week-list {
 	list-style-type: none;
 	padding: 0;
-	margin: 10px 35px;
+    margin: 0 20px;
 	-webkit-box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
 	        box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
@@ -276,19 +285,11 @@ body {
 
 .location-button {
 	outline: none;
-	width: 100%;
+    background-color: rgba(1,1,1,0.0);
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 	border: none;
-	border-radius: 25px;
-	padding: 10px;
-	font-family: 'Montserrat', sans-serif;
-	background-image: var(--gradient);
 	color: #ffffff;
-  font-weight: 700;
-  background-color: #222831;
-	-webkit-box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
-	        box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.25);
 	cursor: pointer;
 	-webkit-transition: -webkit-transform 200ms ease;
 	transition: -webkit-transform 200ms ease;
@@ -301,6 +302,7 @@ body {
 	-webkit-transform: scale(0.95);
 	    -ms-transform: scale(0.95);
 	        transform: scale(0.95);
+    color: #ebe8fc;
 }
 
 .location-button .feather {
@@ -309,20 +311,87 @@ body {
 	margin-right: 5px;
 }
 .today-recommend{
-    display: flex;
+    /*display: flex;*/
     flex-direction: row;
     justify-content: center;
+    margin: 20px 20px;
 }
 .recommend_text{
     font-weight: 600;
-    text-align: center;
-    vertical-align: center;
+    /*text-align: center;*/
+    /*vertical-align: center;*/
     font-size: 1.2em;
 }
 .hidden {
     display: none;
 }
+
 img{
     width:70px;
     height: 70px;
 }
+
+.navbar{
+    padding: 10px 80px;
+    background: rgba(1,1,1,0.0) !important;
+}
+
+.navbar-brand {
+    color: #f0f4f5 !important;
+}
+
+
+nav img {
+    margin-right: 10px;
+    width:30px;
+    height:30px;
+}
+
+#navbarSupportedContent a {
+    color: #f0f4f5;
+}
+
+#navbarSupportedContent a:hover {
+    color: #616161;
+    border-bottom: 2px solid #e2d9fc;
+
+}
+
+.container{
+    margin-top: 5rem;
+}
+
+.location-div{
+    margin-left: 22px;
+    margin-top: 10px
+}
+
+.today-info-msg{
+    margin: 20px;
+    color: #616161;
+    background-color: #f0f4f5;
+}
+
+@media (max-width: 990px){
+    .left_card {
+        margin-top: 20rem;
+    }
+}
+
+@media (min-width: 991px) and (max-width: 1200px) {
+    .left_card {
+        margin-right: 6rem;
+    }
+
+    nav#weather-btn ul {
+        margin: 10px 0 0 20px;
+        padding: 0;
+    }
+}
+
+/*@media all and (min-width:768px) {*/
+/*   .container {*/
+/*        border-radius: 0px;*/
+/*        max-width: none;*/
+/*   }*/
+/*}*/

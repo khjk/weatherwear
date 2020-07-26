@@ -1,9 +1,36 @@
+var user_id = $("#user_id").val();
+// 이미 그 user가 옷차림을 저장한 날짜들 불러오기 -- 한 날짜당 하나의 옷차림만 등록가능
+var today = new Date();
+var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24);
+
+
+var disableDoneDay = NoEvaluatedDate();
+
+function DisableDates(date) {
+    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+    return [disableDoneDay.indexOf(string) == -1];
+}
+
+function NoEvaluatedDate() {
+
+    var result = [];
+    $.ajax({
+        type: "GET",
+        url: "../api/v1/wears/list/"+user_id,
+        async: false,
+        success: function(data) {
+            result = data;
+        },
+        error: function() {
+                alert("등록할 날짜가 없습니다.");
+                window.location.href="/";
+        }
+    });
+    return result;
+}
+
 // 날짜 선택(달력) -- datepicker
 $(function() {
-    var today = new Date();
-    var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24);
-
-    $('#date-piker-input').val($.datepicker.formatDate("yy-mm-dd", lastEnableDay));
 
     $( "#date-piker-input" ).datepicker({
         dateFormat: "yy-mm-dd",
@@ -14,30 +41,6 @@ $(function() {
     });
 } );
 
-// 이미 그 user가 옷차림을 저장한 날짜들 불러오기 -- 한 날짜당 하나의 옷차림만 등록가능
-var disableDoneDay = NoEvaluatedDate();
-var lastEnableDay = getEnableLastDay();
-
-function NoEvaluatedDate() {
-    var user_id = $("#user_id").val();
-
-    var result = [];
-    $.ajax({
-        type: "GET",
-        url: "../api/v1/wears/list/"+user_id,
-        async: false,
-        success: function(data) {
-               result = data;
-        }
-    });
-    return result;
-}
-
-function DisableDates(date) {
-    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
-    return [disableDoneDay.indexOf(string) == -1];
- }
-
  // select - option 뿌려지기
 $(function () {
     optionAppend("outer");
@@ -46,8 +49,7 @@ $(function () {
 });
 
 // 그 날의 평균기온 가져오기
-$("#date-piker-input").on('blur', function () {
-    var user_id = $("#user_id").val();
+$("#date-piker-input").change(function () {
     $("#avg-temp").attr("value", getAvgTemp(user_id));
 });
 
@@ -70,7 +72,7 @@ $(function () {
             contentType: "application/json;charset=UTF-8",
             async: false,
             success: function (data) {
-                alert("성공적으로 등록되었습니다! 옷차림에 평가해주세요")
+                alert("성공적으로 등록되었습니다! 옷차림을 평가해주세요")
                     window.location.href="/users/eval-wear";
             }
         });
@@ -137,15 +139,20 @@ function getWearCode(){
 function getWearDate(){
     var date = $("#date-piker-input").val();
 
+//    if(date == ''){
+//        alert("날짜를 다시 확인해주세요:)");
+//        return false;
+//    }
+
     for(i = 0; i<disableDoneDay.length; i++){
         if(disableDoneDay[i] == date){
             alert("날짜를 다시 확인해주세요:)");
             return false;
         }
     }
-    if(date == null || date == undefined){
-        return new Date();
-    }
+    // if(date == null || date == undefined){
+    //     return new Date();
+    // }
     return date;
 }
 
@@ -200,6 +207,7 @@ function getTempCode(user_id) {
 function getAvgTemp(user_id) {
 
     var date = getWearDate();
+    console.log(date);
     var latitude = 0;
     var longitude = 0;
 
@@ -213,8 +221,10 @@ function getAvgTemp(user_id) {
     });
 
     var regDate = new Date(date);
+    console.log(regDate);
 
     var uRegDate = Math.floor(+regDate/1000);
+    console.log(uRegDate)
 
     var apiURI = "https://api.openweathermap.org/data/2.5/onecall/timemachine?"
         + "lat=" + latitude
@@ -235,7 +245,6 @@ function getAvgTemp(user_id) {
                 sum += data.hourly[i].temp - 273.15
             }
             avg = sum/data.hourly.length;
-            console.log("평균기온 : "+ avg);
         }
     });
 
@@ -255,24 +264,3 @@ function searchTempCode(temp) {
 
     return tempCode;
 }
-
-
-function getEnableLastDay() {
-    var today = new Date();
-    var before1Day= new Date(Date.parse(today) - 1 * 1000 * 60 * 60 * 24);
-    var before2Day= new Date(Date.parse(today) - 2 * 1000 * 60 * 60 * 24);
-    var before3Day= new Date(Date.parse(today) - 3 * 1000 * 60 * 60 * 24);
-    var before4Day= new Date(Date.parse(today) - 4 * 1000 * 60 * 60 * 24);
-    var before5Day= new Date(Date.parse(today) - 5 * 1000 * 60 * 60 * 24);
-
-    var dates = [before5Day,before4Day,before3Day,before2Day,before1Day,today];
-
-
-    for(i=0; i<disableDoneDay.length; i++){
-        dates.splice(dates.indexOf(disableDoneDay[i]),1);
-    }
-
-    return dates.pop();
-    }
-
-

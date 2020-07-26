@@ -1,13 +1,15 @@
-<!--{{>layout/header}}-->
-
 <!DOCTYPE HTML>
 <html>
 <head>
+<<<<<<< HEAD
 
     <title>WeatherWear</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="shortcut icon" href="/css/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/css/favicon.ico" type="image/x-icon">
+=======
+    {{>layout/header}}
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <link rel="stylesheet" href="/css/mypage.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -21,7 +23,11 @@ body {
     </style>
 </head>
 <body>
+<<<<<<< HEAD
 
+=======
+{{>layout/nav}}
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
 <div class="container">
     <div class="accordion-option">
         <h3 class="title">{{user_id}}님, 만나서 반갑습니다!</h3>
@@ -66,15 +72,48 @@ body {
                                     {{/temp_code}}
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <div class="wear_code">{{wear_code}}</div>
+=======
+                            <div class="wear_code hidden">{{wear_code}}</div>
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
                             <div class="eval-clothes">
                                 <img class="outerImg" src="" alt="OUTER">
                                 <img class="topImg" src="" alt="TOP">
                                 <img class="bottomImg" src="" alt="BOTTOM">
                             </div>
+<<<<<<< HEAD
                             <div class="eval-btn">
                                 <span class="eval-wear-no hidden">{{wear_no}}</span>
                                 <button id="eval-btn" class="eval-btn">수정하기</button>
+=======
+                            <div class="eval-value hidden">{{like_no}}</div>
+                            <div class="evaluated-value">
+                                <img class="evaluated_icon" src="" alt="GOOD or BAD">
+                            </div>
+                                <div class="eval-btn">
+                                <button id="change-eval" class="change-eval eval-btn">수정하기</button>
+                                <!--    버튼        -->
+                                <div class="hidden eval-btn col-md-4 themed-grid-col pr-1 pt-2 border-left">
+                                    <span class="eval-wear-no hidden">{{wear_no}}</span>
+                                    <button id="hot-btn" class="btn">
+                                        <i class="fas fa-thermometer-full"></i>
+                                        <p class="btn-text">더워요</p>
+                                    </button>
+                                    <button id="warm-btn" class="btn" >
+                                        <i class="fas fa-thermometer-half"></i>
+                                        <p class="btn-text">적절해요</p>
+                                    </button>
+                                    <button id="cold-btn" class="btn" >
+                                        <i class="fas fa-thermometer-empty"></i>
+                                        <p class="btn-text">추워요</p>
+                                    </button>
+                                    <button id="del-btn" class="btn">
+                                        <i class="fas fa-times"></i>
+                                        <p class="btn-text mt-2">삭제</p>
+                                    </button>
+                                </div>
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
                             </div>
                         </div>
                     {{/wears}}
@@ -103,6 +142,7 @@ body {
 <script src="/js/mypage.js"></script>
 <script>
 $(document).ready(function() {
+<<<<<<< HEAD
 
   $(".toggle-accordion").on("click", function() {
     var accordionId = $(this).attr("accordion-id"),
@@ -110,13 +150,22 @@ $(document).ready(function() {
 
     $(this).toggleClass("active");
 
+=======
+  $(".toggle-accordion").on("click", function() {
+    var accordionId = $(this).attr("accordion-id"),
+      numPanelOpen = $(accordionId + ' .collapse.in').length;
+    $(this).toggleClass("active");
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
     if (numPanelOpen == 0) {
       openAllPanels(accordionId);
     } else {
       closeAllPanels(accordionId);
     }
   })
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
   openAllPanels = function(aId) {
     console.log("setAllPanelOpen");
     $(aId + ' .panel-collapse:not(".in")').collapse('show');
@@ -125,7 +174,10 @@ $(document).ready(function() {
     console.log("setAllPanelclose");
     $(aId + ' .panel-collapse.in').collapse('hide');
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
 });
 </script>
 </body>

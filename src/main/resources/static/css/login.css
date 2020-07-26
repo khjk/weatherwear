@@ -3,7 +3,15 @@
 	 margin: 0;
 	 padding: 0;
 }
-
+html{
+    witdh: 100%;
+    height:100%;
+}
+body{
+   width: 100%;
+   height: 100%;
+    margin: auto;
+}
  input, button {
 	 border: none;
 	 outline: none;
@@ -17,6 +25,7 @@
 	 height: 550px;
 	 margin: 70px auto 100px;
 	 background: #fff;
+	 top: 13%;
 }
  .form {
 	 position: relative;
@@ -199,12 +208,20 @@
  .fb-btn {
 	 background: url( "../images/naver-login-btn.png" ) no-repeat;
 	 border: 2px solid #d3dae9;
+<<<<<<< HEAD
 	 color: #8fa1c7;
 >>>>>>> fd12d8c70c8916dfb478b315641dc5fe264edcd8
+=======
+	 color: #fff;
+	 background-color:#66C971;
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
 }
  .naver-btn span {
 	 font-weight: bold;
 	 color: #2DB400;
+}
+a{
+    text-decoration: none;
 }
  .sign-in {
 	 transition-timing-function: ease-out;
@@ -233,4 +250,17 @@
  .icon-link--twitter {
 	 left: auto;
 	 right: 5px;
+}
+
+.check {
+    all : unset;
+    padding : 7px 12px;
+    background-color: #9E9E9E;
+    color: white;
+    position : relative;
+    left : 200px;
+    bottom: 50px;
+    border-radius : 5px;
+    font-size:15px;
+    font-weight: 600;
 }

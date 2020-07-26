@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -27,9 +28,10 @@ public class UserApiController {
     }
 
     @PostMapping("/validation")
-    public User loginUser(@RequestBody UserLoginRequestDto userLoginRequestDto, HttpSession session) { //로그인
+    public User loginUser(@RequestBody @Valid UserLoginRequestDto userLoginRequestDto, HttpSession session) { //로그인
         User user = service.login(userLoginRequestDto);
         System.out.println(">>>validation: " + user.getId());
+<<<<<<< HEAD
         if (user == null) {
             throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
         }else {
@@ -39,6 +41,13 @@ public class UserApiController {
             session.setAttribute("user_id", user.getId());
 
         }
+=======
+        //if (user == null) {
+        //    throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
+       // }else {
+            session.setAttribute("user_id", user.getId());
+      //  }
+>>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
         return user;
     }
 
@@ -53,7 +62,7 @@ public class UserApiController {
     }
 
     @PostMapping("")
-    public int createUser(@RequestBody UserSignUpRequestDto userSignUpRequestDto, HttpSession session) {
+    public int createUser(@RequestBody @Valid UserSignUpRequestDto userSignUpRequestDto, HttpSession session) {
         Integer savedResult = service.save(userSignUpRequestDto);
         System.out.println(">>>회원가입:"+userSignUpRequestDto.getId());
         if(savedResult == 0) {
