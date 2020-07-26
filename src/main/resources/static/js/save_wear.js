@@ -72,7 +72,7 @@ $(function () {
             contentType: "application/json;charset=UTF-8",
             async: false,
             success: function (data) {
-                alert("성공적으로 등록되었습니다! 옷차림에 평가해주세요")
+                alert("성공적으로 등록되었습니다! 옷차림을 평가해주세요")
                     window.location.href="/users/eval-wear";
             }
         });
@@ -139,10 +139,10 @@ function getWearCode(){
 function getWearDate(){
     var date = $("#date-piker-input").val();
 
-    if(date == ''){
-        alert("날짜를 다시 확인해주세요:)");
-        return false;
-    }
+//    if(date == ''){
+//        alert("날짜를 다시 확인해주세요:)");
+//        return false;
+//    }
 
     for(i = 0; i<disableDoneDay.length; i++){
         if(disableDoneDay[i] == date){

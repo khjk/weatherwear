@@ -31,7 +31,7 @@ public class MessageService {
         messages.add(new Message(1,messageWithCode1));
         //23도이상 CODE2
         messageWithCode2.add("더운걸까요... 쾌적함을 위해 가벼운 반팔을 입어보세요!");
-        messageWithCode2.add("덥지만 활동하기에는 좋은 날씨입니다. 반팔과 반바지를 추천해요!");
+        messageWithCode2.add("덥지만 활동하기에는 좋은 날씨입니다.");
         messageWithCode2.add("시원한 반팔 추천합니다. 에어컨 있는 실내에 오래 있다면 가벼운 가디건도 하나 챙겨주세요:)");
         messages.add(new Message(2,messageWithCode2));
         //20도이상 CODE3

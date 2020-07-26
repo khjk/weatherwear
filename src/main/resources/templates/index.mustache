@@ -21,14 +21,14 @@
 
     <!-- nav -->
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
 
     <script
             src="https://kit.fontawesome.com/a268effaf1.js"
             crossorigin="anonymous"
     ></script>
-    <script src="js/snap.svg-min.js"></script>
-    <script src="js/TweenMax.min.js"></script>
+    <script src="/js/snap.svg-min.js"></script>
+    <script src="/js/TweenMax.min.js"></script>
 </head>
 <body>
 <div class="background">
@@ -55,10 +55,10 @@
                     {{/user_id}}
                     {{^user_id}}
                         <li class="nav-item active">
-                            <a class="nav-link" href="/login">로그인</a>
+                            <a class="nav-link" href="/users/login">로그인</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/signup">회원가입</a>
+                            <a class="nav-link" href="/users/login">회원가입</a>
                         </li>
                     {{/user_id}}
                 </ul>
@@ -170,7 +170,6 @@
 </div>
 <script src="/js/weather.js"></script>
 <script src="/js/animation.js" defer></script>
-<script src="/js/recommendation.js"></script>
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
