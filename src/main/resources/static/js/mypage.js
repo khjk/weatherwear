@@ -33,28 +33,24 @@ var mypage = {
                var del_par_par = del_par.parent();
                del_par_par.remove();
             }
-            //버튼토글
-            var del = $(this).parent(); //평가버튼 숨기고
-            del.addClass('hidden');
-            var show = del.prev(); //eval-btn 보이게
-            show.removeClass('hidden');
-
+            var del = $(this).parent();
+            var show = del.prev();
             var delpar = del.parent();
             var delparprev = delpar.prev();
             var evalImgPlace = delpar.prev().children();
 
              if(clickedBtn.id == 'hot-btn'){
-                 _this.evaluateHot(wear_no, evalImgPlace);
+                 _this.evaluateHot(wear_no, evalImgPlace,del,show);
 
              }else if(clickedBtn.id == 'warm-btn'){
-                 _this.evaluateWarm(wear_no, evalImgPlace);
+                 _this.evaluateWarm(wear_no, evalImgPlace,del,show);
 
              }else if(clickedBtn.id == 'cold-btn'){
-                _this.evaluateCold(wear_no, evalImgPlace);
+                _this.evaluateCold(wear_no, evalImgPlace,del,show);
              }
          });
         }, //init
-        evaluateHot : function (wear_no, evalImgPlace) {
+        evaluateHot : function (wear_no, evalImgPlace,del,show) {
                 var data = {
                     like_no : -1
                 };
@@ -66,11 +62,13 @@ var mypage = {
                     data: JSON.stringify(data)
                 }).done(function(response){
                     evalImgPlace.attr("src", "../images/bad.png");
+                    del.addClass('hidden');
+                    show.removeClass('hidden');
                 }).fail(function (error) {
                     alert(error.json);
                 });
             },
-            evaluateWarm : function (wear_no, evalImgPlace) {
+            evaluateWarm : function (wear_no, evalImgPlace,del,show) {
                 var data = {
                     like_no : 0
                 };
@@ -82,11 +80,13 @@ var mypage = {
                     data: JSON.stringify(data)
                 }).done(function(response){
                     evalImgPlace.attr("src", "../images/good.png");
+                    del.addClass('hidden');
+                    show.removeClass('hidden');
                 }).fail(function (error) {
                     alert(error.json);
                 });
             },
-            evaluateCold : function (wear_no, evalImgPlace) {
+            evaluateCold : function (wear_no, evalImgPlace,del,show) {
                 var data = {
                     like_no : -1
                 };
@@ -98,6 +98,8 @@ var mypage = {
                     data: JSON.stringify(data)
                 }).done(function(response){
                     evalImgPlace.attr("src", "../images/bad.png");
+                    del.addClass('hidden');
+                    show.removeClass('hidden');
                 }).fail(function (error) {
                     alert(error.json);
                 });
@@ -161,6 +163,7 @@ var deleteUser = {
         }).fail(function(error){
             console.log(error.json);
         });
+
     },
     deleteUserWearData : function (user_id) {
         $.ajax({
@@ -174,7 +177,7 @@ var deleteUser = {
                    alert('탈퇴했습니다. 그동안 이용해주셔서 감사합니다.');
                    window.location.href= "/";
                }else{
-                    console.log("오류발생");
+                   console.log(error.json);
                }
            });
     }

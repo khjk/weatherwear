@@ -84,11 +84,6 @@ function handleGeoSuccess(position){
                 getBestLike(temp_code, user_id_);
                 getMessage(temp_code);
             }
-             // current.temp //지금 온도
-                    //console.log("지금 온도"+_temp_to_code);
-                   // console.log("변환 코드"+getTempCode(_temp_to_code));
-                    //로그인시에 -> current.temp -> temp_code로 변환하고,,, -> 로그인 아이디와 temp_code 사용해서 API(WEAR) 옷코드 받고
-                   // -> 옷코드 받은걸 -> api(CLOTHES) -> 이미지로 변환
         }
     })
 }

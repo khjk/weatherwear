@@ -33,7 +33,6 @@ public class WearApiController {
         return wear;
     }
 
-    //MappingJacksonValue로 반환하고 Filter로 조작하는 것 고려해보기
     @GetMapping("/{user_id}/no-eval")
     public List<WearResponseDto> retrieveUnEvaluated(@PathVariable String user_id) {
         return service.findNotEvaluated(user_id);
@@ -84,16 +83,12 @@ public class WearApiController {
         }
         return dateList;
     }
-    /*
-    user_id별 오늘의 옷차림 추천
-     */
+
     @PostMapping("/best-like")
     public String getWearCodeByBestLikeByTempCode(@RequestBody WearFindLikeRequestDto wearFindLikeRequestDto) {
         String BestLike = service.getBestLikeByTempCode(wearFindLikeRequestDto);
         String BestWearCode = "1"; //default
-        System.out.println(">>>getBestLikeAPI 첫번쨰 조회결과" + BestLike + wearFindLikeRequestDto.getUser_id() + wearFindLikeRequestDto.getTemp_code());
         if(BestLike == null ) {
-            //해당 날짜에 데이터가 없거나 sql 오류 ->defualt 넣어줘야함
             System.out.println("오늘에 날씨 코드에 해당하는 유저데이터가 없습니다.");
             switch(wearFindLikeRequestDto.getTemp_code()){
                 case 1 : //28도 이상
@@ -130,7 +125,6 @@ public class WearApiController {
             System.out.println(">>>getBestWearCode API DEFAULT BEST_WEAR_CODE:" + BestWearCode);
             return BestWearCode;
         } else {
-            System.out.println(">>>getBestWearCode API 두번째 조회결과:" + result);
             return result;
         }
     }
