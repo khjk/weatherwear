@@ -19,9 +19,6 @@ public interface WearMapper {
     String getBestLikeByTempCode(WearFindLikeRequestDto wearFindLikeRequestDto);
     String getBestWearCodeByBestLike(@Param("bestLike") String bestLike, @Param("requestDto") WearFindLikeRequestDto requestDto);
     List<WearResponseDto> findEvaluated(String user_id);
-<<<<<<< HEAD
-=======
     Integer deleteAllById(String user_id);
->>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
 }
 

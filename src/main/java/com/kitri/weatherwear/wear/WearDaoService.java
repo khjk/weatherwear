@@ -58,13 +58,9 @@ public class WearDaoService {
     public List<WearResponseDto> findEvaluated(String user_id) {
         return wearMapper.findEvaluated(user_id);
     }
-<<<<<<< HEAD
-}
-
-=======
 
     public Integer deleteAllById(String user_id) {
         return wearMapper.deleteAllById(user_id);
     }
 }
->>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
+

@@ -200,25 +200,15 @@ body{
 	 background: #d4af7a;
 	 text-transform: uppercase;
 }
-<<<<<<< HEAD
- .naver-btn {
-	 border: 2px solid #2DB400;
-	 color: #2DB400;
-=======
  .fb-btn {
 	 background: url( "../images/naver-login-btn.png" ) no-repeat;
 	 border: 2px solid #d3dae9;
-<<<<<<< HEAD
-	 color: #8fa1c7;
->>>>>>> fd12d8c70c8916dfb478b315641dc5fe264edcd8
-=======
 	 color: #fff;
 	 background-color:#66C971;
->>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
 }
- .naver-btn span {
+ .fb-btn span {
 	 font-weight: bold;
-	 color: #2DB400;
+	 color: #455a81;
 }
 a{
     text-decoration: none;

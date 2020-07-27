@@ -31,23 +31,11 @@ public class UserApiController {
     public User loginUser(@RequestBody @Valid UserLoginRequestDto userLoginRequestDto, HttpSession session) { //로그인
         User user = service.login(userLoginRequestDto);
         System.out.println(">>>validation: " + user.getId());
-<<<<<<< HEAD
-        if (user == null) {
-            throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
-        }else {
-
-            session.setAttribute("id", user.getId());
-
-            session.setAttribute("user_id", user.getId());
-
-        }
-=======
         //if (user == null) {
         //    throw new UserNotFoundException(String.format("ID[%s]의 로그인을 실패했습니다.", userLoginRequestDto.getId()));
        // }else {
             session.setAttribute("user_id", user.getId());
       //  }
->>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
         return user;
     }
 
@@ -99,10 +87,4 @@ public class UserApiController {
 
         return ResponseEntity.created(location).build();
     }
-
-    @GetMapping("/id-check/{id}")
-    public int idCheck(@PathVariable String id) {
-        return service.userIdCheck(id);
-    }
-
 }

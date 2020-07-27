@@ -129,11 +129,6 @@ public class WearApiController {
         }
     }
 
-<<<<<<< HEAD
-    @GetMapping("/{user_id}/eval")
-    public List<WearResponseDto> retrieveEvaluated(@PathVariable String user_id) {
-        return service.findEvaluated(user_id);
-=======
     @DeleteMapping("/data/{user_id}")
     public int deleteAllByUserID(@PathVariable String user_id) {
         Integer deleteResult = service.deleteAllById(user_id);
@@ -142,7 +137,6 @@ public class WearApiController {
             throw new WearNotFoundException(String.format("UserID[%s]'s Wear Data cannot be deleted", user_id));
         }
         return deleteResult;
->>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
     }
 
 }

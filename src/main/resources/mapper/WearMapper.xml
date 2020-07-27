@@ -55,12 +55,6 @@
     </select>
 
     <select id="findEvaluated" parameterType="String" resultType="WearResponseDto">
-<<<<<<< HEAD
-        Select * from WEAR where eval = 'Y' and user_id = #{user_id}
-    </select>
-
-=======
         Select * from WEAR where eval = 'Y' and user_id = #{user_id} limit 10
     </select>
->>>>>>> 3a8c4a86cf384223599b970a52242fa9ff585c82
 </mapper>
