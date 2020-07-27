@@ -3,51 +3,51 @@
 <mapper namespace="com.kitri.weatherwear.MyBatis.WearMapper">
 
     <select id="findAll" resultType="Wear">
-        SELECT * FROM WEAR
+        SELECT * FROM wear
     </select>
 
     <select id="findOne" resultType="Wear">
-        Select * from WEAR where wear_no = #{wear_no}
+        SELECT * from wear where wear_no = #{wear_no}
     </select>
 
     <select id="findNotEvaluated" parameterType="String" resultType="WearResponseDto">
-        Select * from WEAR where eval = 'N' and user_id = #{user_id}
+        SELECT * from wear where eval = 'N' and user_id = #{user_id}
     </select>
 
     <insert id="save" parameterType="wearSaveRequestDto">
-        INSERT INTO WEAR(user_id, wear_date, wear_code, temp_code, like_no, eval)
+        INSERT INTO wear(user_id, wear_date, wear_code, temp_code, like_no, eval)
         VALUES (#{user_id},#{wear_date},#{wear_code},#{temp_code},#{like_no},#{eval})
     </insert>
 
     <update id="updateEvaluationById" parameterType="map">
-        UPDATE WEAR SET LIKE_NO = #{requestDto.like_no}, EVAL = #{requestDto.eval} where WEAR_NO = #{wear_no}
+        UPDATE wear SET like_no = #{requestDto.like_no}, eval = #{requestDto.eval} where wear_no = #{wear_no}
     </update>
 
     <delete id="deleteById" parameterType="Wear">
-        DELETE FROM WEAR WHERE WEAR_NO = #{wear_no}
+        DELETE FROM wear WHERE wear_no = #{wear_no}
     </delete>
 
     <delete id="deleteAllById">
-        DELETE FROM WEAR WHERE USER_ID = #{user_id}
+        DELETE FROM wear WHERE user_id = #{user_id}
     </delete>
 
     <select id="findRegiterDate" parameterType="String" resultType="java.util.Date">
-        Select wear_date from WEAR where user_id = #{user_id}
+        SELECT wear_date from wear WHERE user_id = #{user_id}
     </select>
 
     <select id="getBestLikeByTempCode" parameterType="wearFindLikeRequestDto" resultType="java.lang.String">
-        Select max(likeSum)
-        From (Select sum(like_no) as likeSum
-                From wear
-                where user_id = #{user_id} and temp_code = #{temp_code}
+        SELECT max(likeSum)
+        FROM (SELECT sum(like_no) as likeSum
+                FROM wear
+                WHERE user_id = #{user_id} and temp_code = #{temp_code}
                 Group by wear_code ) as A
     </select>
 
     <select id="getBestWearCodeByBestLike" parameterType="map" resultType="java.lang.String">
-        Select B.wear_code
-        From ( Select wear_code, sum(like_no) as likeSum, wear_date
-                From wear
-                Where user_id = #{requestDto.user_id} and temp_code = #{requestDto.temp_code}
+        SELECT B.wear_code
+        FROM ( SELECT wear_code, sum(like_no) as likeSum, wear_date
+                FROM wear
+                WHERE user_id = #{requestDto.user_id} and temp_code = #{requestDto.temp_code}
                 group by wear_code) as B
         where B.likeSum = #{bestLike}
         order by wear_date desc
@@ -55,6 +55,6 @@
     </select>
 
     <select id="findEvaluated" parameterType="String" resultType="WearResponseDto">
-        Select * from WEAR where eval = 'Y' and user_id = #{user_id} limit 10
+        SELECT * from wear where eval = 'Y' and user_id = #{user_id} limit 10
     </select>
 </mapper>
