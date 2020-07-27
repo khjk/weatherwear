@@ -1,13 +1,13 @@
 # Weather Wear
 ----
 ## Intro
-*it doens't need any installation.*
+*그 날 입은 옷에 따른 불쾌지수를 저장하여, 추천 알고리즘에 따라 개인별 맞춤 옷차림을 제공합니다.*
 
-visit [WebApp-Link](https://www.naver.com/)
-*개발중으로 링크 동작하지 않습니다.*
- 
+visit [WebApp-Link](https://weatherwear.cf:80/)
 
-> SpringBoot 2.1.15 , MyBatis, MySQL, mustache, javascript  
+visit [API-DOC](https://weatherwear.cf:80/swagger-ui.html)
+
+> SpringBoot 2.1.15 , MySQL, MyBatis, javascript, jquery, mustache, bootstrap, css, Swagger  
   using Naver Oauth, Weather API
 
 ----
