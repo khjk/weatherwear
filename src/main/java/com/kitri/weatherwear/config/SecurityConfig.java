@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                     .authorizeRequests()
-                    .antMatchers("/","/user/login","/css/**","/images/**","/js/**","/api/v1/**","/users/**","/swagger-ui.html","/v2/api-docs").permitAll()
+                    .antMatchers("/","/user/login","/css/**","/images/**","/js/**","/api/v1/**","/users/**").permitAll()
                     //.antMatchers("/api/v1/**").hasRole("USER")
                     .anyRequest().authenticated()
                 .and()
