@@ -10,7 +10,7 @@
 <div class="cont">
     <div class="form sign-in">
         <form id="loginForm">
-            <h2>Welcome back,</h2>
+            <h2>Welcome back:)</h2>
             <label>
                 <span>Email</span>
                 <input type="email" id="login_id"/>
@@ -22,29 +22,30 @@
 
             </label>
             <button type="button" id="btn-login" class="submit">Sign In</button>
-            <button type="button" class="fb-btn"><a href="/oauth2/authorization/naver">Connect with <span>Naver</span></a></button>
+            <button type="button" onclick="location.href='/oauth2/authorization/naver'"><img src="../images/naver-login-btn.PNG" width="260px"></button>
         </form>
     </div>
 
     <div class="sub-cont">
         <div class="img">
-            <div class="img__text m--up">
-                <h2>New here?</h2>
-                <p>Sign up and discover great amount of new opportunities!</p>
+            <div class="img__text m--up text-center">
+                <h2>WeatherWear</h2>
+                <p>오늘 날씨에는 뭐입지?<br>
+                    내 체감 기온에 맞는 옷차림을 찾아보세요!</p>
             </div>
             <div class="img__text m--in">
-                <h2>One of us?</h2>
-                <p>If you already has an account, just sign in. We've missed you!</p>
+                <h2>이미 회원이신가요?</h2>
+                <p>바로 로그인 하세요:)</p>
             </div>
             <div class="img__btn">
-                <span class="m--up">Sign Up</span>
-                <span class="m--in">Sign In</span>
+                <span class="m--up">회원가입</span>
+                <span class="m--in">로그인</span>
             </div>
         </div>
 
         <div class="form sign-up">
             <form id="signupForm">
-                <h2>Time to feel like home,</h2>
+                <h2>Sign up</h2>
                 <label>
                     <span>Name</span>
                     <input type="text" id="signup_name"/>
@@ -53,8 +54,8 @@
                 <label>
                     <span>Email</span>
                     <input type="email" id="signup_id"/>
-                    <span id="email_val_text" style="color: red;"></span>
                     <button type="button" class="check" id="check">중복검사</button>
+                    <span id="email_val_text" style="color: red;"></span>
                 </label>
                 <label>
                     <span>Password</span>
@@ -62,7 +63,7 @@
                     <span style="color: red;"></span>
                 </label>
                 <button type="button" id="btn-signup"  class="submit">Sign Up</button>
-                <button type="button" class="fb-btn"><a href="/oauth2/authorization/naver">Join with <span>Naver</span></a></button>
+                <button type="button" onclick="location.href='/oauth2/authorization/naver'"><img src="../images/naver-login-btn.PNG" width="260px"></button>
             </form>
         </div>
 
