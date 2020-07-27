@@ -82,17 +82,22 @@ var login = {
            dataType: 'json',
            contentType: 'application/json; charset=utf-8',
            }).done(function (response) {
-                $('#check').css('left','120px');
+               // $('#check').css('left','120px');
+                $('#email_val_text').css("color", 'red');
                $('#email_val_text').text('이미 가입된 이메일입니다.');
                $('#signup_id').val('');
            }).fail(function (jqXHR, textStatus) {
                 if(VAL_ID.search('@') == -1){
                    alert('이메일의 형식이 올바르지 않습니다.');
+                    $('#email_val_text').css("color", 'red');
+                   $('#email_val_text').text('이메일의 형식이 올바르지 않습니다.');
                    $('#signup_id').val('');
                    return;
                 }
                if(jqXHR.status == '404'){
                 alert('사용가능한 아이디입니다.');
+                $('#email_val_text').css("color", 'green');
+                $('#email_val_text').text('사용가능한 아이디입니다.');
                }
            });
     },
@@ -102,3 +107,4 @@ var login = {
     }
 }
 login.init();
+

@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="form sign-up">
+        <div class="form sign-up" style="overflow: scroll">
             <form id="signupForm">
                 <h2>Sign up</h2>
                 <label>
@@ -51,11 +51,11 @@
                     <input type="text" id="signup_name"/>
                     <span style="color: red;"></span>
                 </label>
-                <label>
+                <label class="email-input" style="position: relative">
                     <span>Email</span>
                     <input type="email" id="signup_id"/>
-                    <button type="button" class="check" id="check">중복검사</button>
                     <span id="email_val_text" style="color: red;"></span>
+                    <button type="button" class="btn check" id="check">중복검사</button>
                 </label>
                 <label>
                     <span>Password</span>
@@ -74,6 +74,7 @@
   document.querySelector('.img__btn').addEventListener('click', function() {
   document.querySelector('.cont').classList.toggle('s--signup');
 });
+
 </script>
 <script src="/js/login.js"></script>
 {{>layout/footer}}
