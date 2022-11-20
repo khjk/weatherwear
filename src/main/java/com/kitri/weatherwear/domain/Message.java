@@ -1,4 +1,4 @@
-package com.kitri.weatherwear.message;
+package com.kitri.weatherwear.domain;
 
 import lombok.*;
 
