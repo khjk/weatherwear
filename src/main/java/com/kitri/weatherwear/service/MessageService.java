@@ -1,5 +1,6 @@
-package com.kitri.weatherwear.message;
+package com.kitri.weatherwear.service;
 
+import com.kitri.weatherwear.domain.Message;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

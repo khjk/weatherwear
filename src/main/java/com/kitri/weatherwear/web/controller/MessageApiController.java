@@ -1,5 +1,7 @@
-package com.kitri.weatherwear.message;
+package com.kitri.weatherwear.web.controller;
 
+import com.kitri.weatherwear.domain.Message;
+import com.kitri.weatherwear.service.MessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
