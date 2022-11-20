@@ -1,4 +1,4 @@
-package com.kitri.weatherwear.clothes;
+package com.kitri.weatherwear.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

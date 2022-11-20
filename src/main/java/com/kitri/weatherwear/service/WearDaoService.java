@@ -1,6 +1,11 @@
-package com.kitri.weatherwear.wear;
+package com.kitri.weatherwear.service;
 
-import com.kitri.weatherwear.MyBatis.WearMapper;
+import com.kitri.weatherwear.domain.MyBatis.WearMapper;
+import com.kitri.weatherwear.domain.Wear;
+import com.kitri.weatherwear.web.dto.WearFindLikeRequestDto;
+import com.kitri.weatherwear.web.dto.WearResponseDto;
+import com.kitri.weatherwear.web.dto.WearSaveRequestDto;
+import com.kitri.weatherwear.web.dto.WearUpdateRequestDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

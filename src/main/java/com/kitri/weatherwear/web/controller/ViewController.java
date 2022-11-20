@@ -1,6 +1,6 @@
 package com.kitri.weatherwear.web;
 
-import com.kitri.weatherwear.user.UserDaoService;
+import com.kitri.weatherwear.service.UserDaoService;
 import com.kitri.weatherwear.wear.WearDaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

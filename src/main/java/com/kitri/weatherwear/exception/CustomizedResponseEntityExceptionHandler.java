@@ -1,6 +1,5 @@
 package com.kitri.weatherwear.exception;
 
-import com.kitri.weatherwear.user.UserNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.kitri.weatherwear.wear;
+package com.kitri.weatherwear.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

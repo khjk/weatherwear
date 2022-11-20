@@ -8,14 +8,14 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
     <typeAliases>
-        <typeAlias type="com.kitri.weatherwear.user.User" alias="User" />
+        <typeAlias type="com.kitri.weatherwear.domain.User" alias="User" />
         <typeAlias type="com.kitri.weatherwear.wear.Wear" alias="Wear" />
-        <typeAlias type="com.kitri.weatherwear.user.UserLoginRequestDto" alias="userLoginRequestDto" />
-        <typeAlias type="com.kitri.weatherwear.user.UserSignUpRequestDto" alias="userSignUpRequestDto" />
-        <typeAlias type="com.kitri.weatherwear.clothes.Clothes" alias="Clothes" />
-        <typeAlias type="com.kitri.weatherwear.wear.WearResponseDto" alias="WearResponseDto" />
-        <typeAlias type="com.kitri.weatherwear.clothes.ClothesNameList" alias="ClothesNameList"/>
-        <typeAlias type="com.kitri.weatherwear.wear.WearSaveRequestDto" alias="wearSaveRequestDto"/>
-        <typeAlias type="com.kitri.weatherwear.wear.WearFindLikeRequestDto" alias="wearFindLikeRequestDto"/>
+        <typeAlias type="com.kitri.weatherwear.web.dto.UserLoginRequestDto" alias="userLoginRequestDto" />
+        <typeAlias type="com.kitri.weatherwear.web.dto.UserSignUpRequestDto" alias="userSignUpRequestDto" />
+        <typeAlias type="com.kitri.weatherwear.domain.Clothes" alias="Clothes" />
+        <typeAlias type="com.kitri.weatherwear.web.dto.WearResponseDto" alias="WearResponseDto" />
+        <typeAlias type="com.kitri.weatherwear.domain.ClothesNameList" alias="ClothesNameList"/>
+        <typeAlias type="com.kitri.weatherwear.web.dto.WearSaveRequestDto" alias="wearSaveRequestDto"/>
+        <typeAlias type="com.kitri.weatherwear.web.dto.WearFindLikeRequestDto" alias="wearFindLikeRequestDto"/>
     </typeAliases>
 </configuration>

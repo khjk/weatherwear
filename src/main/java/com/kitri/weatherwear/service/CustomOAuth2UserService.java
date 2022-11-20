@@ -1,8 +1,8 @@
-package com.kitri.weatherwear.config;
+package com.kitri.weatherwear.service;
 
-import com.kitri.weatherwear.user.User;
-import com.kitri.weatherwear.user.UserDaoService;
-import com.kitri.weatherwear.user.UserSignUpRequestDto;
+import com.kitri.weatherwear.config.OAuthAttributes;
+import com.kitri.weatherwear.domain.User;
+import com.kitri.weatherwear.web.dto.UserSignUpRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

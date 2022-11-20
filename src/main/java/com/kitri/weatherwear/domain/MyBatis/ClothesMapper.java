@@ -1,7 +1,7 @@
-package com.kitri.weatherwear.MyBatis;
+package com.kitri.weatherwear.domain.MyBatis;
 
-import com.kitri.weatherwear.clothes.Clothes;
-import com.kitri.weatherwear.clothes.ClothesNameList;
+import com.kitri.weatherwear.domain.Clothes;
+import com.kitri.weatherwear.domain.ClothesNameList;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -1,11 +1,13 @@
-package com.kitri.weatherwear.clothes;
+package com.kitri.weatherwear.web.controller;
 
 
+import com.kitri.weatherwear.service.ClothesDaoService;
+import com.kitri.weatherwear.domain.ClothesNameList;
+import com.kitri.weatherwear.domain.Clothes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class ClothesApiController {

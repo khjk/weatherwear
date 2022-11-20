@@ -1,5 +1,6 @@
 package com.kitri.weatherwear.config;
 
+import com.kitri.weatherwear.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
