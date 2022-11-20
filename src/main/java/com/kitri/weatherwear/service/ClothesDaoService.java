@@ -1,6 +1,8 @@
-package com.kitri.weatherwear.clothes;
+package com.kitri.weatherwear.service;
 
-import com.kitri.weatherwear.MyBatis.ClothesMapper;
+import com.kitri.weatherwear.domain.MyBatis.ClothesMapper;
+import com.kitri.weatherwear.domain.ClothesNameList;
+import com.kitri.weatherwear.domain.Clothes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

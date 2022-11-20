@@ -1,5 +1,10 @@
 package com.kitri.weatherwear.wear;
 
+import com.kitri.weatherwear.exception.WearNotFoundException;
+import com.kitri.weatherwear.web.dto.WearFindLikeRequestDto;
+import com.kitri.weatherwear.web.dto.WearResponseDto;
+import com.kitri.weatherwear.web.dto.WearSaveRequestDto;
+import com.kitri.weatherwear.web.dto.WearUpdateRequestDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

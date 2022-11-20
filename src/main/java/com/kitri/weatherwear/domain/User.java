@@ -1,4 +1,4 @@
-package com.kitri.weatherwear.user;
+package com.kitri.weatherwear.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;

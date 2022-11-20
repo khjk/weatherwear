@@ -1,9 +1,9 @@
-package com.kitri.weatherwear.MyBatis;
+package com.kitri.weatherwear.domain.MyBatis;
 
-import com.kitri.weatherwear.user.User;
-import com.kitri.weatherwear.user.UserLoginRequestDto;
-import com.kitri.weatherwear.user.UserSignUpRequestDto;
-import com.kitri.weatherwear.user.UserUpdateRequestDto;
+import com.kitri.weatherwear.domain.User;
+import com.kitri.weatherwear.web.dto.UserLoginRequestDto;
+import com.kitri.weatherwear.web.dto.UserSignUpRequestDto;
+import com.kitri.weatherwear.web.dto.UserUpdateRequestDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

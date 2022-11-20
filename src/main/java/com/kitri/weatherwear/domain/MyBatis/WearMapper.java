@@ -1,6 +1,10 @@
-package com.kitri.weatherwear.MyBatis;
+package com.kitri.weatherwear.domain.MyBatis;
 
-import com.kitri.weatherwear.wear.*;
+import com.kitri.weatherwear.domain.Wear;
+import com.kitri.weatherwear.web.dto.WearFindLikeRequestDto;
+import com.kitri.weatherwear.web.dto.WearResponseDto;
+import com.kitri.weatherwear.web.dto.WearSaveRequestDto;
+import com.kitri.weatherwear.web.dto.WearUpdateRequestDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

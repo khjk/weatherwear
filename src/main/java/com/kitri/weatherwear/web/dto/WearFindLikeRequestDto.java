@@ -1,4 +1,4 @@
-package com.kitri.weatherwear.wear;
+package com.kitri.weatherwear.web.dto;
 
 import lombok.Builder;
 import lombok.Getter;
